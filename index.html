@@ -123,16 +123,16 @@
 </div>
   <div class="container">
     <h1>Claude Code Insights</h1>
-    <p class="subtitle">447 messages across 47 sessions (81 total) | 2026-03-26 to 2026-04-02</p>
+    <p class="subtitle">312 messages across 35 sessions (48 total) | 2026-03-30 to 2026-04-13</p>
 
     
     <div class="at-a-glance">
       <div class="glance-title">At a Glance</div>
       <div class="glance-sections">
-        <div class="glance-section"><strong>What's working:</strong> You've built a genuinely impressive personal DevOps ecosystem — custom skills like reflect, ds-fix, and code-translate that let you trigger complex multi-step workflows with minimal prompting, and you keep improving them by filing issues against your own tooling. You're also remarkably effective at steering Claude through multi-round UI prototyping sessions, going from design intent to deployed prototypes on Vercel, GitHub Pages, and your VM in a single sitting. <a href="#section-wins" class="see-more">Impressive Things You Did →</a></div>
-        <div class="glance-section"><strong>What's hindering you:</strong> On Claude's side, it frequently misinterprets scope — targeting the wrong project, misrouting items between files, or landing on the wrong technical diagnosis on the first try, which costs you correction cycles. On your side, visual/CSS tasks tend to spiral into 3+ rounds of fixes because Claude is guessing at your design intent from descriptions alone; providing reference screenshots or explicit CSS values upfront (like sticky header constraints or full-width fill behavior) would compress those loops significantly. <a href="#section-friction" class="see-more">Where Things Go Wrong →</a></div>
-        <div class="glance-section"><strong>Quick wins to try:</strong> You already have a rich custom skills setup, but try using <strong>headless mode</strong> to run your reflect/audit/deploy workflows non-interactively from scripts — this would let you chain your skill-fix → publish → deploy pipeline without babysitting each step. Also consider creating a diagnostic skill specifically for your recurring launchd/scheduling failures, so the next time your digest doesn't run, Claude starts with the right environment context instead of guessing. <a href="#section-features" class="see-more">Features to Try →</a></div>
-        <div class="glance-section"><strong>Ambitious workflows:</strong> As models get better at autonomous iteration, your multi-round UI refinement sessions (like the buying committee wizard that needed 3-5 correction cycles) could become single-prompt workflows where Claude renders, screenshots, compares against your visual spec, and self-corrects until it matches. Similarly, your frequent sequential bug discovery pattern — where issues surface one at a time across deploys — is ripe for parallel agents that simultaneously audit tokens, check component APIs, and verify visual output before you ever see a broken prototype. <a href="#section-horizon" class="see-more">On the Horizon →</a></div>
+        <div class="glance-section"><strong>What's working:</strong> You've built a genuinely impressive self-sustaining workflow — custom skills, reflect/audit loops, and memory-refresh routines that keep Claude's context sharp across sessions. Your ability to treat Claude as a full design-engineering partner for multi-file UI prototyping (buying committee wizards, design token updates, parallel sub-agent work) is a standout pattern that most users haven't reached. The discipline of ending sessions with reflect audits to prune stale issues and update state files is paying dividends in session-over-session continuity. <a href="#section-wins" class="see-more">Impressive Things You Did →</a></div>
+        <div class="glance-section"><strong>What's hindering you:</strong> On Claude's side, it keeps editing the wrong file or targeting the wrong element during UI work — migrated files instead of live ones, wrong CSS properties, overly literal interpretations of design requests that trigger revert cycles. On your side, VPN disconnects, IP allowlist blocks, and auth failures repeatedly stall deployments at the finish line, and multi-element UI requests without explicit constraints give Claude too much room to misinterpret your intent (e.g., removing tab-switch behavior you wanted to keep). <a href="#section-friction" class="see-more">Where Things Go Wrong →</a></div>
+        <div class="glance-section"><strong>Quick wins to try:</strong> Add a CLAUDE.md project rule that maps your concept names to exact file paths and flags which files are 'live' vs 'migrated' — this would directly cut down the wrong-file edits that keep costing you correction cycles. Also consider setting up a pre-push hook that checks VPN connectivity before any git operation, since you've been bitten by network blockers in enough sessions that automating the check would save real time. <a href="#section-features" class="see-more">Features to Try →</a></div>
+        <div class="glance-section"><strong>Ambitious workflows:</strong> As models get more capable in the next few months, your reflect/audit infrastructure is perfectly positioned to evolve into an autonomous skill evolution system — where Claude analyzes friction patterns across sessions, auto-generates skill patches, and tests them against historical failures before publishing. Your parallel sub-agent usage is also a preview of what's coming: imagine isolated agents each owning one UI component, validating changes against a shared design spec independently, and only merging when verified — eliminating the compounding wrong-approach errors that hit you during complex multi-file sessions. <a href="#section-horizon" class="see-more">On the Horizon →</a></div>
       </div>
     </div>
     
@@ -149,11 +149,11 @@
     </nav>
 
     <div class="stats-row">
-      <div class="stat"><div class="stat-value">447</div><div class="stat-label">Messages</div></div>
-      <div class="stat"><div class="stat-value">+10,605/-1,169</div><div class="stat-label">Lines</div></div>
-      <div class="stat"><div class="stat-value">190</div><div class="stat-label">Files</div></div>
-      <div class="stat"><div class="stat-value">6</div><div class="stat-label">Days</div></div>
-      <div class="stat"><div class="stat-value">74.5</div><div class="stat-label">Msgs/Day</div></div>
+      <div class="stat"><div class="stat-value">312</div><div class="stat-label">Messages</div></div>
+      <div class="stat"><div class="stat-value">+8,016/-1,289</div><div class="stat-label">Lines</div></div>
+      <div class="stat"><div class="stat-value">158</div><div class="stat-label">Files</div></div>
+      <div class="stat"><div class="stat-value">7</div><div class="stat-label">Days</div></div>
+      <div class="stat"><div class="stat-value">44.6</div><div class="stat-label">Msgs/Day</div></div>
     </div>
 
     
@@ -162,42 +162,42 @@
       
         <div class="project-area">
           <div class="area-header">
-            <span class="area-name">Sales Navigator Prototyping &amp; Design System</span>
-            <span class="area-count">~18 sessions</span>
+            <span class="area-name">Buying Committee Wizard &amp; Modal Prototyping</span>
+            <span class="area-count">~5 sessions</span>
           </div>
-          <div class="area-desc">Extensive work building and refining interactive prototypes for LinkedIn Sales Navigator features, including a buying committee wizard modal, relationship map views, grid views with checkbox selection, and lead-detail pages. Claude Code was used for multi-file HTML/CSS/TypeScript edits, iterative UI refinement based on visual feedback, design system component fixes (CSS token bugs, icon colors, spacing), package publishing, and deploying prototypes to GitHub Pages and VMs.</div>
+          <div class="area-desc">Iterative design and implementation of a multi-step buying committee setup wizard modal, including stepper/header layout, bulk entry scenarios, chat mode with agentic input bar, and complex modal exit state logic. Claude Code was used for multi-file React/TypeScript and CSS edits across multiple rounds of user feedback, though some sessions were interrupted by API errors or required corrections for wrong-file edits and misunderstood requirements.</div>
         </div>
       
         <div class="project-area">
           <div class="area-header">
-            <span class="area-name">AI News Digest Tool</span>
-            <span class="area-count">~6 sessions</span>
+            <span class="area-name">Design System Skills &amp; Workflow Automation</span>
+            <span class="area-count">~12 sessions</span>
           </div>
-          <div class="area-desc">Built and maintained a personal AI news digest tool from scratch, including setting up RSS feeds, GitHub repo creation, content curation aligned to designer-relevant AI topics, and daily automation via macOS LaunchAgents. Claude Code was used to diagnose recurring scheduling failures (launchd PATH issues, Nitter instance problems, hardcoded paths), fix automation scripts, and iterate on content relevance filtering in Python.</div>
+          <div class="area-desc">Fixing open skill issues, publishing hue-proxy versions, implementing dynamic wave-based parallel subagent execution, updating skill publish workflows, and running reflect/audit/memory-refresh routines. Claude Code was heavily used for cross-repo Bash operations, automated commit analysis, skill file updates, issue triaging, and deployment to design system infrastructure, with most sessions achieving full completion.</div>
         </div>
       
         <div class="project-area">
           <div class="area-header">
-            <span class="area-name">Skills &amp; Workflow Automation</span>
-            <span class="area-count">~11 sessions</span>
+            <span class="area-name">UI Refinement &amp; CSS Fixes Across Prototypes</span>
+            <span class="area-count">~8 sessions</span>
           </div>
-          <div class="area-desc">Managed and improved a custom skills/workflow system including reflect audits, memory-refresh cycles, skill-fix workflows, and design system fix pipelines. Claude Code was used to fix open skill issues (SK-008, SK-017/018/019), prune stale issues, rewrite the code-translate skill for cross-framework porting (React→Ember), build a LinkedIn UI extractor, and maintain skill documentation with proper issue tracking.</div>
+          <div class="area-desc">Targeted visual fixes including padding adjustments, grab-bar handle implementation, button height mismatches, notification badge fixes, banner width/layout corrections, role-change drag flows, and agentic gradient token updates from Figma specs. Claude Code performed multi-file edits across TypeScript components and CSS files, with frequent friction from wrong approaches (e.g., grid vs. absolute positioning, editing wrong files) that required user correction.</div>
         </div>
       
         <div class="project-area">
           <div class="area-header">
-            <span class="area-name">Presentations &amp; Content</span>
-            <span class="area-count">~3 sessions</span>
+            <span class="area-name">Template &amp; PR Management</span>
+            <span class="area-count">~5 sessions</span>
           </div>
-          <div class="area-desc">Created and iteratively refined presentations about new tooling capabilities (voice-to-text, templates, deploy-linkedin, AI API skills) with multiple rounds of content, layout, and link adjustments. Claude Code was used for Markdown and HTML editing, deploying slide decks to GitHub Pages, and managing presentation assets across commits.</div>
+          <div class="area-desc">Managing prototype template PRs including conflict resolution, review comment fixes, post-merge bug fixes (z-index issues, missing images, broken import paths), auto-merge setup, and generating handoff documents. Claude Code was used for PR review workflows, multi-agent concurrent operations, and deployment verification, with friction around post-merge visual regressions and pre-commit hook failures.</div>
         </div>
       
         <div class="project-area">
           <div class="area-header">
-            <span class="area-name">Tax Filing Research &amp; Utilities</span>
-            <span class="area-count">~3 sessions</span>
+            <span class="area-name">Code Translation &amp; LinkedIn Extraction Tools</span>
+            <span class="area-count">~5 sessions</span>
           </div>
-          <div class="area-desc">Used Claude Code as a knowledge assistant for answering TurboTax questions by referencing uploaded tax documents, and for exploring dual-status vs. non-resident alien (1040-NR) filing options after leaving the US. Also built a local voice-to-text utility tool with keyboard shortcut triggering, though that effort was partially blocked by PATH issues and MDM restrictions.</div>
+          <div class="area-desc">Rewriting the code-translate skill for cross-framework porting (React→Ember), building a LinkedIn UI extractor with extension and CDP integrations, implementing prototype-upgrade auto-fix capabilities, and building a local voice-to-text CLI tool. Claude Code was used for end-to-end feature implementation and skill publishing, though some sessions hit environment blockers like MDM restrictions, PATH issues, and network/VPN problems.</div>
         </div>
       
     </div>
@@ -207,34 +207,34 @@
       <div class="chart-card">
         <div class="chart-title">What You Wanted</div>
         <div class="bar-row">
-        <div class="bar-label">Git Operations</div>
+        <div class="bar-label">Bug Fix</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#2563eb"></div></div>
-        <div class="bar-value">13</div>
+        <div class="bar-value">9</div>
       </div>
 <div class="bar-row">
-        <div class="bar-label">Debugging</div>
-        <div class="bar-track"><div class="bar-fill" style="width:61.53846153846154%;background:#2563eb"></div></div>
-        <div class="bar-value">8</div>
+        <div class="bar-label">Ui Refinement</div>
+        <div class="bar-track"><div class="bar-fill" style="width:55.55555555555556%;background:#2563eb"></div></div>
+        <div class="bar-value">5</div>
       </div>
 <div class="bar-row">
-        <div class="bar-label">Understanding Tools And Workflow</div>
-        <div class="bar-track"><div class="bar-fill" style="width:61.53846153846154%;background:#2563eb"></div></div>
-        <div class="bar-value">8</div>
+        <div class="bar-label">Information Lookup</div>
+        <div class="bar-track"><div class="bar-fill" style="width:55.55555555555556%;background:#2563eb"></div></div>
+        <div class="bar-value">5</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Ui Styling Change</div>
+        <div class="bar-track"><div class="bar-fill" style="width:44.44444444444444%;background:#2563eb"></div></div>
+        <div class="bar-value">4</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Feature Design And Spec</div>
+        <div class="bar-track"><div class="bar-fill" style="width:44.44444444444444%;background:#2563eb"></div></div>
+        <div class="bar-value">4</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Deployment</div>
-        <div class="bar-track"><div class="bar-fill" style="width:53.84615384615385%;background:#2563eb"></div></div>
-        <div class="bar-value">7</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Bug Fix</div>
-        <div class="bar-track"><div class="bar-fill" style="width:53.84615384615385%;background:#2563eb"></div></div>
-        <div class="bar-value">7</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Content Editing</div>
-        <div class="bar-track"><div class="bar-fill" style="width:53.84615384615385%;background:#2563eb"></div></div>
-        <div class="bar-value">7</div>
+        <div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#2563eb"></div></div>
+        <div class="bar-value">3</div>
       </div>
       </div>
       <div class="chart-card">
@@ -242,32 +242,32 @@
         <div class="bar-row">
         <div class="bar-label">Bash</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#0891b2"></div></div>
-        <div class="bar-value">1135</div>
+        <div class="bar-value">1024</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Edit</div>
-        <div class="bar-track"><div class="bar-fill" style="width:36.2114537444934%;background:#0891b2"></div></div>
-        <div class="bar-value">411</div>
+        <div class="bar-track"><div class="bar-fill" style="width:37.01171875%;background:#0891b2"></div></div>
+        <div class="bar-value">379</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Read</div>
-        <div class="bar-track"><div class="bar-fill" style="width:34.713656387665196%;background:#0891b2"></div></div>
-        <div class="bar-value">394</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Skill</div>
-        <div class="bar-track"><div class="bar-fill" style="width:6.784140969162995%;background:#0891b2"></div></div>
-        <div class="bar-value">77</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Write</div>
-        <div class="bar-track"><div class="bar-fill" style="width:6.607929515418502%;background:#0891b2"></div></div>
-        <div class="bar-value">75</div>
+        <div class="bar-track"><div class="bar-fill" style="width:35.546875%;background:#0891b2"></div></div>
+        <div class="bar-value">364</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Grep</div>
-        <div class="bar-track"><div class="bar-fill" style="width:4.493392070484582%;background:#0891b2"></div></div>
-        <div class="bar-value">51</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.03125%;background:#0891b2"></div></div>
+        <div class="bar-value">72</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Agent</div>
+        <div class="bar-track"><div class="bar-fill" style="width:5.46875%;background:#0891b2"></div></div>
+        <div class="bar-value">56</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Skill</div>
+        <div class="bar-track"><div class="bar-fill" style="width:4.78515625%;background:#0891b2"></div></div>
+        <div class="bar-value">49</div>
       </div>
       </div>
     </div>
@@ -276,57 +276,62 @@
       <div class="chart-card">
         <div class="chart-title">Languages</div>
         <div class="bar-row">
-        <div class="bar-label">Markdown</div>
+        <div class="bar-label">TypeScript</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#10b981"></div></div>
-        <div class="bar-value">311</div>
+        <div class="bar-value">298</div>
       </div>
 <div class="bar-row">
-        <div class="bar-label">TypeScript</div>
-        <div class="bar-track"><div class="bar-fill" style="width:60.45016077170418%;background:#10b981"></div></div>
-        <div class="bar-value">188</div>
+        <div class="bar-label">Markdown</div>
+        <div class="bar-track"><div class="bar-fill" style="width:70.13422818791946%;background:#10b981"></div></div>
+        <div class="bar-value">209</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">CSS</div>
-        <div class="bar-track"><div class="bar-fill" style="width:38.263665594855304%;background:#10b981"></div></div>
-        <div class="bar-value">119</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">HTML</div>
-        <div class="bar-track"><div class="bar-fill" style="width:20.90032154340836%;background:#10b981"></div></div>
-        <div class="bar-value">65</div>
+        <div class="bar-track"><div class="bar-fill" style="width:58.7248322147651%;background:#10b981"></div></div>
+        <div class="bar-value">175</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">JSON</div>
-        <div class="bar-track"><div class="bar-fill" style="width:19.935691318327976%;background:#10b981"></div></div>
-        <div class="bar-value">62</div>
+        <div class="bar-track"><div class="bar-fill" style="width:11.74496644295302%;background:#10b981"></div></div>
+        <div class="bar-value">35</div>
       </div>
 <div class="bar-row">
-        <div class="bar-label">Python</div>
-        <div class="bar-track"><div class="bar-fill" style="width:5.787781350482315%;background:#10b981"></div></div>
-        <div class="bar-value">18</div>
+        <div class="bar-label">JavaScript</div>
+        <div class="bar-track"><div class="bar-fill" style="width:2.684563758389262%;background:#10b981"></div></div>
+        <div class="bar-value">8</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">HTML</div>
+        <div class="bar-track"><div class="bar-fill" style="width:2.013422818791946%;background:#10b981"></div></div>
+        <div class="bar-value">6</div>
       </div>
       </div>
       <div class="chart-card">
         <div class="chart-title">Session Types</div>
         <div class="bar-row">
-        <div class="bar-label">Iterative Refinement</div>
+        <div class="bar-label">Multi Task</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#8b5cf6"></div></div>
-        <div class="bar-value">20</div>
+        <div class="bar-value">16</div>
       </div>
 <div class="bar-row">
-        <div class="bar-label">Multi Task</div>
-        <div class="bar-track"><div class="bar-fill" style="width:85%;background:#8b5cf6"></div></div>
-        <div class="bar-value">17</div>
+        <div class="bar-label">Iterative Refinement</div>
+        <div class="bar-track"><div class="bar-fill" style="width:68.75%;background:#8b5cf6"></div></div>
+        <div class="bar-value">11</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Single Task</div>
-        <div class="bar-track"><div class="bar-fill" style="width:40%;background:#8b5cf6"></div></div>
-        <div class="bar-value">8</div>
+        <div class="bar-track"><div class="bar-fill" style="width:37.5%;background:#8b5cf6"></div></div>
+        <div class="bar-value">6</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Quick Question</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6.25%;background:#8b5cf6"></div></div>
+        <div class="bar-value">1</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Exploration</div>
-        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#8b5cf6"></div></div>
-        <div class="bar-value">2</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6.25%;background:#8b5cf6"></div></div>
+        <div class="bar-value">1</div>
       </div>
       </div>
     </div>
@@ -334,10 +339,10 @@
     
     <h2 id="section-usage">How You Use Claude Code</h2>
     <div class="narrative">
-      <p>You are a <strong>power user who treats Claude Code as an integrated part of your daily workflow</strong>, not just a coding assistant. Across 47 sessions in just 8 days — with 125 commits and 424 hours of logged time — you run Claude almost continuously, leveraging it for everything from <strong>design system maintenance and prototype builds</strong> to deployment pipelines, scheduled job debugging, tax questions, and even building personal tools like an AI news digest. Your interaction style is <strong>highly iterative and visually driven</strong>: you frequently provide screenshots to guide Claude through UI refinements (tab padding, card layouts, avatar alignment), and you're comfortable going through 3-4 rounds of feedback on a single component until it matches your expectations. You don't write detailed upfront specs — instead, you steer Claude in real-time, correcting course when it drifts.</p>
-<p>A defining characteristic of your style is that you <strong>actively interrupt and redirect Claude when it goes off-track</strong>, rather than letting it run unchecked. You caught Claude targeting the wrong project (lighthouse-web instead of sn-prototype-templates), misrouting Monitor items out of SKILL_ISSUES.md, over-analyzing a CSS bug instead of just fixing it, and incorrectly suggesting your machine wasn't running at noon. These corrections are swift and specific — you clearly have a strong mental model of your systems and don't hesitate to override Claude's reasoning. The friction data shows 18 instances of wrong approaches and 12 misunderstood requests, yet your satisfaction remains overwhelmingly positive (127 likely satisfied), which suggests you view these corrections as a normal part of the collaborative loop rather than failures.</p>
-<p>You've also built a <strong>sophisticated skill and automation layer</strong> on top of Claude Code — using custom skills like `reflect`, `memory-refresh`, `ds-fix`, and `skill-fix` that you invoke regularly as maintenance rituals. Your top tool usage (1,135 Bash calls, 411 Edits) reflects someone who has Claude doing heavy lifting across <strong>multi-file changes</strong> (29 noted successes) spanning TypeScript, CSS, HTML, and Markdown in what appears to be a design systems and prototyping ecosystem. You treat Claude as a <strong>junior team member with deployment access</strong>: you trust it to publish package versions, deploy to VMs and GitHub Pages, and manage git operations, but you stay in the loop to catch mistakes before they propagate.</p>
-      <div class="key-insight"><strong>Key pattern:</strong> You operate Claude Code as a continuously running design-and-deploy copilot, steering it through rapid iterative refinement cycles with real-time visual feedback and quick corrections when it misunderstands your intent.</div>
+      <p>You are a <strong>power user who treats Claude Code as a full-stack engineering partner</strong>, not just a code assistant. Across 35 sessions in two weeks, you generated 120 commits and leaned heavily on Bash (1,024 invocations) and multi-file Edit operations (379), indicating you <strong>let Claude drive complex, cross-repo workflows</strong> — from skill publishing and deployment pipelines to reflect/audit agents and PR management. Your sessions frequently chain together ambitious sequences: fix open issues, deploy to design systems, run a reflect audit, update memory files, commit, and push — all in one sitting. You clearly have a sophisticated custom toolchain (skills, subagents, reflect workflows, session-save) that you orchestrate through Claude, making your interaction style closer to <strong>managing a junior engineer on a sprint than pair programming</strong>.</p>
+<p>Your iteration style is <strong>feedback-loop driven with high tolerance for mid-course corrections</strong>. Rather than writing detailed upfront specs, you typically give a directional prompt, let Claude execute, then course-correct when results miss the mark — as seen in the buying committee wizard (3+ rounds of stepper/header/copy refinements), the grab-bar handle (switching from grid to absolute positioning after misalignment), and the banner width issue (two incorrect attempts before correct scoping). You interrupt sessions when needed but generally <strong>let Claude run through multi-step workflows autonomously</strong>, especially for reflect audits and skill deployments. Your friction patterns (11 wrong-approach instances, 8 buggy-code cases) reflect this style: you accept some waste from Claude's initial misunderstandings as the cost of moving fast, and you're quick to redirect. Notably, your most common friction involves Claude <strong>editing wrong files or misunderstanding scope</strong> (e.g., editing a migrated concept file instead of the live CSS, mishandling CTA visibility vs. copy), which suggests your projects have complex file structures and conventions that require contextual awareness.</p>
+<p>You work across a <strong>TypeScript/CSS-heavy design systems ecosystem</strong> with multiple repos, deployment targets (VM, GHP, sandbox), and a LinkedIn-specific toolchain. Your goals skew toward bug fixes (9 sessions) and UI refinement/styling (9 combined), but you also use Claude extensively for <strong>meta-work</strong> — reflect workflows, memory management, skill issue triage, handoff documents, and onboarding questions. With 68 'likely satisfied' interactions and a 57% fully-achieved rate despite ambitious multi-task sessions, you've clearly calibrated your expectations to Claude's capabilities and built workflows that maximize its strengths in multi-file edits and automated pipelines while compensating for its weaknesses through rapid human-in-the-loop correction.</p>
+      <div class="key-insight"><strong>Key pattern:</strong> You orchestrate Claude as an autonomous engineering agent through custom skill/reflect workflows, giving directional prompts and iteratively correcting course rather than specifying upfront, optimizing for velocity across complex multi-repo design system work.</div>
     </div>
     
 
@@ -346,41 +351,41 @@
       <div class="chart-title">User Response Time Distribution</div>
       <div class="bar-row">
         <div class="bar-label">2-10s</div>
-        <div class="bar-track"><div class="bar-fill" style="width:7.526881720430108%;background:#6366f1"></div></div>
-        <div class="bar-value">7</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.6923076923076925%;background:#6366f1"></div></div>
+        <div class="bar-value">5</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">10-30s</div>
-        <div class="bar-track"><div class="bar-fill" style="width:18.27956989247312%;background:#6366f1"></div></div>
-        <div class="bar-value">17</div>
+        <div class="bar-track"><div class="bar-fill" style="width:12.307692307692308%;background:#6366f1"></div></div>
+        <div class="bar-value">8</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">30s-1m</div>
-        <div class="bar-track"><div class="bar-fill" style="width:21.50537634408602%;background:#6366f1"></div></div>
-        <div class="bar-value">20</div>
+        <div class="bar-track"><div class="bar-fill" style="width:36.92307692307693%;background:#6366f1"></div></div>
+        <div class="bar-value">24</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">1-2m</div>
-        <div class="bar-track"><div class="bar-fill" style="width:61.29032258064516%;background:#6366f1"></div></div>
-        <div class="bar-value">57</div>
+        <div class="bar-track"><div class="bar-fill" style="width:40%;background:#6366f1"></div></div>
+        <div class="bar-value">26</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">2-5m</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#6366f1"></div></div>
-        <div class="bar-value">93</div>
+        <div class="bar-value">65</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">5-15m</div>
-        <div class="bar-track"><div class="bar-fill" style="width:65.59139784946237%;background:#6366f1"></div></div>
-        <div class="bar-value">61</div>
+        <div class="bar-track"><div class="bar-fill" style="width:80%;background:#6366f1"></div></div>
+        <div class="bar-value">52</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">>15m</div>
-        <div class="bar-track"><div class="bar-fill" style="width:30.107526881720432%;background:#6366f1"></div></div>
-        <div class="bar-value">28</div>
+        <div class="bar-track"><div class="bar-fill" style="width:35.38461538461539%;background:#6366f1"></div></div>
+        <div class="bar-value">23</div>
       </div>
       <div style="font-size: 12px; color: #64748b; margin-top: 8px;">
-        Median: 169.6s &bull; Average: 387.1s
+        Median: 214.9s &bull; Average: 407.1s
       </div>
     </div>
 
@@ -390,15 +395,15 @@
       
         <div style="display: flex; gap: 24px; margin: 12px 0;">
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">53</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">30</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Overlap Events</div>
           </div>
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">41</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">29</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Sessions Involved</div>
           </div>
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">49%</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">46%</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Of Messages</div>
           </div>
         </div>
@@ -427,20 +432,20 @@
         <div id="hour-histogram">
       <div class="bar-row">
         <div class="bar-label">Morning (6-12)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:51.80180180180181%;background:#8b5cf6"></div></div>
-        <div class="bar-value">115</div>
+        <div class="bar-track"><div class="bar-fill" style="width:49.112426035502956%;background:#8b5cf6"></div></div>
+        <div class="bar-value">83</div>
       </div>
 
       <div class="bar-row">
         <div class="bar-label">Afternoon (12-18)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:49.549549549549546%;background:#8b5cf6"></div></div>
-        <div class="bar-value">110</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#8b5cf6"></div></div>
+        <div class="bar-value">169</div>
       </div>
 
       <div class="bar-row">
         <div class="bar-label">Evening (18-24)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#8b5cf6"></div></div>
-        <div class="bar-value">222</div>
+        <div class="bar-track"><div class="bar-fill" style="width:35.50295857988166%;background:#8b5cf6"></div></div>
+        <div class="bar-value">60</div>
       </div>
 
       <div class="bar-row">
@@ -454,54 +459,54 @@
         <div class="bar-row">
         <div class="bar-label">Command Failed</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#dc2626"></div></div>
-        <div class="bar-value">53</div>
+        <div class="bar-value">45</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Other</div>
-        <div class="bar-track"><div class="bar-fill" style="width:45.28301886792453%;background:#dc2626"></div></div>
-        <div class="bar-value">24</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">File Not Found</div>
-        <div class="bar-track"><div class="bar-fill" style="width:18.867924528301888%;background:#dc2626"></div></div>
-        <div class="bar-value">10</div>
+        <div class="bar-track"><div class="bar-fill" style="width:35.55555555555556%;background:#dc2626"></div></div>
+        <div class="bar-value">16</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">File Changed</div>
-        <div class="bar-track"><div class="bar-fill" style="width:15.09433962264151%;background:#dc2626"></div></div>
-        <div class="bar-value">8</div>
+        <div class="bar-track"><div class="bar-fill" style="width:24.444444444444443%;background:#dc2626"></div></div>
+        <div class="bar-value">11</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">User Rejected</div>
-        <div class="bar-track"><div class="bar-fill" style="width:9.433962264150944%;background:#dc2626"></div></div>
-        <div class="bar-value">5</div>
+        <div class="bar-track"><div class="bar-fill" style="width:4.444444444444445%;background:#dc2626"></div></div>
+        <div class="bar-value">2</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">File Too Large</div>
+        <div class="bar-track"><div class="bar-fill" style="width:4.444444444444445%;background:#dc2626"></div></div>
+        <div class="bar-value">2</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Edit Failed</div>
-        <div class="bar-track"><div class="bar-fill" style="width:5.660377358490567%;background:#dc2626"></div></div>
-        <div class="bar-value">3</div>
+        <div class="bar-track"><div class="bar-fill" style="width:2.2222222222222223%;background:#dc2626"></div></div>
+        <div class="bar-value">1</div>
       </div>
       </div>
     </div>
 
     
     <h2 id="section-wins">Impressive Things You Did</h2>
-    <p class="section-intro">Across 47 sessions in one week, you've built an impressively systematic workflow with Claude Code — achieving full success in 60% of sessions while managing design systems, prototyping, deployments, and automated tooling.</p>
+    <p class="section-intro">Over two weeks, you ran 35 sessions with a 80% full/mostly-achieved rate, driving 120 commits across a sophisticated design-system and prototyping workflow powered heavily by custom skills and sub-agents.</p>
     <div class="big-wins">
       
         <div class="big-win">
-          <div class="big-win-title">Custom Skill-Driven Development Operations</div>
-          <div class="big-win-desc">You've built a sophisticated ecosystem of reusable skills — reflect, memory-refresh, ds-fix, skill-fix, code-translate — that you invoke like a personal DevOps pipeline. This lets you trigger complex multi-step workflows (audit, fix, publish, deploy) with minimal prompting, and you're continuously improving these skills by filing issues against them and iterating on their behavior across sessions.</div>
+          <div class="big-win-title">Custom Skill-Driven Development Pipeline</div>
+          <div class="big-win-desc">You've built a remarkable self-sustaining workflow around custom skills — publishing, auditing, fixing, and iterating on them as first-class development artifacts. You routinely direct Claude to fix all open skill issues, deploy to design systems, and run reflect audits in a single session, treating your skill library as living infrastructure rather than static helpers.</div>
         </div>
       
         <div class="big-win">
-          <div class="big-win-title">Iterative Multi-File Prototype Refinement</div>
-          <div class="big-win-desc">You excel at steering Claude through complex, multi-round UI implementation — like your buying committee wizard modal and relationship map cards — providing precise visual feedback across HTML, CSS, and TypeScript files. With 29 successful multi-file change sequences and 411 edit operations, you've turned Claude into a highly responsive design-to-code prototyping partner that you deploy to Vercel, GitHub Pages, and your VM in the same session.</div>
+          <div class="big-win-title">Reflect-Audit Feedback Loops</div>
+          <div class="big-win-desc">You consistently run reflect and memory-refresh workflows at the end of sessions to audit recent commits for drift, prune stale issues, update state files, and save session logs. This disciplined practice keeps your project knowledge current and gives Claude persistent context across sessions, effectively creating a continuous improvement loop for both your codebase and your AI assistant.</div>
         </div>
       
         <div class="big-win">
-          <div class="big-win-title">Automated Personal Tooling Pipeline</div>
-          <div class="big-win-desc">You've leveraged Claude to build and maintain personal automation tools — an AI news digest with LaunchAgent scheduling, a voice-to-text utility, and a LinkedIn UI extractor — and you troubleshoot them through Claude as well. When your scheduled digest failed, you diagnosed launchd PATH issues and RSS feed problems across multiple sessions, showing a strong pattern of using Claude not just to build tools but to operate and maintain them over time.</div>
+          <div class="big-win-title">Multi-File UI Prototyping at Scale</div>
+          <div class="big-win-desc">You leverage Claude for complex, multi-file UI work — iterating on buying committee wizards, chat interfaces, and design token updates across TypeScript, CSS, and component files in rapid feedback cycles. Your 26 successful multi-file change sessions and heavy use of sub-agents for parallel tasks show you're treating Claude as a full design-engineering partner, not just a code assistant.</div>
         </div>
       
     </div>
@@ -513,75 +518,75 @@
         <div class="bar-row">
         <div class="bar-label">Multi-file Changes</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#16a34a"></div></div>
-        <div class="bar-value">29</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Good Debugging</div>
-        <div class="bar-track"><div class="bar-fill" style="width:31.03448275862069%;background:#16a34a"></div></div>
-        <div class="bar-value">9</div>
+        <div class="bar-value">26</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Correct Code Edits</div>
-        <div class="bar-track"><div class="bar-fill" style="width:10.344827586206897%;background:#16a34a"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:11.538461538461538%;background:#16a34a"></div></div>
         <div class="bar-value">3</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Good Debugging</div>
+        <div class="bar-track"><div class="bar-fill" style="width:11.538461538461538%;background:#16a34a"></div></div>
+        <div class="bar-value">3</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Fast/Accurate Search</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.8461538461538463%;background:#16a34a"></div></div>
+        <div class="bar-value">1</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Good Explanations</div>
-        <div class="bar-track"><div class="bar-fill" style="width:10.344827586206897%;background:#16a34a"></div></div>
-        <div class="bar-value">3</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Proactive Help</div>
-        <div class="bar-track"><div class="bar-fill" style="width:6.896551724137931%;background:#16a34a"></div></div>
-        <div class="bar-value">2</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.8461538461538463%;background:#16a34a"></div></div>
+        <div class="bar-value">1</div>
       </div>
       </div>
       <div class="chart-card">
         <div class="chart-title">Outcomes</div>
         <div class="bar-row">
         <div class="bar-label">Not Achieved</div>
-        <div class="bar-track"><div class="bar-fill" style="width:3.571428571428571%;background:#8b5cf6"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:5%;background:#8b5cf6"></div></div>
         <div class="bar-value">1</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Partially Achieved</div>
-        <div class="bar-track"><div class="bar-fill" style="width:14.285714285714285%;background:#8b5cf6"></div></div>
-        <div class="bar-value">4</div>
+        <div class="bar-track"><div class="bar-fill" style="width:30%;background:#8b5cf6"></div></div>
+        <div class="bar-value">6</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Mostly Achieved</div>
-        <div class="bar-track"><div class="bar-fill" style="width:50%;background:#8b5cf6"></div></div>
-        <div class="bar-value">14</div>
+        <div class="bar-track"><div class="bar-fill" style="width:40%;background:#8b5cf6"></div></div>
+        <div class="bar-value">8</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Fully Achieved</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#8b5cf6"></div></div>
-        <div class="bar-value">28</div>
+        <div class="bar-value">20</div>
       </div>
       </div>
     </div>
 
     
     <h2 id="section-friction">Where Things Go Wrong</h2>
-    <p class="section-intro">Your sessions show a recurring pattern of Claude misinterpreting your intent, taking wrong initial approaches on technical tasks, and requiring multiple rounds of visual feedback to get UI details right.</p>
+    <p class="section-intro">Your sessions reveal a pattern of Claude taking wrong approaches to UI changes, environment/network issues repeatedly blocking deployments, and misinterpretation of your design intent requiring correction cycles.</p>
     <div class="friction-categories">
       
         <div class="friction-category">
-          <div class="friction-title">Misunderstood Intent and Scope</div>
-          <div class="friction-desc">Claude frequently misinterprets what you're asking for—targeting the wrong project, misrouting items between files, or conflating related but distinct concepts. You could reduce this by front-loading more explicit context about the target project, the specific file or system boundary, and your exact intent before Claude starts working.</div>
-          <ul class="friction-examples"><li>Claude targeted lighthouse-web (production) instead of sn-prototype-templates for a handoff prompt, requiring you to manually correct the target project mid-session.</li><li>Claude incorrectly moved PROJ-I Monitor items out of SKILL_ISSUES.md into the project checklist, misunderstanding that systematic issues should always stay in SKILL_ISSUES.md—you had to catch this, correct it, and have Claude revert the change.</li></ul>
+          <div class="friction-title">Wrong File or Wrong Element Targeted in UI Changes</div>
+          <div class="friction-desc">Claude frequently edits the wrong file, wrong component, or wrong CSS property, forcing you into correction cycles that slow down your UI refinement workflow. You could mitigate this by adding project rules (CLAUDE.md) that explicitly map concept names to file paths and define which files are 'live' vs 'migrated', so Claude doesn't violate known conventions.</div>
+          <ul class="friction-examples"><li>Claude edited a migrated concept file instead of the live flow CSS (violating a known project rule) and also confused 'single turn' vs 'multi-turn' terminology, requiring you to manually redirect the changes</li><li>Claude changed the 'View AI results' CTA visibility instead of just updating its copy to 'View role criteria', and separately failed to apply a prompt bar fix — both requiring you to re-explain the intent and trigger another round of edits</li></ul>
         </div>
       
         <div class="friction-category">
-          <div class="friction-title">Repeated UI/CSS Iteration Loops</div>
-          <div class="friction-desc">Visual and layout tasks frequently require 3+ rounds of correction because Claude struggles to translate your design intent from descriptions alone. You could accelerate these cycles by providing reference screenshots or explicit CSS values upfront, and by specifying constraints like sticky headers or full-width fill behavior before Claude begins implementing.</div>
-          <ul class="friction-examples"><li>You had to clarify tab padding and full-width fill behavior 3 separate times with screenshots before Claude got it right, and the card implementation also broke tab styling in the process.</li><li>Claude applied 40px top padding as you requested but it broke other role rows because it didn't consider the cascading impact—you had to flag the regression and have Claude revert.</li></ul>
+          <div class="friction-title">VPN, Auth, and Network Issues Blocking Deployments</div>
+          <div class="friction-desc">You repeatedly hit VPN disconnects, IP allowlist blocks, HTTPS auth failures, and API overload errors that stall git pushes and local previews. Setting up persistent VPN auto-connect, pre-configuring SSH remotes as default, and adding a pre-push connectivity check to your workflow could eliminate most of these interruptions.</div>
+          <ul class="friction-examples"><li>A git push to Design-Systems was blocked by an IP allowlist (VPN not connected), and in a separate session HTTPS auth failed entirely — requiring you to manually enable VPN or switch to SSH remotes before work could continue</li><li>Multiple 529 API overload errors across at least three sessions caused lost progress on subagent-dispatched tasks, completely blocked a TODO list request, and prevented you from completing UI refinements on buying committee prototypes</li></ul>
         </div>
       
         <div class="friction-category">
-          <div class="friction-title">Wrong Initial Technical Diagnosis</div>
-          <div class="friction-desc">Claude's first attempt at diagnosing infrastructure and scheduling issues is often incorrect, costing you time correcting false assumptions before the real fix can be applied. You could mitigate this by proactively sharing environment details (machine state, launchd config, PATH setup) so Claude doesn't have to guess.</div>
-          <ul class="friction-examples"><li>Claude initially claimed your machine wasn't on at noon as the reason your scheduled job didn't run, but you were definitely at your laptop—the real issue was the launchd plist configuration, which Claude only investigated after your correction.</li><li>Claude initially stated that launchd scheduling wasn't feasible, then had to correct itself; separately, it suggested MacBook scheduled wake as a solution when your hardware doesn't support it, wasting a round of troubleshooting.</li></ul>
+          <div class="friction-title">Misunderstood Design Intent Requiring Revert Cycles</div>
+          <div class="friction-desc">Claude often interprets your UI requests too literally or too broadly — removing functionality you wanted to keep, or applying layout approaches that conflict with your design system's patterns. Providing brief visual references or explicit constraints (e.g., 'keep tab-switch on click, only add highlight') in your prompts would reduce these back-and-forth correction loops.</div>
+          <ul class="friction-examples"><li>You asked to stay in the buying group view with a highlight on click, but Claude removed the tab switch entirely, then had to revert when you clarified you still wanted the tab to open on click — costing a full round-trip of edits</li><li>Claude implemented the banner width for multi-turn chat using full-bleed negative margins instead of matching chat input width, then a second fix attempt leaked a max-width via CSS scoping — requiring two correction rounds for what should have been a straightforward layout match</li></ul>
         </div>
       
     </div>
@@ -593,50 +598,55 @@
         <div class="bar-row">
         <div class="bar-label">Wrong Approach</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#dc2626"></div></div>
-        <div class="bar-value">18</div>
+        <div class="bar-value">11</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Buggy Code</div>
-        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#dc2626"></div></div>
-        <div class="bar-value">18</div>
+        <div class="bar-track"><div class="bar-fill" style="width:72.72727272727273%;background:#dc2626"></div></div>
+        <div class="bar-value">8</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Misunderstood Request</div>
-        <div class="bar-track"><div class="bar-fill" style="width:66.66666666666666%;background:#dc2626"></div></div>
-        <div class="bar-value">12</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">User Rejected Action</div>
-        <div class="bar-track"><div class="bar-fill" style="width:16.666666666666664%;background:#dc2626"></div></div>
-        <div class="bar-value">3</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Network Environment Issue</div>
-        <div class="bar-track"><div class="bar-fill" style="width:5.555555555555555%;background:#dc2626"></div></div>
-        <div class="bar-value">1</div>
+        <div class="bar-track"><div class="bar-fill" style="width:45.45454545454545%;background:#dc2626"></div></div>
+        <div class="bar-value">5</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Environment Issue</div>
-        <div class="bar-track"><div class="bar-fill" style="width:5.555555555555555%;background:#dc2626"></div></div>
-        <div class="bar-value">1</div>
+        <div class="bar-track"><div class="bar-fill" style="width:18.181818181818183%;background:#dc2626"></div></div>
+        <div class="bar-value">2</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Api Errors</div>
+        <div class="bar-track"><div class="bar-fill" style="width:18.181818181818183%;background:#dc2626"></div></div>
+        <div class="bar-value">2</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Interrupted Requests</div>
+        <div class="bar-track"><div class="bar-fill" style="width:18.181818181818183%;background:#dc2626"></div></div>
+        <div class="bar-value">2</div>
       </div>
       </div>
       <div class="chart-card">
         <div class="chart-title">Inferred Satisfaction (model-estimated)</div>
         <div class="bar-row">
+        <div class="bar-label">Frustrated</div>
+        <div class="bar-track"><div class="bar-fill" style="width:1.4705882352941175%;background:#eab308"></div></div>
+        <div class="bar-value">1</div>
+      </div>
+<div class="bar-row">
         <div class="bar-label">Dissatisfied</div>
-        <div class="bar-track"><div class="bar-fill" style="width:11.023622047244094%;background:#eab308"></div></div>
-        <div class="bar-value">14</div>
+        <div class="bar-track"><div class="bar-fill" style="width:14.705882352941178%;background:#eab308"></div></div>
+        <div class="bar-value">10</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Likely Satisfied</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#eab308"></div></div>
-        <div class="bar-value">127</div>
+        <div class="bar-value">68</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Satisfied</div>
-        <div class="bar-track"><div class="bar-fill" style="width:7.086614173228346%;background:#eab308"></div></div>
-        <div class="bar-value">9</div>
+        <div class="bar-track"><div class="bar-fill" style="width:5.88235294117647%;background:#eab308"></div></div>
+        <div class="bar-value">4</div>
       </div>
       </div>
     </div>
@@ -652,48 +662,66 @@
       </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-0" class="cmd-checkbox" checked data-text="Add under a ## Workflows section near the top of CLAUDE.md\n\nWhen running reflect, memory-refresh, or audit workflows, always check for stale state files (e.g., reflect-state.json, ISSUES.md) before reporting 'no issues found'. Re-read the current file contents rather than relying on cached/compacted context.">
+          <input type="checkbox" id="cmd-0" class="cmd-checkbox" checked data-text="Add under a ## File Editing Rules section near the top of CLAUDE.md\n\nAlways edit the live/active concept file, never migrated or archived concept files. When in doubt, confirm the correct file path before editing CSS or component files.">
           <label for="cmd-0">
-            <code class="cmd-code">When running reflect, memory-refresh, or audit workflows, always check for stale state files (e.g., reflect-state.json, ISSUES.md) before reporting 'no issues found'. Re-read the current file contents rather than relying on cached/compacted context.</code>
+            <code class="cmd-code">Always edit the live/active concept file, never migrated or archived concept files. When in doubt, confirm the correct file path before editing CSS or component files.</code>
             <button class="copy-btn" onclick="copyCmdItem(0)">Copy</button>
           </label>
-          <div class="cmd-why">Multiple sessions showed Claude reporting stale state or no open issues when issues existed, requiring user interruptions and corrections.</div>
+          <div class="cmd-why">Claude edited migrated concept files instead of live ones in multiple sessions, violating known project rules and requiring user correction.</div>
         </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-1" class="cmd-checkbox" checked data-text="Add under a ## CSS &amp; Styling section in CLAUDE.md\n\nAfter making CSS or layout changes, verify that the fix doesn't break sibling/adjacent elements. Always check surrounding components for unintended side effects before committing.">
+          <input type="checkbox" id="cmd-1" class="cmd-checkbox" checked data-text="Add under a ## Git &amp; Deployment section in CLAUDE.md\n\nBefore running `git push`, verify VPN is connected by running a quick connectivity check (e.g., `curl -s --max-time 5 https://github.com &gt; /dev/null &amp;&amp; echo 'OK' || echo 'VPN likely disconnected'`). If push fails with IP allowlist or auth errors, prompt user to check VPN before retrying.">
           <label for="cmd-1">
-            <code class="cmd-code">After making CSS or layout changes, verify that the fix doesn't break sibling/adjacent elements. Always check surrounding components for unintended side effects before committing.</code>
+            <code class="cmd-code">Before running `git push`, verify VPN is connected by running a quick connectivity check (e.g., `curl -s --max-time 5 https://github.com &gt; /dev/null &amp;&amp; echo 'OK' || echo 'VPN likely disconnected'`). If push fails with IP allowlist or auth errors, prompt user to check VPN before retrying.</code>
             <button class="copy-btn" onclick="copyCmdItem(1)">Copy</button>
           </label>
-          <div class="cmd-why">Several sessions had CSS fixes that broke other elements (padding breaking role rows, card implementation breaking tab styling, dialog body overflow), requiring user-reported regressions and reverts.</div>
+          <div class="cmd-why">VPN disconnection blocked git push in at least 3 separate sessions, causing friction and wasted time each time.</div>
         </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-2" class="cmd-checkbox" checked data-text="Add under a ## Project Context section in CLAUDE.md\n\nWhen the user references a project to modify, confirm the target project/repo before making changes. Key projects: sn-prototype-templates (prototypes), lighthouse-web (production), design-system packages. Never default to production unless explicitly told.">
+          <input type="checkbox" id="cmd-2" class="cmd-checkbox" checked data-text="Add under a ## UI Implementation Standards section in CLAUDE.md\n\nWhen implementing UI layout changes (banners, modals, panels), match the width and positioning of adjacent/sibling elements. Never use negative margins for full-bleed unless explicitly requested. For modals: always enforce sticky header + scrollable body pattern.">
           <label for="cmd-2">
-            <code class="cmd-code">When the user references a project to modify, confirm the target project/repo before making changes. Key projects: sn-prototype-templates (prototypes), lighthouse-web (production), design-system packages. Never default to production unless explicitly told.</code>
+            <code class="cmd-code">When implementing UI layout changes (banners, modals, panels), match the width and positioning of adjacent/sibling elements. Never use negative margins for full-bleed unless explicitly requested. For modals: always enforce sticky header + scrollable body pattern.</code>
             <button class="copy-btn" onclick="copyCmdItem(2)">Copy</button>
           </label>
-          <div class="cmd-why">Claude targeted lighthouse-web (production) instead of sn-prototype-templates on multiple occasions, and misrouted Monitor items between tracking files, requiring user corrections.</div>
+          <div class="cmd-why">Claude repeatedly got banner widths, modal scroll behavior, and layout approaches wrong, requiring multiple correction rounds across several UI sessions.</div>
         </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-3" class="cmd-checkbox" checked data-text="Add under a ## Deployment section in CLAUDE.md\n\nAfter deploying or committing, always run the full deploy chain (VM, GHP, Vercel) and reflect/memory-refresh unless the user specifies otherwise. This is the standard end-of-session workflow.">
+          <input type="checkbox" id="cmd-3" class="cmd-checkbox" checked data-text="Add under a ## UI Implementation Standards section in CLAUDE.md\n\nWhen the user says 'fix the copy' or 'update the text' on a CTA or label, only change the text content. Do not alter visibility, display logic, or conditional rendering of that element unless explicitly asked.">
           <label for="cmd-3">
-            <code class="cmd-code">After deploying or committing, always run the full deploy chain (VM, GHP, Vercel) and reflect/memory-refresh unless the user specifies otherwise. This is the standard end-of-session workflow.</code>
+            <code class="cmd-code">When the user says 'fix the copy' or 'update the text' on a CTA or label, only change the text content. Do not alter visibility, display logic, or conditional rendering of that element unless explicitly asked.</code>
             <button class="copy-btn" onclick="copyCmdItem(3)">Copy</button>
           </label>
-          <div class="cmd-why">Many sessions ended with the user explicitly requesting deploy + reflect + memory-refresh as a routine pattern — this should be the default expectation rather than requiring explicit asks each time.</div>
+          <div class="cmd-why">Claude changed CTA visibility when asked to only update its copy text, and misunderstood scope of text-only changes in multiple sessions.</div>
         </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-4" class="cmd-checkbox" checked data-text="Add under a ## Skill Issues &amp; Tracking section in CLAUDE.md\n\nSkill issues (SKILL_ISSUES.md) track systematic/recurring problems regardless of where they were identified. Never move items out of SKILL_ISSUES.md into project-specific checklists — they belong in both if relevant, but always remain in SKILL_ISSUES.md.">
+          <input type="checkbox" id="cmd-4" class="cmd-checkbox" checked data-text="Add under a ## Domain Terminology section in CLAUDE.md\n\nProject terminology: 'single turn' = one-shot chat (user sends one message, gets one response). 'Multi-turn' = conversational chat with back-and-forth. These map to specific component variants — confirm which variant before editing.">
           <label for="cmd-4">
-            <code class="cmd-code">Skill issues (SKILL_ISSUES.md) track systematic/recurring problems regardless of where they were identified. Never move items out of SKILL_ISSUES.md into project-specific checklists — they belong in both if relevant, but always remain in SKILL_ISSUES.md.</code>
+            <code class="cmd-code">Project terminology: 'single turn' = one-shot chat (user sends one message, gets one response). 'Multi-turn' = conversational chat with back-and-forth. These map to specific component variants — confirm which variant before editing.</code>
             <button class="copy-btn" onclick="copyCmdItem(4)">Copy</button>
           </label>
-          <div class="cmd-why">Claude incorrectly moved Monitor items out of SKILL_ISSUES.md into a project checklist, misunderstanding the tracking model, and had to revert after user correction.</div>
+          <div class="cmd-why">Claude confused single-turn and multi-turn concepts, editing the wrong component variant and requiring user correction.</div>
+        </div>
+      
+        <div class="claude-md-item">
+          <input type="checkbox" id="cmd-5" class="cmd-checkbox" checked data-text="Add under a ## Quality Checks section in CLAUDE.md\n\nAfter completing multi-file UI changes, always verify the build compiles (`npm run build` or equivalent) before committing. For post-merge PRs, do a visual verification checklist: z-index stacking, image/asset paths, import paths (@/ vs package references).">
+          <label for="cmd-5">
+            <code class="cmd-code">After completing multi-file UI changes, always verify the build compiles (`npm run build` or equivalent) before committing. For post-merge PRs, do a visual verification checklist: z-index stacking, image/asset paths, import paths (@/ vs package references).</code>
+            <button class="copy-btn" onclick="copyCmdItem(5)">Copy</button>
+          </label>
+          <div class="cmd-why">Multiple sessions had post-merge breakage from broken imports, missing assets, and z-index issues that could have been caught with systematic verification.</div>
+        </div>
+      
+        <div class="claude-md-item">
+          <input type="checkbox" id="cmd-6" class="cmd-checkbox" checked data-text="Add under a ## UI Implementation Standards section in CLAUDE.md\n\nWhen implementing CSS positioning changes (e.g., grab handles, drag affordances), prefer absolute positioning over grid column changes to avoid disrupting sibling element alignment.">
+          <label for="cmd-6">
+            <code class="cmd-code">When implementing CSS positioning changes (e.g., grab handles, drag affordances), prefer absolute positioning over grid column changes to avoid disrupting sibling element alignment.</code>
+            <button class="copy-btn" onclick="copyCmdItem(6)">Copy</button>
+          </label>
+          <div class="cmd-why">Claude's initial grid-based grab handle implementation misaligned checkboxes, requiring a user-directed pivot to absolute positioning.</div>
         </div>
       
     </div>
@@ -704,19 +732,27 @@
       
         <div class="feature-card">
           <div class="feature-title">Hooks</div>
-          <div class="feature-oneliner">Auto-run shell commands at specific lifecycle events like pre-commit or post-edit.</div>
-          <div class="feature-why"><strong>Why for you:</strong> Your top friction sources are buggy_code (18) and wrong_approach (18). A post-edit hook that auto-runs CSS linting or type-checking on TypeScript/CSS files would catch regressions (like padding breaking sibling rows) before you even see them. Given your heavy CSS (119 files) and TypeScript (188 files) usage, automated checks would prevent the repeated UI regressions you experienced.</div>
+          <div class="feature-oneliner">Shell commands that auto-run at specific lifecycle events like pre-commit or post-edit.</div>
+          <div class="feature-why"><strong>Why for you:</strong> You have recurring friction with wrong files being edited, broken imports after merges, and builds failing. A post-edit hook that validates file paths against a live-files allowlist, and a pre-commit hook that runs the build, would catch these automatically instead of requiring manual correction rounds.</div>
           
           <div class="feature-examples">
             <div class="feature-example">
               <div class="example-code-row">
-                <code class="example-code">// Add to .claude/settings.json
+                <code class="example-code">// .claude/settings.json
 {
   &quot;hooks&quot;: {
-    &quot;postEdit&quot;: {
-      &quot;command&quot;: &quot;npx stylelint '**/*.css' --fix &amp;&amp; npx tsc --noEmit&quot;,
-      &quot;description&quot;: &quot;Auto-lint CSS and type-check TypeScript after edits&quot;
-    }
+    &quot;PostEdit&quot;: [
+      {
+        &quot;command&quot;: &quot;npm run build 2&gt;&amp;1 | tail -5&quot;,
+        &quot;description&quot;: &quot;Verify build after edits&quot;
+      }
+    ],
+    &quot;PreCommit&quot;: [
+      {
+        &quot;command&quot;: &quot;npx tsc --noEmit &amp;&amp; echo 'Types OK'&quot;,
+        &quot;description&quot;: &quot;Type-check before committing&quot;
+      }
+    ]
   }
 }</code>
                 <button class="copy-btn" onclick="copyText(this)">Copy</button>
@@ -728,23 +764,20 @@
       
         <div class="feature-card">
           <div class="feature-title">Custom Skills</div>
-          <div class="feature-oneliner">Reusable prompts as markdown files that run with a single /command.</div>
-          <div class="feature-why"><strong>Why for you:</strong> You already use 77 Skill invocations — you're a power user. But your deploy+reflect+memory-refresh end-of-session pattern appears in 10+ sessions and is always manually triggered. A single /shipit skill combining deploy (VM, GHP, Vercel) + reflect + memory-refresh would eliminate repetitive requests. Similarly, a /diagnose-schedule skill would help with your recurring launchd debugging sessions.</div>
+          <div class="feature-oneliner">Reusable markdown-based prompts that run complex multi-step workflows with a single /command.</div>
+          <div class="feature-why"><strong>Why for you:</strong> You already use skills heavily (49 Skill invocations) for /reflect, /insights, and deployment workflows. You should formalize your most repeated patterns — especially a /deploy skill that checks VPN, runs build, verifies imports, and pushes, and a /ui-verify skill that runs post-change visual checks. This would eliminate your top friction sources.</div>
           
           <div class="feature-examples">
             <div class="feature-example">
               <div class="example-code-row">
-                <code class="example-code"># Create .claude/skills/shipit/SKILL.md
----
-# /shipit — Full Deploy + Reflect Cycle
-
-1. Commit any pending changes with a descriptive message
-2. Deploy to all three targets: VM, GitHub Pages, and Vercel
-3. Run /reflect workflow
-4. Run /memory-refresh audit
-5. Report summary of what was deployed and any issues found
-
-If any deploy target fails, continue with remaining targets and report failures at the end.</code>
+                <code class="example-code"># .claude/skills/deploy/SKILL.md
+## Pre-deploy Checklist
+1. Run `npm run build` and verify zero errors
+2. Check VPN connectivity: `curl -s --max-time 5 https://github.com &gt; /dev/null`
+3. If VPN is down, STOP and tell user to connect VPN
+4. Verify no migrated/archived files were modified: `git diff --name-only HEAD | grep -i migrated &amp;&amp; echo 'WARNING: migrated files changed'`
+5. Check import paths: no `@/design-system` (should be `@linkedin-sandbox/hue-proxy`)
+6. Run `git push` and confirm success</code>
                 <button class="copy-btn" onclick="copyText(this)">Copy</button>
               </div>
             </div>
@@ -753,20 +786,14 @@ If any deploy target fails, continue with remaining targets and report failures 
         </div>
       
         <div class="feature-card">
-          <div class="feature-title">Headless Mode</div>
-          <div class="feature-oneliner">Run Claude non-interactively from scripts and CI/CD.</div>
-          <div class="feature-why"><strong>Why for you:</strong> You have recurring scheduled task failures (ai-news-digest, Monday reports, launchd issues) across 4+ sessions. Instead of debugging launchd PATH issues and Claude CLI env var conflicts each time, a headless Claude invocation with explicit tool permissions in your scheduled scripts would be more reliable and self-healing.</div>
+          <div class="feature-title">Task Agents</div>
+          <div class="feature-oneliner">Claude spawns focused sub-agents for parallel exploration or work.</div>
+          <div class="feature-why"><strong>Why for you:</strong> You already use agents (56 invocations) and do multi-file, multi-task UI work. Your friction with parallel subagent tasks (e.g., the session where 5+ parallel changes went wrong on CTA copy) suggests being more explicit about scoping each sub-agent. Try prompting Claude to spawn isolated agents per component change rather than batching UI fixes together.</div>
           
           <div class="feature-examples">
             <div class="feature-example">
               <div class="example-code-row">
-                <code class="example-code"># In your launchd script or cron job:
-export PATH=&quot;/usr/local/bin:/opt/homebrew/bin:$PATH&quot;
-unset CLAUDECODE
-claude -p &quot;Generate today's AI news digest using config.yaml preferences. If any RSS feeds fail, skip them and note failures.&quot; \
-  --allowedTools &quot;Read,Write,Bash,Edit&quot; \
-  2&gt;&amp;1 | tee /tmp/digest-$(date +%Y%m%d).log || \
-  osascript -e 'display notification &quot;Digest failed — check logs&quot; with title &quot;AI News Digest&quot;'</code>
+                <code class="example-code">Use an agent to ONLY update the CTA button copy in BuyingCommitteeModal.tsx — change 'View AI results' to 'View role criteria'. Do NOT change any visibility or conditional rendering logic. A second agent should ONLY fix the prompt bar width in ChatInput.css. Keep these completely independent.</code>
                 <button class="copy-btn" onclick="copyText(this)">Copy</button>
               </div>
             </div>
@@ -782,14 +809,14 @@ claude -p &quot;Generate today's AI news digest using config.yaml preferences. I
     <div class="patterns-section">
       
         <div class="pattern-card">
-          <div class="pattern-title">Regression-Proof CSS Changes</div>
-          <div class="pattern-summary">Ask Claude to explicitly check sibling/parent elements before and after CSS edits to prevent visual regressions.</div>
-          <div class="pattern-detail">Your top friction categories are buggy_code and wrong_approach (18 each), and many stem from CSS changes that broke adjacent elements — padding breaking role rows, card implementations breaking tab styling, sticky header issues. With 119 CSS file touches, this is your most error-prone area. Asking Claude to do a before/after impact check would catch these before you need to screenshot and report them.</div>
+          <div class="pattern-title">Scope UI changes atomically</div>
+          <div class="pattern-summary">Break multi-element UI requests into explicit, isolated changes to reduce wrong-approach friction.</div>
+          <div class="pattern-detail">Your biggest friction source is 'wrong_approach' (11 instances), often from Claude misinterpreting the scope of a UI change — editing visibility when you meant copy, switching layout strategies unnecessarily, or touching the wrong component variant. When you batch 5+ UI fixes in one prompt, Claude's error rate climbs. Sending one focused instruction per visual change with explicit 'do NOT change X' guardrails dramatically improves accuracy.</div>
           
           <div class="copyable-prompt-section">
             <div class="prompt-label">Paste into Claude Code:</div>
             <div class="copyable-prompt-row">
-              <code class="copyable-prompt">Before making this CSS change, read the surrounding component styles and list any sibling elements that could be affected. After applying the fix, verify that no adjacent elements changed their layout or spacing. Show me a before/after comparison of affected selectors.</code>
+              <code class="copyable-prompt">Make exactly ONE change: in BuyingCommitteeModal.tsx, update the CTA button text from 'View AI results' to 'View role criteria'. Do NOT change the button's visibility, onClick handler, or conditional rendering. Only the string literal.</code>
               <button class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
           </div>
@@ -797,14 +824,14 @@ claude -p &quot;Generate today's AI news digest using config.yaml preferences. I
         </div>
       
         <div class="pattern-card">
-          <div class="pattern-title">Front-Load Project Context on Complex UI Tasks</div>
-          <div class="pattern-summary">Start multi-round UI sessions by specifying the target project, design constraints, and component library upfront.</div>
-          <div class="pattern-detail">Your buying committee wizard sessions required 3+ rounds of corrections for tab padding, card layouts, and modal sizing. The relationship map restyle needed 3 user clarifications with screenshots. These sessions had 'misunderstood_request' friction (12 instances total). Providing an upfront brief with target project, design system tokens, and reference screenshots would reduce the back-and-forth significantly.</div>
+          <div class="pattern-title">Add a pre-push VPN check to your workflow</div>
+          <div class="pattern-summary">Ask Claude to check network connectivity before any git push to avoid repeated VPN-blocked failures.</div>
+          <div class="pattern-detail">Across your 35 sessions, VPN/network issues blocked git pushes in at least 3 sessions, each time causing wasted cycles while Claude retried and eventually you manually connected VPN. Building a connectivity check into your push workflow — either via a CLAUDE.md instruction or a /deploy skill — would catch this instantly. This is low-effort, high-payoff given your 120 commits over 2 weeks.</div>
           
           <div class="copyable-prompt-section">
             <div class="prompt-label">Paste into Claude Code:</div>
             <div class="copyable-prompt-row">
-              <code class="copyable-prompt">I'm working on [component name] in sn-prototype-templates (NOT lighthouse-web). Design constraints: use SN design system tokens, match the attached screenshot exactly. Key requirements: [list 3-4 specific requirements]. Before coding, confirm your understanding of the layout structure and which files you'll modify.</code>
+              <code class="copyable-prompt">Before pushing, run: curl -s --max-time 5 https://github.com &gt; /dev/null 2&gt;&amp;1 &amp;&amp; echo 'Network OK — safe to push' || echo 'BLOCKED — VPN appears disconnected. Please connect VPN first.'</code>
               <button class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
           </div>
@@ -812,14 +839,14 @@ claude -p &quot;Generate today's AI news digest using config.yaml preferences. I
         </div>
       
         <div class="pattern-card">
-          <div class="pattern-title">Consolidate Scheduled Task Debugging into a Runbook</div>
-          <div class="pattern-summary">Create a diagnostic skill for your recurring launchd/cron scheduling failures.</div>
-          <div class="pattern-detail">At least 4 sessions were spent debugging why scheduled tasks didn't run — launchd PATH issues, hardcoded paths, plist edits not loading, MacBook sleep behavior, and Claude CLI env var conflicts. Each time Claude had to rediscover these failure modes. A /diagnose-schedule skill or a CLAUDE.md section documenting known pitfalls (PATH must include homebrew, unset CLAUDECODE, launchctl must reload after plist edits) would make these one-shot fixes.</div>
+          <div class="pattern-title">Post-merge visual verification checklist</div>
+          <div class="pattern-summary">After merging PRs, run a systematic check for z-index, asset paths, and import paths before deploying.</div>
+          <div class="pattern-detail">Multiple sessions show a pattern: PR gets merged, then post-merge visual bugs emerge (panel hidden behind nav bar, missing images, broken @/ import paths). These are predictable categories of breakage. Having Claude run a structured verification after every merge — checking z-index stacking in CSS, verifying image/asset file existence, and grepping for known bad import patterns — would catch these before they reach deployment and save you the iterative fix cycles.</div>
           
           <div class="copyable-prompt-section">
             <div class="prompt-label">Paste into Claude Code:</div>
             <div class="copyable-prompt-row">
-              <code class="copyable-prompt">My scheduled task didn't run. Before investigating, check these known issues first: 1) Is the launchd plist loaded? (launchctl list | grep &lt;label&gt;) 2) Does the script have the correct PATH including /opt/homebrew/bin? 3) Is CLAUDECODE env var unset in the script? 4) Was the plist reloaded after the last edit? 5) Check /tmp or log path for error output. Report which of these is the issue before making any changes.</code>
+              <code class="copyable-prompt">Post-merge verification: 1) Run `npm run build` and fix any errors. 2) Grep for '@/design-system' imports (should be '@linkedin-sandbox/hue-proxy'). 3) Check all img src paths resolve to existing files. 4) Review any z-index values changed in this PR against parent layout z-index values. Report findings before I deploy.</code>
               <button class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
           </div>
@@ -832,28 +859,28 @@ claude -p &quot;Generate today's AI news digest using config.yaml preferences. I
 
     
     <h2 id="section-horizon">On the Horizon</h2>
-    <p class="section-intro">Your workflow has evolved into a sophisticated multi-skill orchestration system — with 125 commits across 47 sessions, you're already operating at a level where autonomous agents can handle entire deployment pipelines, design system audits, and content generation cycles without hand-holding.</p>
+    <p class="section-intro">Your workflow has evolved into a sophisticated multi-agent, multi-repo orchestration practice — the next frontier is making these autonomous loops self-healing, parallelized, and friction-proof.</p>
     <div class="horizon-section">
       
         <div class="horizon-card">
-          <div class="horizon-title">Self-Healing Deployment and Monitoring Pipelines</div>
-          <div class="horizon-possible">Your most frequent friction points — launchd PATH issues, silent CLI failures, symlink breaks, and scheduled tasks not running — can be eliminated by having Claude autonomously diagnose, fix, and verify infrastructure issues end-to-end. Imagine a single command that detects your failed digest/report, traces the root cause across launchd plists, PATH configs, and script errors, applies the fix, runs a verification cycle, and commits the hardened version with an ERR trap — all without you needing to screenshot errors or explain context across sessions.</div>
-          <div class="horizon-tip"><strong>Getting started:</strong> Use Claude Code's Bash tool chaining and the ability to read system logs, inspect plists, and iterate against actual execution results to build a self-diagnosing deploy-and-verify workflow.</div>
-          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>I want you to build a comprehensive health-check and auto-repair skill for my scheduled automation (launchd agents, Claude CLI integrations, deploy pipelines). Start by: 1) Auditing all my .plist files for common issues (hardcoded paths, missing PATH env vars, wrong scheduling). 2) Running each scheduled task manually and capturing stdout/stderr. 3) For any failures, diagnose root cause and apply a fix. 4) Add an ERR trap and failure notification to every script that doesn't have one. 5) Create a single 'ops-check' skill I can invoke that runs all scheduled tasks in dry-run mode, verifies deploy targets (VM, GHP, Vercel) are reachable, and reports status. Commit everything with clear messages.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+          <div class="horizon-title">Self-Healing CI with Autonomous Fix Loops</div>
+          <div class="horizon-possible">Your data shows 8 instances of buggy code friction and 11 wrong-approach attempts — many of which (broken imports post-merge, z-index regressions, wrong file edits) could be caught and fixed autonomously. Imagine Claude watching your CI pipeline, detecting failures, diagnosing root causes, applying fixes, and re-running tests in a tight loop — all before you even see the red build. Combined with your existing reflect/audit workflows, this creates a continuous quality gate that catches drift the moment it happens.</div>
+          <div class="horizon-tip"><strong>Getting started:</strong> Use Claude Code's agent-dispatch capabilities to spawn a watcher agent that polls CI status, then triggers sub-agents for diagnosis and fix. Pair with your existing skill system to codify fix patterns (e.g., import path corrections, z-index resets, pre-commit hook workarounds).</div>
+          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>Build an autonomous CI fix workflow: 1) Poll the GitHub Actions status for my open PRs every 2 minutes. 2) When a PR fails, spawn a sub-agent to clone the branch, read the CI logs, diagnose the failure category (lint error, build error, test failure, import path issue). 3) If the fix matches a known pattern (broken imports after merge, eslint failures on rebased files, missing CSS imports), apply the fix automatically, commit with a '[autofix]' prefix, and push. 4) If the failure is novel, create a detailed diagnostic comment on the PR with root cause analysis and suggested fix. 5) Track all auto-fixes in a log file so the reflect workflow can audit them. Start by handling the three most common failures from my history: post-merge import path mismatches, pre-commit hook failures on rebased files, and missing asset references.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
         </div>
       
         <div class="horizon-card">
-          <div class="horizon-title">Parallel Agents for Design System QA</div>
-          <div class="horizon-possible">With 29 successful multi-file changes and frequent ds-fix/audit/publish cycles, you can orchestrate parallel Claude agents — one auditing token usage across all components, another running visual regression checks against your prototypes, and a third publishing and verifying package versions. Instead of sequential rounds where bugs surface one at a time (like the three sequential bugs in your live-updating plan cards session), parallel agents can catch icon import mismatches, CSS custom property gaps, and component API misuse simultaneously before you ever see a broken UI.</div>
-          <div class="horizon-tip"><strong>Getting started:</strong> Use Claude Code's Task tool to spawn sub-agents that each focus on a specific audit dimension, then aggregate their findings into a single actionable report before any publishing step.</div>
-          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>I want to run a comprehensive parallel design system audit before my next publish. Spawn separate task agents for each of these and aggregate results: Agent 1 — TOKEN AUDIT: Grep all component CSS files for hardcoded color/spacing values that should use design tokens. Flag every instance with file, line, and suggested token. Agent 2 — API CONFORMANCE: Read every component's public API and cross-reference against actual usage in sn-prototype-templates. Flag any misused props, missing imports, or deprecated patterns. Agent 3 — CROSS-FRAMEWORK DELTA: Compare the React prototype implementations against Ember template equivalents and identify any CSS or markup gaps (like the missing CSS import delta we found before). After all three complete, give me a single prioritized list of issues, auto-fix anything that's safe, and stage the rest as skill issues in SKILL_ISSUES.md. Do NOT publish until I review.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+          <div class="horizon-title">Parallel Multi-Agent Prototype Refinement Pipeline</div>
+          <div class="horizon-possible">You're already using 56 agent dispatches across 35 sessions, but your friction data reveals that sequential multi-file UI changes cause compounding errors — wrong files edited, CSS scoping leaks, CTA visibility bugs. A parallel agent pipeline could split UI refinement tasks across isolated sub-agents (one per component/file), each validating its changes against a shared design spec before merging, dramatically reducing the 'wrong approach' friction that hit you 11 times. Each agent would own one concern, test it independently, and only commit when verified.</div>
+          <div class="horizon-tip"><strong>Getting started:</strong> Leverage Claude Code's sub-agent spawning to create a fan-out/fan-in pattern where each UI change gets its own agent with explicit file-scope boundaries. Use your design system's existing token files and Figma extraction skills as the validation source of truth.</div>
+          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>I need to apply multiple UI refinements to my buying committee prototype. Instead of doing them sequentially, set up a parallel agent pipeline: 1) Read the list of changes I specify below. 2) For each change, spawn a dedicated sub-agent with STRICT file-scope boundaries — each agent may ONLY edit the files relevant to its task and must not touch files assigned to other agents. 3) Each sub-agent should: read the current component state, apply the change, verify no CSS scoping leaks by checking that no styles escape the component's selector boundary, and verify the build still passes. 4) After all sub-agents complete, run a merge validation agent that checks for conflicts between changes (overlapping selectors, contradictory z-index values, duplicate token overrides). 5) Only then commit all changes in a single atomic commit. Changes to apply: [LIST YOUR CHANGES HERE]. Before starting, show me the file-scope assignments for each sub-agent so I can approve the isolation boundaries.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
         </div>
       
         <div class="horizon-card">
-          <div class="horizon-title">Iterative UI Prototyping Against Visual Specs</div>
-          <div class="horizon-possible">Your buying committee wizard and relationship map sessions required 3-5 rounds of corrections for tab padding, avatar alignment, border styling, and layout overflow — each time waiting for your screenshot feedback. Claude can instead iterate autonomously against a defined visual spec: rendering the component, taking a screenshot, comparing against your reference, and adjusting CSS/markup in a loop until the output matches within tolerance. This turns your multi-round refinement sessions into a single prompt that converges on pixel-accurate results.</div>
-          <div class="horizon-tip"><strong>Getting started:</strong> Provide reference screenshots or detailed spec measurements upfront, and use Claude Code's ability to run a local dev server, capture rendered output via headless browser, and iterate edits against test assertions.</div>
-          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>I'm going to give you a visual spec for a new component (I'll provide a screenshot and exact measurements). I want you to implement it iteratively with self-verification: 1) Build the initial implementation in HTML/CSS/TypeScript using our design system tokens and components. 2) After each edit round, use a headless browser to capture a screenshot of the rendered component at 1440px viewport width. 3) Compare your output against the spec — check: padding/margin values, font sizes, color tokens, alignment (flex centering, full-width fills), overflow behavior (sticky headers, scrollable bodies), and border/divider placement. 4) If anything is off, fix it and re-verify. Iterate up to 5 times before asking me for feedback. 5) Once converged, deploy to my dev server and commit. Key lessons from past sessions: always use sticky positioning for modal headers with scrollable bodies, ensure tab bars use full-width flex fill (not compact), and test that adding new card content doesn't break sibling component layouts. Here's the spec: [paste screenshot and measurements]</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+          <div class="horizon-title">Autonomous Reflect-Driven Skill Evolution System</div>
+          <div class="horizon-possible">You've built an impressive skill ecosystem (49 skill invocations, regular reflect/audit cycles, versioned publishing up to v1.2.200+), but skill issues are still discovered manually and friction patterns repeat across sessions. An autonomous system could analyze your session friction patterns, cross-reference them against existing skills, auto-generate new skill candidates or patches for existing ones, test them against historical failure cases, and publish — creating a self-improving toolchain that learns from every session. Your reflect workflow becomes not just an audit but an active skill evolution engine.</div>
+          <div class="horizon-tip"><strong>Getting started:</strong> Extend your existing reflect and skill-fix workflows into a closed-loop system where friction analysis automatically feeds skill improvement. Use Claude Code's ability to read session logs, diff skill versions, and run test scenarios to validate improvements before publishing.</div>
+          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>Run an autonomous skill evolution cycle: 1) Analyze my last 2 weeks of session summaries and friction logs. 2) For each friction pattern that occurred more than once, check if an existing skill should have prevented it — if yes, diagnose why it didn't and draft a skill patch. 3) For friction patterns with NO corresponding skill, draft a new skill spec including: trigger conditions, the autonomous fix behavior, guardrails to prevent false positives, and a test case based on the actual historical failure. 4) Prioritize by frequency × severity (API errors and wrong-approach frictions are high severity). 5) For the top 3 candidates, implement the skill code, run it against a simulated version of the historical failure scenario to verify it would have caught and fixed the issue, and present results. 6) For any skill that passes validation, publish it with a detailed changelog entry. 7) Update ISSUES.md to close any resolved items and open new tracking items for skills that need more iteration. Show me the friction-to-skill mapping table before proceeding with implementation.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
         </div>
       
     </div>
@@ -861,8 +888,8 @@ claude -p &quot;Generate today's AI news digest using config.yaml preferences. I
 
     
     <div class="fun-ending">
-      <div class="fun-headline">"Claude confidently told the user their laptop wasn't even on at noon — the user fired back that they were definitely sitting right in front of it"</div>
-      <div class="fun-detail">While debugging why a scheduled Monday report didn't run, Claude initially blamed the machine not being awake at the scheduled time. The user had to correct Claude that they were absolutely at their laptop at noon, forcing Claude to look deeper and find the real launchd configuration issue.</div>
+      <div class="fun-headline">"Claude edited a file that had already been migrated and no longer mattered — violating a project rule it should have known — then had to be told what 'single turn' and 'multi-turn' actually mean"</div>
+      <div class="fun-detail">During a UI fix session, Claude confidently edited a dead concept file instead of the live CSS, breaking a known project convention. To add insult to injury, the user also had to explain basic product terminology ('single turn' vs 'multi-turn' chat) that Claude had gotten backwards.</div>
     </div>
     
 
@@ -908,7 +935,7 @@ claude -p &quot;Generate today's AI news digest using config.yaml preferences. I
       }
     }
     // Timezone selector for time of day chart (data is from our own analytics, not user input)
-    const rawHourCounts = {"9":1,"10":48,"11":66,"12":8,"13":6,"14":19,"15":32,"16":21,"17":24,"18":34,"19":77,"20":18,"21":21,"22":63,"23":9};
+    const rawHourCounts = {"8":1,"9":8,"10":15,"11":59,"12":12,"13":11,"14":31,"15":18,"16":50,"17":47,"18":25,"19":13,"22":7,"23":15};
     function updateHourHistogram(offsetFromPT) {
       const periods = [
         { label: "Morning (6-12)", range: [6,7,8,9,10,11] },
