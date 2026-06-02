@@ -1,14 +1,19 @@
 #!/bin/bash
-# Weekly Claude Code insights report generator
-# Runs every Monday at 8am via LaunchAgent
+# Weekly Copilot CLI insights report generator
+# Runs every Monday at noon via LaunchAgent (com.schew.claude-report)
+#
+# Prefers `copilot` CLI; falls back to `claude` if copilot is not installed.
+# The custom /insights command lives at ~/.copilot/commands/insights.md
 
 set -e
 
-NOTABOT="$HOME/.claude/plugins/linkedin-plugins/linkedin-plugins/productivity/send-to-slack/scripts/notabot"
+NOTABOT="$HOME/.claude/plugins/marketplaces/linkedin-plugins/linkedin-plugins/productivity/send-to-slack/scripts/notabot"
+LOG_DIR="$HOME/.claude/usage-data"
+LOG_FILE="$LOG_DIR/launchagent-report.log"
 
 on_error() {
   local exit_code=$?
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: script failed (exit $exit_code)" >> "$HOME/.claude/usage-data/launchagent-report.log"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: script failed (exit $exit_code)" >> "$LOG_FILE"
   "$NOTABOT" send -c "@schew" -m "❌ *claude-report LaunchAgent failed* (exit $exit_code) — check \`~/.claude/usage-data/launchagent-report.log\`" > /dev/null 2>&1 || true
 }
 trap on_error ERR
@@ -16,22 +21,43 @@ trap on_error ERR
 # Environment setup (LaunchAgent has minimal PATH)
 export HOME="/Users/schew"
 export VOLTA_HOME="$HOME/.volta"
-export PATH="$HOME/.volta/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.local/bin:$HOME/.volta/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-REPORT_SRC="$HOME/.claude/usage-data/report.html"
-REPO_DIR="$HOME/Documents/Github/claude-report"
+REPORT_SRC="$LOG_DIR/report.html"
+REPO_DIR="$HOME/Documents/GitHub/claude-report"
 DATE=$(date +%Y-%m-%d)
-LOG_FILE="$HOME/.claude/usage-data/launchagent-report.log"
 
+mkdir -p "$LOG_DIR"
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOG_FILE"; }
+
+# Log rotation — keep last 2000 lines when over 5000
+if [ -f "$LOG_FILE" ] && [ "$(wc -l < "$LOG_FILE")" -gt 5000 ]; then
+  tail -2000 "$LOG_FILE" > "$LOG_FILE.tmp" && mv "$LOG_FILE.tmp" "$LOG_FILE"
+  log "Log rotated (kept last 2000 lines)"
+fi
 
 log "--- Starting weekly insights report ---"
 
+# Resolve which CLI to use: prefer copilot, fall back to claude
+if command -v copilot &>/dev/null; then
+  CLI_BIN="$(command -v copilot)"
+  CLI_PERMS="--allow-all"
+  CLI_NAME="copilot"
+elif command -v claude &>/dev/null; then
+  CLI_BIN="$(command -v claude)"
+  CLI_PERMS="--dangerously-skip-permissions"
+  CLI_NAME="claude"
+else
+  log "ERROR: neither copilot nor claude found in PATH"
+  exit 1
+fi
+log "Using $CLI_NAME at $CLI_BIN"
+
 # Re-run the insights analysis to regenerate report.html
-log "Running claude -p /insights..."
+log "Running $CLI_NAME -p /insights..."
 cd "$HOME/Documents"
-"$HOME/.volta/bin/claude" --dangerously-skip-permissions -p "/insights" >> "$LOG_FILE" 2>&1 || {
-  log "ERROR: claude -p /insights failed"
+"$CLI_BIN" $CLI_PERMS -p "/insights" >> "$LOG_FILE" 2>&1 || {
+  log "ERROR: $CLI_NAME -p /insights failed"
   exit 1
 }
 
@@ -41,6 +67,13 @@ if [ ! -f "$REPORT_SRC" ]; then
   exit 1
 fi
 
+# Run insights triage — evaluate friction patterns and file SK issues
+log "Running insights triage..."
+cd "$HOME/Documents/GitHub/claude-agents"
+"$CLI_BIN" $CLI_PERMS -p "/schew-insights-triage" >> "$LOG_FILE" 2>&1 || {
+  log "WARNING: insights triage failed (non-fatal) — report will still be pushed"
+}
+
 # Copy report into the repo
 cp "$REPORT_SRC" "$REPO_DIR/report-$DATE.html"
 cp "$REPORT_SRC" "$REPO_DIR/report-latest.html"
@@ -48,10 +81,9 @@ log "Copied report to $REPO_DIR/report-$DATE.html"
 
 # Generate index.html and archive.html
 python3 << PYEOF
-import re, os, glob
+import os, glob
 
 repo = "$REPO_DIR"
-date_str = "$DATE"
 
 # --- index.html: inject "All Reports" banner into report-latest.html ---
 with open(os.path.join(repo, "report-latest.html")) as f:
@@ -98,7 +130,7 @@ archive_html = f"""<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Claude Code Insights — All Reports</title>
+  <title>Copilot CLI Insights — All Reports</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -119,7 +151,7 @@ archive_html = f"""<!DOCTYPE html>
   <div class="container">
     <a href="index.html" class="back">← Latest Report</a>
     <h1>All Reports</h1>
-    <p class="subtitle">Weekly Claude Code usage insights, generated every Monday</p>
+    <p class="subtitle">Weekly Copilot CLI usage insights, generated every Monday</p>
     <ul>
       {rows}
     </ul>
@@ -138,17 +170,22 @@ log "Generated index.html and archive.html"
 # Commit and push
 cd "$REPO_DIR"
 
-# Use gh CLI token for authenticated push in LaunchAgent context
-GH_TOKEN=$(gh auth token --user subsscsl 2>/dev/null)
-if [ -n "$GH_TOKEN" ]; then
-  git remote set-url origin "https://subsscsl:${GH_TOKEN}@github.com/subsscsl/claude-report.git"
-fi
+# Ensure remote URL is clean (no embedded tokens)
+git remote set-url origin "https://github.com/subsscsl/claude-report.git" 2>/dev/null || true
 
 git add "report-$DATE.html" report-latest.html index.html archive.html
 git diff --staged --quiet && { log "No changes to commit (report unchanged)"; exit 0; }
 
 git -c user.name="subsscsl" -c user.email="subsscsl@users.noreply.github.com" \
   commit -m "Weekly insights report $DATE"
-git push origin main
+
+# Push using gh CLI credential helper (no token in URL)
+GH_TOKEN=$(gh auth token --user subsscsl 2>/dev/null)
+if [ -n "$GH_TOKEN" ]; then
+  GIT_AUTH="Authorization: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64)"
+  git -c "http.https://github.com/.extraheader=$GIT_AUTH" push origin main
+else
+  git push origin main
+fi
 
 log "Done. Pushed report-$DATE.html to subsscsl/claude-report"
