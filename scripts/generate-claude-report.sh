@@ -7,14 +7,12 @@
 
 set -e
 
-NOTABOT="$HOME/.claude/plugins/marketplaces/linkedin-plugins/linkedin-plugins/productivity/send-to-slack/scripts/notabot"
-LOG_DIR="$HOME/.claude/usage-data"
+LOG_DIR="$HOME/.copilot/usage-data"
 LOG_FILE="$LOG_DIR/launchagent-report.log"
 
 on_error() {
   local exit_code=$?
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: script failed (exit $exit_code)" >> "$LOG_FILE"
-  "$NOTABOT" send -c "@schew" -m "❌ *claude-report LaunchAgent failed* (exit $exit_code) — check \`~/.claude/usage-data/launchagent-report.log\`" > /dev/null 2>&1 || true
 }
 trap on_error ERR
 
