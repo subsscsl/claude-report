@@ -6,7 +6,7 @@ Weekly Copilot CLI insights reports published to `subsscsl/claude-report`.
 
 ## How reports are generated
 
-Reports are generated automatically every **Monday at noon** by a macOS LaunchAgent (`com.schew.claude-report`) that runs `~/.claude/scripts/generate-claude-report.sh`.
+Reports are generated automatically every **Monday at noon** by a macOS LaunchAgent (`com.schew.claude-report`) that runs `~/.copilot/scripts/generate-claude-report.sh`.
 
 A backup of that script lives at `scripts/generate-claude-report.sh` in this repo.
 
@@ -35,7 +35,7 @@ cat ~/.copilot/usage-data/launchagent-report.log | tail -30
 ```
 
 ### Syncing the script backup
-The live script is at `~/.claude/scripts/generate-claude-report.sh`. To sync:
+The live script is at `~/.copilot/scripts/generate-claude-report.sh`. To sync:
 ```bash
-cp scripts/generate-claude-report.sh ~/.claude/scripts/generate-claude-report.sh
+cp scripts/generate-claude-report.sh ~/.copilot/scripts/generate-claude-report.sh
 ```
