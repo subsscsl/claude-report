@@ -123,16 +123,16 @@
 </div>
   <div class="container">
     <h1>Claude Code Insights</h1>
-    <p class="subtitle">193 messages across 32 sessions (75 total) | 2026-05-14 to 2026-05-25</p>
+    <p class="subtitle">176 messages across 37 sessions (110 total) | 2026-05-14 to 2026-05-26</p>
 
     
     <div class="at-a-glance">
       <div class="glance-title">At a Glance</div>
       <div class="glance-sections">
-        <div class="glance-section"><strong>What's working:</strong> You've built an impressive autonomous workflow ecosystem — your meeting-notes pipeline runs end-to-end without intervention across dozens of sessions, and your custom skills for reflect/maintenance, insights triage, and weekly digests show you're using Claude Code as a genuine orchestration layer rather than just a coding assistant. Your iterative front-end workflow combining micro-requests with Playwright screenshots creates a tight visual feedback loop that catches bugs before they ship. <a href="#section-wins" class="see-more">Impressive Things You Did →</a></div>
-        <div class="glance-section"><strong>What's hindering you:</strong> On Claude's side, it sometimes ignores your established conventions — like bypassing your PR-based skill contribution process or checking the wrong branch for issues — which leads to overwritten work and missed context. On your side, your automated pipelines keep hitting sandbox file access and macOS permission blockers that stall otherwise-reliable workflows; encoding environment constraints and pre-flight checks into your skill definitions would prevent these recurring dead ends. <a href="#section-friction" class="see-more">Where Things Go Wrong →</a></div>
-        <div class="glance-section"><strong>Quick wins to try:</strong> Try adding hooks (shell commands that auto-run at lifecycle events like pre-commit) to enforce your workflow conventions — this would catch issues like Claude bypassing your PR process before damage is done. Also consider running your most reliable automated skills in headless mode from scripts or cron jobs, since your meeting-notes pipeline is already completing without interaction and would benefit from being fully backgrounded. <a href="#section-features" class="see-more">Features to Try →</a></div>
-        <div class="glance-section"><strong>Ambitious workflows:</strong> As models get more capable, your meeting-notes pipeline and multi-bug-fix sessions are prime candidates for self-healing — imagine workflows that detect permission failures or git blocks at runtime and automatically fall back to alternative paths instead of stalling. Even more exciting: your design system bug-fix session where Claude resolved 4 issues and published a release in one sweep could become a parallel agent swarm, dispatching independent fixes to concurrent branches and converging for a coordinated publish in minutes instead of hours. <a href="#section-horizon" class="see-more">On the Horizon →</a></div>
+        <div class="glance-section"><strong>What's working:</strong> You've built an impressive autonomous meeting-notes pipeline that reliably processes raw notes into structured docs, decisions, and TODOs with zero manual intervention — that's a genuinely sophisticated use of Claude Code as infrastructure rather than just a chat tool. Beyond that, you're effectively using skills and sub-agents to orchestrate multi-step workflows, and you've found a productive rhythm for rapid iterative UI work where you can drive 10+ micro-refinements in a single session. <a href="#section-wins" class="see-more">Impressive Things You Did →</a></div>
+        <div class="glance-section"><strong>What's hindering you:</strong> On Claude's side, buggy first-pass code and wrong initial approaches are your biggest time sinks — things like token resolution taking multiple rounds, test infrastructure conflicts, or Claude confusing tool names and processes before you redirect it. On your side, several of your self-analysis and insights workflows are set up to access directories that Claude's sandbox can't reach, which means they're structurally doomed to fail every time — the data needs to be staged into the working directory before Claude runs. <a href="#section-friction" class="see-more">Where Things Go Wrong →</a></div>
+        <div class="glance-section"><strong>Quick wins to try:</strong> Your meeting-notes pipeline is perfect for headless mode — run it as a cron job so it fires automatically without you ever opening a terminal. You could also add a hook or preflight check to your insights/triage skills that immediately detects permission blocks and fails fast with a clear message, instead of burning through retries against the sandbox wall. <a href="#section-features" class="see-more">Features to Try →</a></div>
+        <div class="glance-section"><strong>Ambitious workflows:</strong> As models get more capable, your multi-round debugging sessions (like the GENERAL_AGENT tests or CSS token resolution) should collapse into single-prompt resolutions where Claude autonomously runs tests, diagnoses failures, and iterates to green. Longer term, think about chaining your already-solid meeting-notes pipeline into downstream automation — where a decision captured in notes triggers a TODO, which triggers a code change, which triggers tests and a deploy, all without you touching it. <a href="#section-horizon" class="see-more">On the Horizon →</a></div>
       </div>
     </div>
     
@@ -149,11 +149,11 @@
     </nav>
 
     <div class="stats-row">
-      <div class="stat"><div class="stat-value">193</div><div class="stat-label">Messages</div></div>
-      <div class="stat"><div class="stat-value">+4,766/-287</div><div class="stat-label">Lines</div></div>
-      <div class="stat"><div class="stat-value">77</div><div class="stat-label">Files</div></div>
+      <div class="stat"><div class="stat-value">176</div><div class="stat-label">Messages</div></div>
+      <div class="stat"><div class="stat-value">+4,725/-199</div><div class="stat-label">Lines</div></div>
+      <div class="stat"><div class="stat-value">79</div><div class="stat-label">Files</div></div>
       <div class="stat"><div class="stat-value">9</div><div class="stat-label">Days</div></div>
-      <div class="stat"><div class="stat-value">21.4</div><div class="stat-label">Msgs/Day</div></div>
+      <div class="stat"><div class="stat-value">19.6</div><div class="stat-label">Msgs/Day</div></div>
     </div>
 
     
@@ -163,41 +163,41 @@
         <div class="project-area">
           <div class="area-header">
             <span class="area-name">Automated Meeting Notes Processing</span>
-            <span class="area-count">~12 sessions</span>
+            <span class="area-count">~16 sessions</span>
           </div>
-          <div class="area-desc">A custom skill/pipeline was built and repeatedly triggered to automatically process raw meeting notes into structured documents, update TODO.md and decisions.md, and commit changes via git. Claude executed these workflows largely autonomously, reading notes, extracting topics, decisions, and action items, and writing multiple files per run. This was the most frequently used automation, running reliably across nearly all sessions with minimal friction.</div>
+          <div class="area-desc">A recurring automated pipeline that reads raw meeting notes (likely from Granola), creates structured meeting note files in Markdown, updates TODO.md and decisions.md, and commits/pushes changes via git. Claude Code executed these workflows almost entirely autonomously using custom skills, with very high reliability — nearly all sessions completed without friction or user intervention. This was the single most frequent use of Claude Code during the period.</div>
         </div>
       
         <div class="project-area">
           <div class="area-header">
-            <span class="area-name">Design System &amp; UI Development</span>
+            <span class="area-name">Design System Bug Fixes &amp; Chrome Inspector Extension</span>
+            <span class="area-count">~4 sessions</span>
+          </div>
+          <div class="area-desc">Work on a design system library including fixing open bugs across multiple issues, publishing a new version (v1.2.219), and closing PRs. Additionally, iterative development of a Chrome visual inspector extension with features like inspect mode, presets UX redesign, parent/child navigation, token resolution, and typography editing. Claude Code made extensive multi-file changes across CSS, JavaScript, and TypeScript, though token resolution required multiple debugging rounds.</div>
+        </div>
+      
+        <div class="project-area">
+          <div class="area-header">
+            <span class="area-name">Frontend UI Updates &amp; Deployment</span>
+            <span class="area-count">~3 sessions</span>
+          </div>
+          <div class="area-desc">Iterative refinement of a web application's UI — including banner updates, signal toolbar text copy changes, line breaks, bold styling, line-height adjustments, and broken doc link fixes with automated link checking. Claude Code handled ~10+ micro-requests per session with quick CSS/HTML/JS edits, deployed changes to VM and GitHub Pages environments, and resolved deployment issues along the way.</div>
+        </div>
+      
+        <div class="project-area">
+          <div class="area-header">
+            <span class="area-name">Agent Platform Development &amp; Workflow Tooling</span>
             <span class="area-count">~5 sessions</span>
           </div>
-          <div class="area-desc">Work spanned deploying banner and CSS updates to VMs and GitHub Pages, iteratively refining signal toolbar copy and styling, fixing design system bugs across multiple issues, and building a Chrome visual inspector extension with features like preset UX, parent/child navigation, and token resolution. Claude made extensive multi-file changes across HTML, CSS, JavaScript, and TypeScript, though token resolution and deploy pipelines required multiple debugging rounds.</div>
+          <div class="area-desc">Building and extending an agent platform, including implementing a new GENERAL_AGENT mode across multiple files with full test coverage (18/18 passing), building an automated Granola meeting sync pipeline with LLM-based project routing and 30-min polling, merging save-preset features, updating skills documentation, and running parallel skill-fix workflows. Claude Code was used heavily for Python and configuration work, with friction around test infrastructure, macOS permissions, and skill contribution processes.</div>
         </div>
       
         <div class="project-area">
           <div class="area-header">
-            <span class="area-name">Skills &amp; Workflow Automation Infrastructure</span>
+            <span class="area-name">Insights Analytics &amp; Daily Digests</span>
             <span class="area-count">~5 sessions</span>
           </div>
-          <div class="area-desc">Sessions focused on building and maintaining the custom skills and automation framework itself — including a Granola meeting sync pipeline with LLM-based project routing, parallel skill-fix workflows, insights triage skills, and reflect/memory maintenance routines. Claude handled complex multi-step orchestration but encountered friction from macOS permissions, sandbox file access restrictions, and process violations like bypassing the PR-based skill contribution workflow.</div>
-        </div>
-      
-        <div class="project-area">
-          <div class="area-header">
-            <span class="area-name">Agent Mode Feature Development (Python)</span>
-            <span class="area-count">~2 sessions</span>
-          </div>
-          <div class="area-desc">Claude planned, implemented, and tested a new GENERAL_AGENT mode across multiple Python files, getting all 18 tests passing after debugging PYTHONPATH conflicts, missing mock setups, and missing config entries. A separate session involved miscellaneous internal product research, config changes, and ticket interpretation. These sessions required significant iterative debugging of test infrastructure.</div>
-        </div>
-      
-        <div class="project-area">
-          <div class="area-header">
-            <span class="area-name">Documentation, Reporting &amp; Digests</span>
-            <span class="area-count">~5 sessions</span>
-          </div>
-          <div class="area-desc">Claude generated weekly highlights digests synthesizing meetings and Slack activity, fixed broken doc links with automated link-checking added to deploy pipelines, updated spec documents via reflect workflows, and produced usage insight reports. Work was primarily in Markdown with supporting shell scripts, and most sessions completed fully with minimal user intervention.</div>
+          <div class="area-desc">Running automated workflows to generate usage reports, daily highlights digests, weekly briefings, and session friction triage analyses. Claude Code attempted to gather data from Slack, meetings, and session logs to produce summaries. However, this area had the highest failure rate — multiple sessions were blocked by sandbox/filesystem permission restrictions preventing access to required data directories, and one failed due to an API connection error.</div>
         </div>
       
     </div>
@@ -212,27 +212,27 @@
         <div class="bar-value">10</div>
       </div>
 <div class="bar-row">
+        <div class="bar-label">Document Generation</div>
+        <div class="bar-track"><div class="bar-fill" style="width:80%;background:#2563eb"></div></div>
+        <div class="bar-value">8</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">File Updates</div>
+        <div class="bar-track"><div class="bar-fill" style="width:80%;background:#2563eb"></div></div>
+        <div class="bar-value">8</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Automated Document Processing</div>
+        <div class="bar-track"><div class="bar-fill" style="width:80%;background:#2563eb"></div></div>
+        <div class="bar-value">8</div>
+      </div>
+<div class="bar-row">
         <div class="bar-label">Text Copy Change</div>
         <div class="bar-track"><div class="bar-fill" style="width:70%;background:#2563eb"></div></div>
         <div class="bar-value">7</div>
       </div>
 <div class="bar-row">
-        <div class="bar-label">Document Generation</div>
-        <div class="bar-track"><div class="bar-fill" style="width:60%;background:#2563eb"></div></div>
-        <div class="bar-value">6</div>
-      </div>
-<div class="bar-row">
         <div class="bar-label">Automated Workflow Execution</div>
-        <div class="bar-track"><div class="bar-fill" style="width:50%;background:#2563eb"></div></div>
-        <div class="bar-value">5</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Automated Document Processing</div>
-        <div class="bar-track"><div class="bar-fill" style="width:50%;background:#2563eb"></div></div>
-        <div class="bar-value">5</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Feature Request</div>
         <div class="bar-track"><div class="bar-fill" style="width:50%;background:#2563eb"></div></div>
         <div class="bar-value">5</div>
       </div>
@@ -242,31 +242,31 @@
         <div class="bar-row">
         <div class="bar-label">Bash</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#0891b2"></div></div>
-        <div class="bar-value">569</div>
+        <div class="bar-value">544</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Read</div>
-        <div class="bar-track"><div class="bar-fill" style="width:34.27065026362039%;background:#0891b2"></div></div>
-        <div class="bar-value">195</div>
+        <div class="bar-track"><div class="bar-fill" style="width:34.375%;background:#0891b2"></div></div>
+        <div class="bar-value">187</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Edit</div>
-        <div class="bar-track"><div class="bar-fill" style="width:24.253075571177504%;background:#0891b2"></div></div>
-        <div class="bar-value">138</div>
+        <div class="bar-track"><div class="bar-fill" style="width:20.588235294117645%;background:#0891b2"></div></div>
+        <div class="bar-value">112</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Skill</div>
-        <div class="bar-track"><div class="bar-fill" style="width:6.502636203866433%;background:#0891b2"></div></div>
-        <div class="bar-value">37</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.536764705882352%;background:#0891b2"></div></div>
+        <div class="bar-value">41</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Write</div>
-        <div class="bar-track"><div class="bar-fill" style="width:5.623901581722319%;background:#0891b2"></div></div>
-        <div class="bar-value">32</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6.985294117647059%;background:#0891b2"></div></div>
+        <div class="bar-value">38</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Agent</div>
-        <div class="bar-track"><div class="bar-fill" style="width:3.690685413005272%;background:#0891b2"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.860294117647059%;background:#0891b2"></div></div>
         <div class="bar-value">21</div>
       </div>
       </div>
@@ -278,32 +278,32 @@
         <div class="bar-row">
         <div class="bar-label">Markdown</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#10b981"></div></div>
-        <div class="bar-value">156</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">JavaScript</div>
-        <div class="bar-track"><div class="bar-fill" style="width:26.282051282051285%;background:#10b981"></div></div>
-        <div class="bar-value">41</div>
+        <div class="bar-value">188</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Python</div>
-        <div class="bar-track"><div class="bar-fill" style="width:25%;background:#10b981"></div></div>
-        <div class="bar-value">39</div>
+        <div class="bar-track"><div class="bar-fill" style="width:21.808510638297875%;background:#10b981"></div></div>
+        <div class="bar-value">41</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">JavaScript</div>
+        <div class="bar-track"><div class="bar-fill" style="width:21.808510638297875%;background:#10b981"></div></div>
+        <div class="bar-value">41</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">TypeScript</div>
-        <div class="bar-track"><div class="bar-fill" style="width:19.230769230769234%;background:#10b981"></div></div>
-        <div class="bar-value">30</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">HTML</div>
-        <div class="bar-track"><div class="bar-fill" style="width:18.58974358974359%;background:#10b981"></div></div>
-        <div class="bar-value">29</div>
+        <div class="bar-track"><div class="bar-fill" style="width:10.638297872340425%;background:#10b981"></div></div>
+        <div class="bar-value">20</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">CSS</div>
-        <div class="bar-track"><div class="bar-fill" style="width:9.615384615384617%;background:#10b981"></div></div>
-        <div class="bar-value">15</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.446808510638298%;background:#10b981"></div></div>
+        <div class="bar-value">14</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">JSON</div>
+        <div class="bar-track"><div class="bar-fill" style="width:6.914893617021277%;background:#10b981"></div></div>
+        <div class="bar-value">13</div>
       </div>
       </div>
       <div class="chart-card">
@@ -311,17 +311,17 @@
         <div class="bar-row">
         <div class="bar-label">Single Task</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#8b5cf6"></div></div>
-        <div class="bar-value">20</div>
+        <div class="bar-value">24</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Multi Task</div>
-        <div class="bar-track"><div class="bar-fill" style="width:40%;background:#8b5cf6"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#8b5cf6"></div></div>
         <div class="bar-value">8</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Iterative Refinement</div>
-        <div class="bar-track"><div class="bar-fill" style="width:20%;background:#8b5cf6"></div></div>
-        <div class="bar-value">4</div>
+        <div class="bar-track"><div class="bar-fill" style="width:20.833333333333336%;background:#8b5cf6"></div></div>
+        <div class="bar-value">5</div>
       </div>
       </div>
     </div>
@@ -329,10 +329,10 @@
     
     <h2 id="section-usage">How You Use Claude Code</h2>
     <div class="narrative">
-      <p>You are a <strong>power user who has built a deeply automated workflow system</strong> around Claude Code, treating it less as a conversational coding assistant and more as an <strong>autonomous agent infrastructure</strong>. A striking proportion of your 32 sessions—roughly half—are <strong>fully automated pipelines</strong> that you trigger and let run without intervention: meeting-notes processing, reflect/maintenance workflows, weekly digests, and insights triage. These automated skills read files, synthesize structured documents, update TODOs and decision logs, commit to git, and complete end-to-end with zero user messages. You've essentially built Claude into your personal operations layer, with 569 Bash calls and 21 Agent tool invocations reflecting a system designed to <strong>orchestrate complex multi-step workflows autonomously</strong>. Your 58 commits across 11 days and 213 hours of session time confirm that Claude is running persistently in the background of your work life.</p>
-<p>When you *do* interact manually, you operate in a <strong>rapid-fire, iterative micro-request style</strong>. Your signal toolbar session is a perfect example: ~10 successive small requests adjusting text copy, line breaks, bold styling, and line-height, each executed quickly before moving to the next tweak. You rarely provide detailed upfront specifications; instead, you <strong>steer through fast feedback loops</strong>, catching issues like double-bold bugs in real time and immediately requesting fixes. Your Chrome inspector extension session shows the same pattern—10+ incremental requests spanning inspect mode, presets UX, parent/child navigation, and token resolution—though that one required multiple debugging rounds when token resolution kept failing. You're comfortable letting Claude make <strong>extensive multi-file changes</strong> (your top success pattern at 20 occurrences), but you'll intervene sharply when it takes the wrong approach, as when Claude bypassed your PR process and overwrote prior changes during the skill contribution workflow.</p>
-<p>Your friction patterns reveal that you're pushing Claude to its operational limits—<strong>sandbox permissions, macOS TCC restrictions, and environment-specific issues</strong> are your most common blockers, not misunderstandings or bad code. The 10 buggy-code friction events are concentrated in complex sessions like the inspector extension and test infrastructure work, where you're building genuinely novel tooling. With a 65% fully-achieved rate and only 2 outright failures (both infrastructure blockers), your system is remarkably well-tuned. You've clearly invested heavily in <strong>skills, custom commands, and memory management</strong> (37 Skill tool calls, reflect workflows, memory pruning), making your Claude setup feel less like a coding tool and more like a <strong>managed autonomous teammate</strong> embedded in your daily operations.</p>
-      <div class="key-insight"><strong>Key pattern:</strong> You have architected Claude Code into a largely autonomous operations system—triggering automated pipelines for meeting notes, maintenance, and digests—while reserving manual interaction for rapid-fire iterative refinement of UI and code details.</div>
+      <p>You are a <strong>heavy automation builder</strong> who has designed Claude Code into a core part of your daily workflow infrastructure. The most striking pattern across your 37 sessions is that <strong>over half are fully automated pipelines</strong> — particularly meeting-notes processing skills that run without any user interaction at all. You've built a sophisticated system where Claude reads raw notes, creates structured meeting records, updates TODO.md and decisions.md, commits changes, and pushes — all triggered by a single command. This represents a fundamentally different relationship with Claude Code than typical interactive development; you're treating it as an <strong>autonomous workflow engine</strong> rather than a pair programmer. Your 211 hours across 37 sessions with only 176 messages (roughly 4.8 messages per session) confirms this — many sessions require zero human input after the initial trigger.</p>
+<p>When you *do* interact directly, you show two distinct modes. For <strong>UI and styling work</strong>, you iterate in rapid-fire micro-requests — your signal toolbar session had ~10 small asks adjusting text copy, line breaks, bold styling, and line-height in quick succession, catching bugs like the double-bold issue yourself and directing fixes. For <strong>larger feature builds</strong>, like the Chrome visual inspector extension or the Granola meeting sync pipeline, you give a broad directive and let Claude run through extensive multi-file changes, stepping in only when things go wrong. You're comfortable with Claude making 26+ multi-file change sets and clearly trust it to operate independently, but you <strong>stay sharp on quality</strong> — you caught that Claude bypassed your PR-based skill-contribute process and overwrote prior changes, and you noticed when it missed the carousel stroke issue by only checking the main branch.</p>
+<p>Your friction profile reveals a notable tension: <strong>your ambition for automation frequently collides with environment constraints</strong>. Sandbox permissions blocked three separate sessions entirely, macOS TCC permissions silently broke your LaunchAgent, and VPN restrictions killed git pushes. You've also hit Claude taking wrong approaches 10 times and producing buggy code 10 times, but your 89% achievement rate (25 fully + 8 mostly out of 37) shows you're effective at course-correcting. You work across a polyglot stack (Markdown-heavy for docs, plus Python, JavaScript, TypeScript, CSS) and your top goals — bug fixes, document generation, automated processing — paint a picture of someone who is <strong>systematically offloading operational toil</strong> onto Claude while reserving creative and architectural decisions for yourself.</p>
+      <div class="key-insight"><strong>Key pattern:</strong> You've architected Claude Code as an autonomous workflow engine for recurring tasks like meeting-notes processing, intervening manually only for creative iteration or when automation hits environmental walls.</div>
     </div>
     
 
@@ -341,41 +341,41 @@
       <div class="chart-title">User Response Time Distribution</div>
       <div class="bar-row">
         <div class="bar-label">2-10s</div>
-        <div class="bar-track"><div class="bar-fill" style="width:21.73913043478261%;background:#6366f1"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:23.809523809523807%;background:#6366f1"></div></div>
         <div class="bar-value">5</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">10-30s</div>
-        <div class="bar-track"><div class="bar-fill" style="width:73.91304347826086%;background:#6366f1"></div></div>
-        <div class="bar-value">17</div>
+        <div class="bar-track"><div class="bar-fill" style="width:52.38095238095239%;background:#6366f1"></div></div>
+        <div class="bar-value">11</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">30s-1m</div>
-        <div class="bar-track"><div class="bar-fill" style="width:69.56521739130434%;background:#6366f1"></div></div>
-        <div class="bar-value">16</div>
+        <div class="bar-track"><div class="bar-fill" style="width:52.38095238095239%;background:#6366f1"></div></div>
+        <div class="bar-value">11</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">1-2m</div>
-        <div class="bar-track"><div class="bar-fill" style="width:91.30434782608695%;background:#6366f1"></div></div>
-        <div class="bar-value">21</div>
+        <div class="bar-track"><div class="bar-fill" style="width:71.42857142857143%;background:#6366f1"></div></div>
+        <div class="bar-value">15</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">2-5m</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#6366f1"></div></div>
-        <div class="bar-value">23</div>
+        <div class="bar-value">21</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">5-15m</div>
-        <div class="bar-track"><div class="bar-fill" style="width:82.6086956521739%;background:#6366f1"></div></div>
-        <div class="bar-value">19</div>
+        <div class="bar-track"><div class="bar-fill" style="width:76.19047619047619%;background:#6366f1"></div></div>
+        <div class="bar-value">16</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">>15m</div>
-        <div class="bar-track"><div class="bar-fill" style="width:21.73913043478261%;background:#6366f1"></div></div>
-        <div class="bar-value">5</div>
+        <div class="bar-track"><div class="bar-fill" style="width:9.523809523809524%;background:#6366f1"></div></div>
+        <div class="bar-value">2</div>
       </div>
       <div style="font-size: 12px; color: #64748b; margin-top: 8px;">
-        Median: 101.1s &bull; Average: 257.2s
+        Median: 118.7s &bull; Average: 226.1s
       </div>
     </div>
 
@@ -385,15 +385,15 @@
       
         <div style="display: flex; gap: 24px; margin: 12px 0;">
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">8</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">7</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Overlap Events</div>
           </div>
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">12</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">10</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Sessions Involved</div>
           </div>
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">21%</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">22%</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Of Messages</div>
           </div>
         </div>
@@ -422,20 +422,20 @@
         <div id="hour-histogram">
       <div class="bar-row">
         <div class="bar-label">Morning (6-12)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:14.583333333333334%;background:#8b5cf6"></div></div>
-        <div class="bar-value">21</div>
+        <div class="bar-track"><div class="bar-fill" style="width:18.65671641791045%;background:#8b5cf6"></div></div>
+        <div class="bar-value">25</div>
       </div>
 
       <div class="bar-row">
         <div class="bar-label">Afternoon (12-18)</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#8b5cf6"></div></div>
-        <div class="bar-value">144</div>
+        <div class="bar-value">134</div>
       </div>
 
       <div class="bar-row">
         <div class="bar-label">Evening (18-24)</div>
-        <div class="bar-track"><div class="bar-fill" style="width:19.444444444444446%;background:#8b5cf6"></div></div>
-        <div class="bar-value">28</div>
+        <div class="bar-track"><div class="bar-fill" style="width:12.686567164179104%;background:#8b5cf6"></div></div>
+        <div class="bar-value">17</div>
       </div>
 
       <div class="bar-row">
@@ -449,31 +449,31 @@
         <div class="bar-row">
         <div class="bar-label">Other</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#dc2626"></div></div>
-        <div class="bar-value">61</div>
+        <div class="bar-value">117</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Command Failed</div>
-        <div class="bar-track"><div class="bar-fill" style="width:21.311475409836063%;background:#dc2626"></div></div>
-        <div class="bar-value">13</div>
+        <div class="bar-track"><div class="bar-fill" style="width:8.547008547008547%;background:#dc2626"></div></div>
+        <div class="bar-value">10</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">File Not Found</div>
-        <div class="bar-track"><div class="bar-fill" style="width:3.278688524590164%;background:#dc2626"></div></div>
-        <div class="bar-value">2</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.418803418803419%;background:#dc2626"></div></div>
+        <div class="bar-value">4</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Edit Failed</div>
-        <div class="bar-track"><div class="bar-fill" style="width:1.639344262295082%;background:#dc2626"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:0.8547008547008548%;background:#dc2626"></div></div>
         <div class="bar-value">1</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">File Changed</div>
-        <div class="bar-track"><div class="bar-fill" style="width:1.639344262295082%;background:#dc2626"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:0.8547008547008548%;background:#dc2626"></div></div>
         <div class="bar-value">1</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">File Too Large</div>
-        <div class="bar-track"><div class="bar-fill" style="width:1.639344262295082%;background:#dc2626"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:0.8547008547008548%;background:#dc2626"></div></div>
         <div class="bar-value">1</div>
       </div>
       </div>
@@ -481,22 +481,22 @@
 
     
     <h2 id="section-wins">Impressive Things You Did</h2>
-    <p class="section-intro">Over the past 11 days, you've built an impressive automated workflow ecosystem around Claude Code, achieving a 88% full/mostly success rate across 32 sessions with heavy emphasis on hands-free automation.</p>
+    <p class="section-intro">Over the past 12 days, you've built a highly automated personal productivity system around Claude Code, with meeting note processing as a standout pillar and a 89% goal achievement rate across 37 sessions.</p>
     <div class="big-wins">
       
         <div class="big-win">
           <div class="big-win-title">Fully Automated Meeting Notes Pipeline</div>
-          <div class="big-win-desc">You've built a remarkably polished meeting-notes processing pipeline that runs end-to-end without any manual intervention. Across 10+ sessions, Claude automatically reads raw notes, synthesizes structured meeting records, updates your TODO.md and decisions.md, and commits everything to git — most sessions completing with zero friction. This is a textbook example of leveraging Claude Code as a reliable autonomous workflow engine.</div>
+          <div class="big-win-desc">You've built and repeatedly relied on an automated meeting-notes processing skill that reads raw notes, generates structured meeting records, updates TODO.md and decisions.md, and commits everything to git — all without any manual intervention. Across 15+ sessions, this pipeline ran flawlessly nearly every time, turning Claude Code into a reliable background workhorse for your knowledge management system.</div>
         </div>
       
         <div class="big-win">
-          <div class="big-win-title">Custom Skills and Maintenance System</div>
-          <div class="big-win-desc">You've developed a sophisticated ecosystem of custom skills and automated maintenance routines — from reflect/memory-refresh workflows that prune stale specs, to insights triage that analyzes friction patterns, to weekly highlights digests that synthesize across multiple data sources. Your use of the Skill tool (37 invocations) and Agent tool (21 invocations) shows you're treating Claude Code as an orchestration layer rather than just a code editor.</div>
+          <div class="big-win-title">Multi-Skill Orchestration with Agents</div>
+          <div class="big-win-desc">You're leveraging Claude's Skill and Agent tools extensively (41 and 21 invocations respectively) to orchestrate complex workflows like parallel skill-fix tracks, insights triage, reflect-and-memory-refresh routines, and even building a full Granola meeting sync pipeline with LLM-based project routing. This shows a sophisticated approach to composing Claude as an autonomous system rather than just a chat assistant.</div>
         </div>
       
         <div class="big-win">
-          <div class="big-win-title">Visual Testing with Playwright Integration</div>
-          <div class="big-win-desc">You're using Playwright MCP tools for browser navigation and screenshots to visually verify your deployments and UI changes in real time. Combined with your iterative CSS refinement sessions — where you drove 10+ micro-requests for toolbar styling, banner updates, and VM deployments — you've created a tight feedback loop that catches visual bugs like double-bold text before they ship. This browser-in-the-loop approach makes your front-end workflows significantly more reliable.</div>
+          <div class="big-win-title">Iterative UI Refinement at Speed</div>
+          <div class="big-win-desc">You used Claude Code for rapid, iterative front-end work — refining a signal toolbar's copy, styling, and line-height across ~10 micro-requests in a single session, and evolving a Chrome visual inspector extension through 10+ rounds of feature additions and bug fixes. Your ability to drive fast multi-file UI changes through conversational iteration, catching edge cases like double-bold bugs along the way, shows you've found an efficient rhythm for design-system-level work.</div>
         </div>
       
     </div>
@@ -508,26 +508,26 @@
         <div class="bar-row">
         <div class="bar-label">Multi-file Changes</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#16a34a"></div></div>
-        <div class="bar-value">20</div>
+        <div class="bar-value">26</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Good Explanations</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.6923076923076925%;background:#16a34a"></div></div>
+        <div class="bar-value">2</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Proactive Help</div>
-        <div class="bar-track"><div class="bar-fill" style="width:20%;background:#16a34a"></div></div>
-        <div class="bar-value">4</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Fast/Accurate Search</div>
-        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#16a34a"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.6923076923076925%;background:#16a34a"></div></div>
         <div class="bar-value">2</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Correct Code Edits</div>
-        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#16a34a"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.6923076923076925%;background:#16a34a"></div></div>
         <div class="bar-value">2</div>
       </div>
 <div class="bar-row">
-        <div class="bar-label">Good Explanations</div>
-        <div class="bar-track"><div class="bar-fill" style="width:5%;background:#16a34a"></div></div>
+        <div class="bar-label">Fast/Accurate Search</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3.8461538461538463%;background:#16a34a"></div></div>
         <div class="bar-value">1</div>
       </div>
       </div>
@@ -535,53 +535,43 @@
         <div class="chart-title">Outcomes</div>
         <div class="bar-row">
         <div class="bar-label">Not Achieved</div>
-        <div class="bar-track"><div class="bar-fill" style="width:9.523809523809524%;background:#8b5cf6"></div></div>
-        <div class="bar-value">2</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Partially Achieved</div>
-        <div class="bar-track"><div class="bar-fill" style="width:4.761904761904762%;background:#8b5cf6"></div></div>
-        <div class="bar-value">1</div>
+        <div class="bar-track"><div class="bar-fill" style="width:16%;background:#8b5cf6"></div></div>
+        <div class="bar-value">4</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Mostly Achieved</div>
-        <div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#8b5cf6"></div></div>
-        <div class="bar-value">7</div>
+        <div class="bar-track"><div class="bar-fill" style="width:32%;background:#8b5cf6"></div></div>
+        <div class="bar-value">8</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Fully Achieved</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#8b5cf6"></div></div>
-        <div class="bar-value">21</div>
-      </div>
-<div class="bar-row">
-        <div class="bar-label">Unclear</div>
-        <div class="bar-track"><div class="bar-fill" style="width:4.761904761904762%;background:#8b5cf6"></div></div>
-        <div class="bar-value">1</div>
+        <div class="bar-value">25</div>
       </div>
       </div>
     </div>
 
     
     <h2 id="section-friction">Where Things Go Wrong</h2>
-    <p class="section-intro">Your workflow is heavily automated and productive, but you're hitting recurring issues with sandboxed environments, Claude taking wrong approaches on familiar workflows, and platform-specific incompatibilities that stall progress.</p>
+    <p class="section-intro">Your workflow is heavily automated and productive, but you're repeatedly hitting sandbox/permission walls on introspection tasks, encountering buggy code that requires multiple debugging rounds, and occasionally getting derailed by Claude choosing the wrong approach for your environment.</p>
     <div class="friction-categories">
       
         <div class="friction-category">
-          <div class="friction-title">Sandbox and File Permission Blockers</div>
-          <div class="friction-desc">Several of your automated workflows fail because Claude can't access files due to sandbox restrictions or OS-level permissions. You could mitigate this by ensuring your skill pipelines write to directories Claude can reliably access, or by adding pre-flight permission checks to your automated skills.</div>
-          <ul class="friction-examples"><li>Your insights triage skill was completely blocked because Claude couldn't access session data in /tmp due to sandbox permissions, resulting in a fully failed session with no output.</li><li>Your Granola meeting sync pipeline silently failed because macOS TCC permissions blocked Python from accessing ~/Documents, requiring manual debugging to even diagnose the issue.</li></ul>
+          <div class="friction-title">Sandbox and Permission Barriers on Self-Analysis Workflows</div>
+          <div class="friction-desc">You've built several automated skills for insights triage and reflection, but they consistently fail because Claude can't access the directories they need (~/.claude/, /tmp, sibling repos). Consider restructuring these workflows to pre-stage required data into the working directory, or run them outside the sandbox context so Claude has the file access it needs.</div>
+          <ul class="friction-examples"><li>Your insights triage skill failed three separate times because the sandbox blocked access to ~/.claude/ and /tmp, meaning you got zero output from those sessions despite spending time triggering them</li><li>The reflect + triage workflow couldn't reach sibling directories like facets/ or session-meta/, and Claude burned through multiple workaround attempts that all hit the same permission wall</li></ul>
         </div>
       
         <div class="friction-category">
-          <div class="friction-title">Wrong Approach on Repository and Workflow Conventions</div>
-          <div class="friction-desc">Claude sometimes bypasses your established processes—like PR-based skill contributions or checking the right branches for issues—causing overwrites or missed work. You might benefit from encoding these conventions more explicitly in your CLAUDE.md or skill definitions so Claude doesn't fall back on default assumptions.</div>
-          <ul class="friction-examples"><li>Claude directly pushed skill changes instead of using your skill-contribute PR process, then overwrote your prior no-modes update by syncing from a stale repo, undoing work you'd already completed.</li><li>Claude only checked ISSUES.md on main instead of scanning branches and PRs for open issues, missing the carousel stroke bug entirely until you pointed it out.</li></ul>
+          <div class="friction-title">Buggy Code Requiring Multiple Debugging Rounds</div>
+          <div class="friction-desc">Complex implementation sessions frequently produce code that fails on first run, costing you significant iteration time. You could reduce this by asking Claude to enumerate edge cases and write targeted tests before implementing, especially for CSS token resolution, test infrastructure, and platform-specific behavior.</div>
+          <ul class="friction-examples"><li>The Chrome visual inspector's token resolution failed twice — first from color normalization issues with !important CSS rules, then background-color still didn't resolve correctly, requiring a third attempt with an iframe-based approach</li><li>The GENERAL_AGENT mode implementation hit multiple test failures from PYTHONPATH conflicts, missing PROMPT_DEFAULT_VERSION_DICT entries, and missing mocks, turning what should have been a clean implementation into an extended debugging session</li></ul>
         </div>
       
         <div class="friction-category">
-          <div class="friction-title">Platform and Environment Incompatibilities</div>
-          <div class="friction-desc">You're working across macOS, VMs, and remote environments where tools and commands don't always behave as expected, leading to multi-round debugging. Consider adding environment-detection logic to your scripts or specifying platform constraints in your prompts to avoid these false starts.</div>
-          <ul class="friction-examples"><li>Your automated link checker failed because Claude used grep -P (a GNU extension unavailable on macOS), forcing a rewrite in Python and delaying the deploy pipeline.</li><li>Claude misunderstood 'robust-rainforest' as a feature flag instead of an rdev environment name and provided a broken copy-paste command, plus gave you the wrong working directory for mint—costing you multiple correction rounds.</li></ul>
+          <div class="friction-title">Wrong Initial Approach Due to Misreading Your Environment</div>
+          <div class="friction-desc">Claude sometimes misinterprets your context — confusing tool names, choosing wrong processes, or making platform assumptions — which forces you to intervene and redirect. Providing brief context hints in your prompts (e.g., 'this is macOS', 'use the PR workflow') could prevent these costly false starts.</div>
+          <ul class="friction-examples"><li>Claude misidentified 'robust-rainforest' as a feature flag instead of an rdev environment name and gave you a broken copy-paste command, derailing the setup flow until you corrected it</li><li>Claude directly pushed skill changes instead of using your established skill-contribute PR process, then overwrote your prior no-modes update by syncing from a stale repo — violating your workflow and creating rework</li></ul>
         </div>
       
     </div>
@@ -591,19 +581,24 @@
       <div class="chart-card">
         <div class="chart-title">Primary Friction Types</div>
         <div class="bar-row">
+        <div class="bar-label">Wrong Approach</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#dc2626"></div></div>
+        <div class="bar-value">10</div>
+      </div>
+<div class="bar-row">
         <div class="bar-label">Buggy Code</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#dc2626"></div></div>
         <div class="bar-value">10</div>
       </div>
 <div class="bar-row">
-        <div class="bar-label">Wrong Approach</div>
-        <div class="bar-track"><div class="bar-fill" style="width:60%;background:#dc2626"></div></div>
-        <div class="bar-value">6</div>
-      </div>
-<div class="bar-row">
         <div class="bar-label">Misunderstood Request</div>
         <div class="bar-track"><div class="bar-fill" style="width:30%;background:#dc2626"></div></div>
         <div class="bar-value">3</div>
+      </div>
+<div class="bar-row">
+        <div class="bar-label">Permission Blocked</div>
+        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#dc2626"></div></div>
+        <div class="bar-value">1</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Api Error</div>
@@ -615,27 +610,22 @@
         <div class="bar-track"><div class="bar-fill" style="width:10%;background:#dc2626"></div></div>
         <div class="bar-value">1</div>
       </div>
-<div class="bar-row">
-        <div class="bar-label">Tool Limitation</div>
-        <div class="bar-track"><div class="bar-fill" style="width:10%;background:#dc2626"></div></div>
-        <div class="bar-value">1</div>
-      </div>
       </div>
       <div class="chart-card">
         <div class="chart-title">Inferred Satisfaction (model-estimated)</div>
         <div class="bar-row">
         <div class="bar-label">Dissatisfied</div>
-        <div class="bar-track"><div class="bar-fill" style="width:7.8431372549019605%;background:#eab308"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.2727272727272725%;background:#eab308"></div></div>
         <div class="bar-value">4</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Likely Satisfied</div>
         <div class="bar-track"><div class="bar-fill" style="width:100%;background:#eab308"></div></div>
-        <div class="bar-value">51</div>
+        <div class="bar-value">55</div>
       </div>
 <div class="bar-row">
         <div class="bar-label">Satisfied</div>
-        <div class="bar-track"><div class="bar-fill" style="width:11.76470588235294%;background:#eab308"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:10.909090909090908%;background:#eab308"></div></div>
         <div class="bar-value">6</div>
       </div>
       </div>
@@ -652,48 +642,48 @@
       </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-0" class="cmd-checkbox" checked data-text="Add under a new ## Automated Workflows section at the top level of CLAUDE.md\n\nWhen processing meeting notes, always follow the standard pipeline: 1) Read raw notes, 2) Create structured meeting note file, 3) Update TODO.md, 4) Update decisions.md, 5) Git commit all changes. Never skip the commit step.">
+          <input type="checkbox" id="cmd-0" class="cmd-checkbox" checked data-text="Add under a ## Permissions &amp; Environment section at the top of CLAUDE.md\n\nWhen running skills that require file access outside the current repo (e.g., ~/.claude/, /tmp, sibling directories), ensure the session has appropriate permissions. If sandboxed, immediately report the permission limitation rather than retrying multiple workarounds.">
           <label for="cmd-0">
-            <code class="cmd-code">When processing meeting notes, always follow the standard pipeline: 1) Read raw notes, 2) Create structured meeting note file, 3) Update TODO.md, 4) Update decisions.md, 5) Git commit all changes. Never skip the commit step.</code>
+            <code class="cmd-code">When running skills that require file access outside the current repo (e.g., ~/.claude/, /tmp, sibling directories), ensure the session has appropriate permissions. If sandboxed, immediately report the permission limitation rather than retrying multiple workarounds.</code>
             <button class="copy-btn" onclick="copyCmdItem(0)">Copy</button>
           </label>
-          <div class="cmd-why">At least 12 sessions ran the same meeting-notes processing pipeline, and one session failed at the commit/coaching step — codifying this ensures consistency across all automated runs.</div>
+          <div class="cmd-why">4 sessions failed because Claude repeatedly hit sandbox/permission walls trying to access files outside the allowed directory, wasting time on workarounds that couldn't succeed.</div>
         </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-1" class="cmd-checkbox" checked data-text="Add under a ## Skills Development section or ## Git Conventions section in CLAUDE.md\n\nAlways use the skill-contribute PR process when modifying skills. Never push skill changes directly to main or sync from external repos without confirming with the user first.">
+          <input type="checkbox" id="cmd-1" class="cmd-checkbox" checked data-text="Add under a ## Meeting Notes Processing section in CLAUDE.md\n\nAfter processing meeting notes, always: 1) Create structured meeting note file, 2) Update TODO.md, 3) Update decisions.md, 4) Git commit all changes. Do not push if VPN/network issues are likely.">
           <label for="cmd-1">
-            <code class="cmd-code">Always use the skill-contribute PR process when modifying skills. Never push skill changes directly to main or sync from external repos without confirming with the user first.</code>
+            <code class="cmd-code">After processing meeting notes, always: 1) Create structured meeting note file, 2) Update TODO.md, 3) Update decisions.md, 4) Git commit all changes. Do not push if VPN/network issues are likely.</code>
             <button class="copy-btn" onclick="copyCmdItem(1)">Copy</button>
           </label>
-          <div class="cmd-why">In one session Claude bypassed the PR process and overwrote the user's prior changes by syncing from a stale repo — this caused significant friction and should never be repeated.</div>
+          <div class="cmd-why">~17 sessions ran the same meeting-notes pipeline — this is the single most repeated workflow and codifying the exact steps prevents drift or missed steps.</div>
         </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-2" class="cmd-checkbox" checked data-text="Add under a ## Environment Notes or ## Platform Quirks section in CLAUDE.md\n\nOn macOS: grep -P is not available — use Python or grep -E instead. Also be aware of TCC sandbox/permission restrictions when accessing ~/Documents, /tmp, or other protected paths from LaunchAgents or headless scripts.">
+          <input type="checkbox" id="cmd-2" class="cmd-checkbox" checked data-text="Add under a ## Skills &amp; Contributions section in CLAUDE.md\n\nWhen working with skills and skill contributions, always use the skill-contribute PR process. Never push skill changes directly to main or sync from external repos without checking for local modifications first.">
           <label for="cmd-2">
-            <code class="cmd-code">On macOS: grep -P is not available — use Python or grep -E instead. Also be aware of TCC sandbox/permission restrictions when accessing ~/Documents, /tmp, or other protected paths from LaunchAgents or headless scripts.</code>
+            <code class="cmd-code">When working with skills and skill contributions, always use the skill-contribute PR process. Never push skill changes directly to main or sync from external repos without checking for local modifications first.</code>
             <button class="copy-btn" onclick="copyCmdItem(2)">Copy</button>
           </label>
-          <div class="cmd-why">Multiple sessions hit macOS-specific friction: grep -P failures, TCC permission blocks on LaunchAgents, and sandbox file access restrictions — these wasted debugging time repeatedly.</div>
+          <div class="cmd-why">One session caused data loss by bypassing the PR process and overwriting prior changes — this safeguard prevents that recurring pattern.</div>
         </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-3" class="cmd-checkbox" checked data-text="Add under a ## Issue Tracking or ## Conventions section in CLAUDE.md\n\nWhen searching for open issues, check all branches and open PRs — not just the main branch. Issues may be tracked in ISSUES.md on feature branches or in PR descriptions.">
+          <input type="checkbox" id="cmd-3" class="cmd-checkbox" checked data-text="Add under a ## Platform Notes section in CLAUDE.md\n\nOn macOS: `grep -P` is not available (use Python or `grep -E` instead). LaunchAgents may be blocked by TCC permissions for paths like ~/Documents. Always verify platform-specific command compatibility before running.">
           <label for="cmd-3">
-            <code class="cmd-code">When searching for open issues, check all branches and open PRs — not just the main branch. Issues may be tracked in ISSUES.md on feature branches or in PR descriptions.</code>
+            <code class="cmd-code">On macOS: `grep -P` is not available (use Python or `grep -E` instead). LaunchAgents may be blocked by TCC permissions for paths like ~/Documents. Always verify platform-specific command compatibility before running.</code>
             <button class="copy-btn" onclick="copyCmdItem(3)">Copy</button>
           </label>
-          <div class="cmd-why">Claude missed open issues by only checking main branch, requiring user correction — this is a recurring pattern when triaging bugs or doing batch fixes.</div>
+          <div class="cmd-why">Multiple sessions hit macOS-specific issues (grep -P failure, TCC permissions blocking LaunchAgents) that required debugging detours.</div>
         </div>
       
         <div class="claude-md-item">
-          <input type="checkbox" id="cmd-4" class="cmd-checkbox" checked data-text="Add under a ## Design System or ## CSS/Styling section in CLAUDE.md\n\nAfter modifying CSS or design token resolution code, always verify token values are resolving correctly by checking computed styles — watch for !important rules and iframe context boundaries that can break resolution.">
+          <input type="checkbox" id="cmd-4" class="cmd-checkbox" checked data-text="Add under a ## Git &amp; GitHub Conventions section in CLAUDE.md\n\nWhen searching for open issues or PRs, check ALL branches and open PRs — not just the main branch or ISSUES.md on main.">
           <label for="cmd-4">
-            <code class="cmd-code">After modifying CSS or design token resolution code, always verify token values are resolving correctly by checking computed styles — watch for !important rules and iframe context boundaries that can break resolution.</code>
+            <code class="cmd-code">When searching for open issues or PRs, check ALL branches and open PRs — not just the main branch or ISSUES.md on main.</code>
             <button class="copy-btn" onclick="copyCmdItem(4)">Copy</button>
           </label>
-          <div class="cmd-why">Token resolution bugs required multiple debugging rounds across sessions due to CSS specificity and iframe boundary issues — a verification step would catch these earlier.</div>
+          <div class="cmd-why">Claude missed open issues by only checking the main branch, requiring user correction and wasting a round-trip.</div>
         </div>
       
     </div>
@@ -705,7 +695,7 @@
         <div class="feature-card">
           <div class="feature-title">Hooks</div>
           <div class="feature-oneliner">Shell commands that auto-run at specific lifecycle events like pre-commit or post-edit.</div>
-          <div class="feature-why"><strong>Why for you:</strong> You had 10 instances of buggy code friction and multiple deploy issues. Auto-running linters, type checks, or link validators after edits would catch these before they snowball into multi-round debugging sessions — especially for your CSS token resolution and TypeScript errors.</div>
+          <div class="feature-why"><strong>Why for you:</strong> You had 10 sessions with buggy code friction and 10 with wrong approach issues. A pre-commit hook running lint/type-checks would catch errors like the TypeScript build failure and double-bold HTML bug before they reach you.</div>
           
           <div class="feature-examples">
             <div class="feature-example">
@@ -713,14 +703,17 @@
                 <code class="example-code">// .claude/settings.json
 {
   &quot;hooks&quot;: {
-    &quot;post-edit&quot;: {
-      &quot;command&quot;: &quot;npx tsc --noEmit 2&gt;&amp;1 | head -20&quot;,
-      &quot;description&quot;: &quot;Type-check after edits to catch TS errors early&quot;
-    },
-    &quot;pre-commit&quot;: {
-      &quot;command&quot;: &quot;python3 scripts/check_links.py &amp;&amp; npx tsc --noEmit&quot;,
-      &quot;description&quot;: &quot;Run link checker and type check before committing&quot;
-    }
+    &quot;postToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Edit|Write&quot;,
+        &quot;command&quot;: &quot;npx tsc --noEmit 2&gt;&amp;1 | head -20&quot;
+      }
+    ],
+    &quot;preCommit&quot;: [
+      {
+        &quot;command&quot;: &quot;python -m py_compile $(git diff --cached --name-only '*.py') 2&gt;&amp;1 | head -10&quot;
+      }
+    ]
   }
 }</code>
                 <button class="copy-btn" onclick="copyText(this)">Copy</button>
@@ -731,26 +724,15 @@
         </div>
       
         <div class="feature-card">
-          <div class="feature-title">Custom Skills</div>
-          <div class="feature-oneliner">Reusable prompts defined as markdown files that run with a single /command.</div>
-          <div class="feature-why"><strong>Why for you:</strong> You already use Skills heavily (37 invocations — 4th most-used tool) for meeting notes, weekly digests, insights, and reflect workflows. But some of these hit friction (missing commit steps, permission issues). Codifying more robust error handling and fallback steps directly in the skill markdown would prevent the 'mostly_achieved' outcomes from your automated pipelines.</div>
+          <div class="feature-title">Headless Mode</div>
+          <div class="feature-oneliner">Run Claude non-interactively from scripts and CI/CD pipelines.</div>
+          <div class="feature-why"><strong>Why for you:</strong> 17 of your 37 sessions are automated meeting-notes processing that require zero user interaction. Running these headless via cron or a trigger script would eliminate the need to manually invoke the skill and let them run fully unattended.</div>
           
           <div class="feature-examples">
             <div class="feature-example">
               <div class="example-code-row">
-                <code class="example-code"># .claude/skills/process-meeting/SKILL.md
-## Meeting Notes Processing
-1. Read the most recent file in meetings/raw/
-2. Extract: topics, decisions, action items, attendees
-3. Write structured note to meetings/processed/YYYY-MM-DD-title.md
-4. Append new decisions to decisions.md (avoid duplicates)
-5. Append action items to TODO.md with assignees
-6. Run: git add -A &amp;&amp; git commit -m &quot;docs: process meeting notes [date]&quot;
-7. Attempt git push — if it fails (VPN/network), log warning but do NOT fail the workflow
-
-## Error Handling
-- If /tmp or sandboxed paths are inaccessible, copy files to the project directory first
-- If git push fails, still report success for local changes</code>
+                <code class="example-code"># Cron job or LaunchAgent script for meeting notes processing
+claude -p &quot;Process the latest meeting notes in meetings/raw/. Create structured note, update TODO.md, update decisions.md, and git commit.&quot; --allowedTools &quot;Read,Write,Edit,Bash,Glob&quot;</code>
                 <button class="copy-btn" onclick="copyText(this)">Copy</button>
               </div>
             </div>
@@ -759,22 +741,24 @@
         </div>
       
         <div class="feature-card">
-          <div class="feature-title">Headless Mode</div>
-          <div class="feature-oneliner">Run Claude non-interactively from scripts and CI/CD pipelines.</div>
-          <div class="feature-why"><strong>Why for you:</strong> You already run many automated/unattended workflows (meeting processing, weekly digests, reflect/maintenance). At least 15 of your 32 sessions were triggered as automated pipelines. Moving these to headless mode with explicit --allowedTools would prevent the permission pop-ups and sandbox issues that blocked your insights triage and other workflows.</div>
+          <div class="feature-title">Custom Skills</div>
+          <div class="feature-oneliner">Reusable prompts defined as markdown files that run with a single /command.</div>
+          <div class="feature-why"><strong>Why for you:</strong> You already use skills heavily (41 Skill invocations), but your insights/triage skills repeatedly fail due to permission issues. Creating a /triage-local skill that copies required data into the repo first, or a /preflight skill that validates environment access before running, would prevent the 4 not_achieved sessions.</div>
           
           <div class="feature-examples">
             <div class="feature-example">
               <div class="example-code-row">
-                <code class="example-code"># Cron job or LaunchAgent for meeting notes processing
-claude -p &quot;Run the meeting notes processing pipeline on the latest file in meetings/raw/&quot; \
-  --allowedTools &quot;Read,Write,Edit,Bash(git add:*),Bash(git commit:*),Bash(git push:*)&quot; \
-  --max-turns 15
+                <code class="example-code"># .claude/skills/preflight/SKILL.md
+---
+description: Validate environment access before running data workflows
+---
 
-# Weekly highlights digest every Monday morning
-claude -p &quot;Generate a weekly highlights digest for the past 7 days&quot; \
-  --allowedTools &quot;Read,Bash(cat:*),Bash(ls:*),Write&quot; \
-  --output-format json</code>
+Before running any analytics or triage workflow:
+1. Test access to ~/.claude/ directory — if blocked, STOP and report immediately
+2. Test access to /tmp/ — if blocked, STOP and report immediately  
+3. Verify git remote connectivity with `git ls-remote --exit-code origin 2&gt;&amp;1`
+4. Report which resources are available and which are blocked
+5. Only proceed with the main workflow if all required paths are accessible</code>
                 <button class="copy-btn" onclick="copyText(this)">Copy</button>
               </div>
             </div>
@@ -790,14 +774,14 @@ claude -p &quot;Generate a weekly highlights digest for the past 7 days&quot; \
     <div class="patterns-section">
       
         <div class="pattern-card">
-          <div class="pattern-title">Batch your bug fixes with upfront test verification</div>
-          <div class="pattern-summary">When fixing multiple bugs in one session, ask Claude to run the full test suite first and establish a baseline before making any changes.</div>
-          <div class="pattern-detail">You had 10 sessions with buggy code friction and 6 with wrong-approach issues. In your GENERAL_AGENT session, tests failed multiple times due to PYTHONPATH conflicts and missing mocks that could have been caught earlier. In your design system bug-fix session, Claude missed an issue because it only checked main. Starting each bug-fix session with 'run all tests, list all open issues across branches, then fix them one by one with a test run between each' would reduce the debugging loops significantly.</div>
+          <div class="pattern-title">Automate your meeting notes pipeline end-to-end</div>
+          <div class="pattern-summary">Move your 17+ meeting-notes sessions to a fully headless cron-triggered pipeline so you never have to manually invoke them.</div>
+          <div class="pattern-detail">Nearly half your sessions (17/37) are the same meeting-notes processing pipeline, and they almost always succeed fully without any user input. This is a perfect candidate for headless mode triggered by a file watcher or scheduled cron job. Combined with a hook that validates git push access, you'd eliminate the one recurring failure mode (VPN blocking push) by deferring pushes to a retry queue.</div>
           
           <div class="copyable-prompt-section">
             <div class="prompt-label">Paste into Claude Code:</div>
             <div class="copyable-prompt-row">
-              <code class="copyable-prompt">Before making any changes: 1) Run the full test suite and show me the baseline results, 2) List all open issues from ISSUES.md on all branches AND open PRs, 3) Then fix each issue one at a time, running tests after each fix to confirm no regressions.</code>
+              <code class="copyable-prompt">Set up a file watcher that automatically processes new meeting notes: when a new file appears in meetings/raw/, run the full meeting notes pipeline — create structured note, update TODO.md, update decisions.md, commit, and attempt push. If push fails, log it for retry.</code>
               <button class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
           </div>
@@ -805,14 +789,14 @@ claude -p &quot;Generate a weekly highlights digest for the past 7 days&quot; \
         </div>
       
         <div class="pattern-card">
-          <div class="pattern-title">Add deploy verification to your CSS/UI workflows</div>
-          <div class="pattern-summary">After making visual changes, use your Playwright MCP to screenshot and verify before deploying.</div>
-          <div class="pattern-detail">You're already using Playwright MCP (20 navigations, 19 screenshots), but your CSS sessions still hit friction with double-bold bugs, token resolution failures, and styling issues that required multiple rounds. Making screenshot verification a standard step after every visual change — not just at the end — would catch issues like the double-bold &lt;strong&gt; nesting or broken token resolution before they compound. Your 7 text/copy change sessions and 15 CSS-related edits would all benefit.</div>
+          <div class="pattern-title">Fail fast on sandbox/permission issues</div>
+          <div class="pattern-summary">Add a preflight check to data-analysis skills so they detect permission blocks immediately instead of wasting time on doomed retries.</div>
+          <div class="pattern-detail">4 of your 37 sessions (11%) completely failed because Claude was sandboxed away from required directories (~/.claude/, /tmp, sibling repos). In each case, Claude tried multiple workarounds before giving up. A 10-second preflight check at the start of these skills would save significant time and give you a clear error message to act on, rather than a long transcript of failed attempts.</div>
           
           <div class="copyable-prompt-section">
             <div class="prompt-label">Paste into Claude Code:</div>
             <div class="copyable-prompt-row">
-              <code class="copyable-prompt">After every CSS or copy change, take a Playwright screenshot of the affected component and compare it to the expected result. If anything looks wrong (double styling, missing tokens, layout shifts), fix it before moving to the next change. Don't batch visual changes without intermediate verification.</code>
+              <code class="copyable-prompt">Before running the insights triage workflow, first check: can you read files in ~/.claude/? Can you access /tmp/? Can you access ../facets/ and ../session-meta/? If any of these are blocked, stop immediately and tell me which permissions I need to grant.</code>
               <button class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
           </div>
@@ -820,14 +804,14 @@ claude -p &quot;Generate a weekly highlights digest for the past 7 days&quot; \
         </div>
       
         <div class="pattern-card">
-          <div class="pattern-title">Pre-flight checks for automated pipeline sessions</div>
-          <div class="pattern-summary">Start automated workflows with an environment readiness check to avoid sandbox and permission failures.</div>
-          <div class="pattern-detail">Two of your sessions completely failed (not_achieved) due to environment issues — one from sandbox file access restrictions on /tmp, another from an API connection error. A third hit macOS TCC permission blocks. Since ~15 of your 32 sessions are automated pipelines, adding a 3-second pre-flight check (can I access the files? can I reach the API? can I write to the output dirs?) would save entire sessions from failing silently or late.</div>
+          <div class="pattern-title">Reduce buggy code friction with incremental validation</div>
+          <div class="pattern-summary">Ask Claude to run tests or type-checks after every significant code change, not just at the end.</div>
+          <div class="pattern-detail">You had 10 sessions with buggy code friction — issues like PYTHONPATH conflicts, missing mocks, CSS double-bold bugs, and token resolution failures that required multiple debugging rounds. In the GENERAL_AGENT session, tests failed multiple times for different reasons. Asking Claude to validate incrementally (test after each file change) catches issues earlier when they're cheaper to fix, rather than accumulating them into a debugging marathon at the end.</div>
           
           <div class="copyable-prompt-section">
             <div class="prompt-label">Paste into Claude Code:</div>
             <div class="copyable-prompt-row">
-              <code class="copyable-prompt">Before starting the main workflow, run these pre-flight checks: 1) Verify you can read all input files needed, 2) Verify you can write to all output directories, 3) Test any API connections required, 4) Check git status is clean. If any check fails, report the blocker immediately instead of proceeding.</code>
+              <code class="copyable-prompt">After each file you modify, immediately run the relevant tests or type-check for that file before moving to the next change. If anything fails, fix it before proceeding. Don't batch all testing to the end.</code>
               <button class="copy-btn" onclick="copyText(this)">Copy</button>
             </div>
           </div>
@@ -840,28 +824,48 @@ claude -p &quot;Generate a weekly highlights digest for the past 7 days&quot; \
 
     
     <h2 id="section-horizon">On the Horizon</h2>
-    <p class="section-intro">Your usage reveals a sophisticated shift toward autonomous pipelines and skill-based workflows—you're already operating at the frontier, and the next leap is making these systems self-healing, parallelized, and fully hands-off.</p>
+    <p class="section-intro">Your Claude Code usage reveals a power user who has already automated meeting-note pipelines and multi-file workflows — the next frontier is eliminating the remaining friction through fully autonomous, self-healing agent architectures.</p>
     <div class="horizon-section">
       
         <div class="horizon-card">
-          <div class="horizon-title">Self-Healing Automated Pipelines with Error Recovery</div>
-          <div class="horizon-possible">Your meeting-notes processing pipeline is already running autonomously in 12+ sessions, but friction data shows it still breaks on sandbox permissions, git push failures, and missing setup steps. An evolved version could detect these failure modes at runtime, attempt fallback strategies (e.g., alternative file paths, deferred commits, queued retries), and log unrecoverable errors as structured issues—turning your pipeline from 'usually works' into 'always completes or gracefully degrades.' This would eliminate the 3-4 sessions where automation stalled on environment issues.</div>
-          <div class="horizon-tip"><strong>Getting started:</strong> Use Claude Code's skill system to encode error-recovery playbooks, and leverage sub-agents to isolate failure-prone steps so one broken stage doesn't halt the whole pipeline.</div>
-          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>Review my automated meeting-notes processing skill and add comprehensive error handling: 1) If file permissions block writing to the target directory, fall back to writing to the project root and log a warning. 2) If git commit or push fails, save a .pending-commit manifest so the next session can retry. 3) If the source notes file is missing or empty, write a structured error entry to an errors.md log instead of failing silently. 4) Add a pre-flight check at the start of the skill that validates all required paths, permissions, and git state before beginning work. Test each failure mode by simulating the error condition and verifying the fallback activates correctly.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+          <div class="horizon-title">Self-Healing Pipelines with Test-Driven Debugging</div>
+          <div class="horizon-possible">Your top friction sources — buggy code (10 instances) and wrong approach (10 instances) — often required multiple debugging rounds, like the PYTHONPATH conflicts and token resolution failures. An autonomous workflow can run your full test suite in a loop, diagnose failures, apply fixes, and re-run until green — turning multi-round debugging sessions into single-prompt resolutions. Imagine the GENERAL_AGENT session (18/18 tests passing after several infrastructure issues) completing in one shot with zero human intervention.</div>
+          <div class="horizon-tip"><strong>Getting started:</strong> Use Claude Code with a structured iterate-against-tests prompt pattern. The Agent tool (already used 21 times in your data) can spawn sub-agents for parallel diagnosis when multiple test files fail simultaneously.</div>
+          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>I need you to fix all failing tests in this project autonomously. Run the full test suite with `pytest -x --tb=short`, then for each failure: 1) Read the failing test and the source file it tests, 2) Diagnose the root cause (check for missing mocks, import issues, missing config entries like PROMPT_DEFAULT_VERSION_DICT), 3) Apply the minimal fix, 4) Re-run the specific test to confirm it passes. Repeat until the full suite is green. If you hit environment issues (PYTHONPATH, editable installs), fix the test infrastructure first before fixing test logic. Show me a summary of each fix when done.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
         </div>
       
         <div class="horizon-card">
-          <div class="horizon-title">Parallel Agent Swarm for Multi-Issue Resolution</div>
-          <div class="horizon-possible">Your session where Claude fixed 4 design system bugs, published a release, and closed PRs in one sweep was rated essential—but it ran sequentially. With parallel sub-agents, you could dispatch independent bug fixes simultaneously, each running in its own branch, iterating against tests until green, then converging for a single coordinated publish. Your data shows 21 Agent tool invocations already; scaling this to 4-6 concurrent agents could compress multi-hour fix-and-release cycles into minutes while catching inter-issue conflicts early.</div>
-          <div class="horizon-tip"><strong>Getting started:</strong> Use the Agent tool to spawn parallel sub-agents, each scoped to a single issue branch with its own test suite, then use a coordinator agent to merge results and run integration tests.</div>
-          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>I have multiple open issues in my design system that need fixing. Act as a coordinator agent and do the following: 1) Read ISSUES.md and all open PR branches to build a complete list of outstanding bugs. 2) For each independent issue, spawn a sub-agent with instructions to: create a feature branch, implement the fix, run the relevant test suite, and iterate until all tests pass. 3) As coordinator, monitor each sub-agent's progress. When all sub-agents report green tests, merge each branch sequentially into main, running the full integration test suite after each merge. 4) If any merge causes test failures, back out that branch and report the conflict. 5) Once all clean merges are complete, bump the package version, publish, and generate a changelog entry summarizing all fixes. Report a structured summary of what succeeded, what conflicted, and what needs manual review.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+          <div class="horizon-title">Parallel Agent Swarm for Cross-Repo Tasks</div>
+          <div class="horizon-possible">Several sessions failed because Claude was sandboxed to one directory and couldn't reach sibling repos, session data, or config files — accounting for 3 of your 4 not_achieved sessions. A parallel agent architecture can dispatch sub-agents with appropriate permissions to different repos simultaneously, then merge results. Your design system bug-fix session (4 issues fixed, published, PRs closed in one session) hints at what's possible when scaled across repositories with dedicated agents per workstream.</div>
+          <div class="horizon-tip"><strong>Getting started:</strong> Use the Claude Code Agent tool to spawn child agents scoped to different directories or repos. Pre-configure your CLAUDE.md with allowed paths and cross-repo conventions so each sub-agent inherits the right context.</div>
+          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>I need you to run a cross-repo triage workflow using parallel sub-agents. Spawn separate agents for each task:
+
+Agent 1 — Session Analysis: Read all session files from ~/.claude/session-meta/ and produce a friction report grouped by category (buggy_code, wrong_approach, permission_blocked, etc.) with counts and example sessions.
+
+Agent 2 — Skill Issues: Read SKILL_ISSUES.md from the facets/ directory, cross-reference with the friction report, and identify which skills need fixes.
+
+Agent 3 — Fix Implementation: For each identified skill issue, read the skill file, apply the fix, and run any available tests.
+
+Coordinate the agents so Agent 3 waits for Agent 1 and 2 to complete. Write a final triage-report.md summarizing findings, fixes applied, and remaining blockers.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
         </div>
       
         <div class="horizon-card">
-          <div class="horizon-title">Continuous Friction Detection and Auto-Remediation</div>
-          <div class="horizon-possible">Your insights triage skill already identifies friction patterns, but it failed twice due to sandbox and permission issues—ironically demonstrating the very problem it's trying to solve. A more ambitious approach would embed friction detection directly into every automated workflow: each skill logs structured telemetry about what broke and why, a nightly analysis agent clusters these into patterns, and when a pattern crosses a threshold, it automatically generates a fix PR or a new defensive skill. Your 10 buggy_code and 6 wrong_approach friction events could become self-correcting feedback loops instead of recurring pain.</div>
-          <div class="horizon-tip"><strong>Getting started:</strong> Build a lightweight telemetry skill that every other skill calls on completion, writing structured success/failure data to a local JSON log, then create an analysis skill that reads this log and files actionable issues or generates patches.</div>
-          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>Help me build a friction telemetry and auto-remediation system: 1) Create a shared skill called 'log-telemetry' that any other skill can invoke at completion. It should append a JSON entry to .claude/telemetry.jsonl with fields: timestamp, skill_name, outcome (success/partial/failure), failure_type (permission, sandbox, api_error, wrong_approach, buggy_code, etc.), failure_detail, and recovery_attempted. 2) Update my meeting-notes processing skill to call log-telemetry on both success and failure paths. 3) Create an 'analyze-friction' skill that reads telemetry.jsonl, groups failures by type and skill, identifies any pattern occurring 3+ times, and for each pattern: writes a detailed issue to SKILL_ISSUES.md with reproduction steps, and attempts to generate a defensive code patch that prevents the failure. 4) If the patch is straightforward (e.g., adding a permission pre-check or a try/catch fallback), apply it to a new branch and run tests. If it's complex, just file the issue with a proposed approach. 5) Add a weekly cron trigger for analyze-friction so this runs automatically.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
+          <div class="horizon-title">End-to-End Autonomous Document-to-Deploy Pipeline</div>
+          <div class="horizon-possible">You've already automated meeting-notes processing into an impressive zero-interaction pipeline (15+ fully achieved sessions). The next step is chaining this with downstream automation: notes trigger TODO prioritization, TODOs trigger code changes, code changes trigger tests, passing tests trigger deploys. Your data shows you already do CSS/copy deploys to VMs and GHP — connecting these into a single autonomous flow could turn a meeting decision into a shipped change with no manual steps.</div>
+          <div class="horizon-tip"><strong>Getting started:</strong> Build a chained skill that uses your existing meeting-notes processor as stage 1, then inspects the generated TODOs for actionable code tasks, implements them, validates against tests, and triggers your existing deploy scripts.</div>
+          <div class="pattern-prompt"><div class="prompt-label">Paste into Claude Code:</div><code>Build me an end-to-end automation skill that chains these stages:
+
+1. **Process Meeting Notes**: Run the existing meeting-notes pipeline — read raw notes from the latest file in meetings/, create structured meeting note, update TODO.md and decisions.md.
+
+2. **Triage New TODOs**: Parse the TODOs just added. For any tagged `autofix` or `copy-change`, proceed to stage 3. For others, just log them.
+
+3. **Implement Changes**: For each actionable TODO, find the relevant source files (check CSS, TypeScript, JavaScript, Markdown based on the task), make the edit, and write a test if one doesn't exist.
+
+4. **Validate**: Run the full test suite. If failures occur, debug and fix iteratively until green.
+
+5. **Commit &amp; Deploy**: Git commit with a conventional commit message referencing the meeting date and decision ID. If the change is CSS/copy only, run the deploy-to-vm script.
+
+After completion, append a status summary to the meeting note file showing which TODOs were auto-resolved and which need human review.</code><button class="copy-btn" onclick="copyText(this)">Copy</button></div>
         </div>
       
     </div>
@@ -869,8 +873,8 @@ claude -p &quot;Generate a weekly highlights digest for the past 7 days&quot; \
 
     
     <div class="fun-ending">
-      <div class="fun-headline">"User built a fully autonomous meeting-notes robot that processes Granola meetings, routes them to projects, and updates docs — only to be foiled by macOS asking 'are you sure Python can touch your Documents folder?'"</div>
-      <div class="fun-detail">In a session where Claude built an impressive automated pipeline (30-min polling, LLM-based project routing, feedback loops), the whole system silently failed because macOS TCC privacy permissions blocked Python from accessing ~/Documents. Corporate SSO also blocked calendar integration, and duplicate Granola API entries caused redundant processing — a comedy of enterprise environment paper cuts undermining an otherwise essential automation.</div>
+      <div class="fun-headline">"Claude built an entire automated meeting-notes empire — 15+ sessions of a robot diligently attending meetings it was never invited to"</div>
+      <div class="fun-detail">Across this 12-day stretch, the user had Claude running an automated Granola meeting sync pipeline that processed raw meeting notes into structured docs, TODO updates, and decision logs — over and over, session after session, committing and pushing without human intervention. Claude became the world's most reliable meeting secretary, only to be tripped up once by not being on the VPN. The sheer repetition paints a picture: a human who never wants to write meeting notes again, and an AI that will never complain about it.</div>
     </div>
     
 
@@ -916,7 +920,7 @@ claude -p &quot;Generate a weekly highlights digest for the past 7 days&quot; \
       }
     }
     // Timezone selector for time of day chart (data is from our own analytics, not user input)
-    const rawHourCounts = {"9":7,"10":4,"11":10,"12":7,"13":12,"14":26,"15":39,"16":40,"17":20,"18":7,"19":8,"23":13};
+    const rawHourCounts = {"9":7,"10":6,"11":12,"12":9,"13":7,"14":22,"15":39,"16":37,"17":20,"18":9,"19":8};
     function updateHourHistogram(offsetFromPT) {
       const periods = [
         { label: "Morning (6-12)", range: [6,7,8,9,10,11] },
