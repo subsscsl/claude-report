@@ -22,7 +22,7 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$HOME/.local/bin:$HOME/.volta/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 REPORT_SRC="$LOG_DIR/report.html"
-REPO_DIR="$HOME/Documents/GitHub/claude-report"
+REPO_DIR="$HOME/Documents/GitHub/personal-projects/claude-report"
 DATE=$(date +%Y-%m-%d)
 
 mkdir -p "$LOG_DIR"
