@@ -24,6 +24,8 @@ export PATH="$HOME/.local/bin:$HOME/.volta/bin:/opt/homebrew/bin:/usr/local/bin:
 REPORT_SRC="$LOG_DIR/report.html"
 REPO_DIR="$HOME/Documents/GitHub/personal-projects/claude-report"
 DATE=$(date +%Y-%m-%d)
+WEEK_STAMP_FILE="$LOG_DIR/.report-last-week"
+CURRENT_WEEK=$(date +%G-W%V)
 
 mkdir -p "$LOG_DIR"
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOG_FILE"; }
@@ -35,6 +37,25 @@ if [ -f "$LOG_FILE" ] && [ "$(wc -l < "$LOG_FILE")" -gt 5000 ]; then
 fi
 
 log "--- Starting weekly insights report ---"
+
+# Once-per-week guard — this LaunchAgent fires DAILY at 10:30 local so it can retry
+# until the LinkedIn VPN is reachable, but it must produce only ONE report per ISO week.
+# If this ISO week's report already succeeded, today's run is a no-op.
+if [ -f "$WEEK_STAMP_FILE" ] && [ "$(cat "$WEEK_STAMP_FILE" 2>/dev/null)" = "$CURRENT_WEEK" ]; then
+  log "Report for $CURRENT_WEEK already generated — nothing to do today."
+  exit 0
+fi
+
+# VPN check — copilot CLI requires LinkedIn VPN (GitHub enterprise IP allow list)
+if ! command -v scutil &>/dev/null; then
+  log "ERROR: scutil not found; cannot verify LinkedIn VPN. PATH=$PATH"
+  exit 1
+fi
+if ! scutil --dns | awk '/nameserver\[[0-9]+\]/{print $3}' | grep -Eq '^172\.(23|29)\.'; then
+  log "VPN not connected (no LinkedIn nameserver detected) — skipping. Will retry tomorrow 10:30 until connected this week ($CURRENT_WEEK)."
+  exit 0
+fi
+log "VPN connected — proceeding"
 
 # Resolve which CLI to use: prefer copilot, fall back to claude
 if command -v copilot &>/dev/null; then
@@ -149,7 +170,7 @@ archive_html = f"""<!DOCTYPE html>
   <div class="container">
     <a href="index.html" class="back">← Latest Report</a>
     <h1>All Reports</h1>
-    <p class="subtitle">Weekly Copilot CLI usage insights, generated every Monday</p>
+    <p class="subtitle">Weekly Copilot CLI usage insights, generated weekly</p>
     <ul>
       {rows}
     </ul>
@@ -172,7 +193,7 @@ cd "$REPO_DIR"
 git remote set-url origin "https://github.com/subsscsl/claude-report.git" 2>/dev/null || true
 
 git add "report-$DATE.html" report-latest.html index.html archive.html
-git diff --staged --quiet && { log "No changes to commit (report unchanged)"; exit 0; }
+git diff --staged --quiet && { log "No changes to commit (report unchanged)"; echo "$CURRENT_WEEK" > "$WEEK_STAMP_FILE"; exit 0; }
 
 git -c user.name="subsscsl" -c user.email="subsscsl@users.noreply.github.com" \
   commit -m "Weekly insights report $DATE"
@@ -186,4 +207,6 @@ else
   git push origin main
 fi
 
-log "Done. Pushed report-$DATE.html to subsscsl/claude-report"
+# Mark this ISO week done so daily retries stop until next week
+echo "$CURRENT_WEEK" > "$WEEK_STAMP_FILE"
+log "Done. Pushed report-$DATE.html to subsscsl/claude-report (week $CURRENT_WEEK stamped)"
