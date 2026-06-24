@@ -51,3 +51,16 @@ cp commands/insights.md ~/.copilot/commands/insights.md   # restore into Copilot
 cp ~/.copilot/commands/insights.md commands/insights.md   # back up edits
 ```
 If a future report looks thin (missing the Features to Try / New Ways / On the Horizon sections), the live command was likely overwritten — restore it from this backup.
+
+### Syncing the LaunchAgent plist backup
+The live plist is at `~/Library/LaunchAgents/com.schew.claude-report.plist` and a backup lives at `launchagents/com.schew.claude-report.plist`. It schedules the daily 10:30 run. To restore and (re)load it:
+```bash
+cp launchagents/com.schew.claude-report.plist ~/Library/LaunchAgents/com.schew.claude-report.plist
+plutil -lint ~/Library/LaunchAgents/com.schew.claude-report.plist
+launchctl bootout  "gui/$(id -u)" ~/Library/LaunchAgents/com.schew.claude-report.plist 2>/dev/null
+launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/com.schew.claude-report.plist
+```
+To back up edits made to the live plist:
+```bash
+cp ~/Library/LaunchAgents/com.schew.claude-report.plist launchagents/com.schew.claude-report.plist
+```
