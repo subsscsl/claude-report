@@ -13,14 +13,15 @@ A backup of that script lives at `scripts/generate-claude-report.sh` in this rep
 The custom `/insights` command that defines the report's structure and sections is backed up at `commands/insights.md`. **This file is the single source of report quality** — it specifies all 8 sections (At a Glance, What You Worked On, How You Use Copilot CLI, Impressive Things, Where Things Went Wrong, Features to Try with copy-paste `copilot-instructions.md` additions + Hooks, New Ways to Use, On the Horizon) and the design system. It is NOT a symlink and is easy to lose during tooling migrations — keep this backup in sync.
 
 ### What the script does
-1. Skips immediately if this ISO week's report was already generated (week stamp in `~/.copilot/usage-data/.report-last-week`)
-2. Verifies the LinkedIn VPN / corp network is reachable — if not, logs and exits cleanly to retry tomorrow at 10:30
-3. Detects available CLI (`copilot` preferred, `claude` fallback)
-4. Runs `/insights` to regenerate `~/.copilot/usage-data/report.html` — the custom `/insights` command lives at `~/.copilot/commands/insights.md` and queries the local session store (`~/.copilot/session-store.db`)
-5. Runs `/schew-insights-triage` for friction analysis (non-fatal if it fails)
-6. Copies the output to `report-YYYY-MM-DD.html` and `report-latest.html`
-7. Regenerates `index.html` (latest report + archive link) and `archive.html` (all reports)
-8. Commits and pushes to `subsscsl/claude-report` using `gh` credential helper (no embedded tokens), then stamps the ISO week so the rest of the week's daily runs no-op
+1. Drains the **push-retry queue** first — delivers any report a prior headless run committed but couldn't push (see below). Runs before the week/VPN guards.
+2. Skips immediately if this ISO week's report was already generated (week stamp in `~/.copilot/usage-data/.report-last-week`)
+3. Verifies the LinkedIn VPN / corp network is reachable — if not, logs and exits cleanly to retry tomorrow at 10:30
+4. Detects available CLI (`copilot` preferred, `claude` fallback)
+5. Runs `/insights` to regenerate `~/.copilot/usage-data/report.html` — the custom `/insights` command lives at `~/.copilot/commands/insights.md` and queries the local session store (`~/.copilot/session-store.db`)
+6. Runs `/schew-insights-triage` for friction analysis (non-fatal if it fails)
+7. Copies the output to `report-YYYY-MM-DD.html` and `report-latest.html`
+8. Regenerates `index.html` (latest report + archive link) and `archive.html` (all reports)
+9. Commits and pushes to `subsscsl/claude-report` using `gh` credential helper (no embedded tokens). If the push fails (VPN dropped / network blip), the pending push is **enqueued** for the next run instead of lost. Either way it then stamps the ISO week so the rest of the week's daily runs no-op.
 
 ### Failure handling
 If any step fails, the error is logged to `~/.copilot/usage-data/launchagent-report.log`.
@@ -42,6 +43,20 @@ cat ~/.copilot/usage-data/launchagent-report.log | tail -30
 The live script is at `~/.copilot/scripts/generate-claude-report.sh`. To sync:
 ```bash
 cp scripts/generate-claude-report.sh ~/.copilot/scripts/generate-claude-report.sh
+```
+
+### Push-retry queue
+Headless runs commit the report locally, then push to public `github.com`. If that push fails (VPN dropped mid-run, transient network blip), the pending push is appended to `~/.copilot/state/push-retry.jsonl` instead of being lost, and delivered at the **start of the next successful run** (the drain runs before the once-per-week and VPN guards, so a queued push still ships even on a day the report is already done or the VPN is down).
+
+The logic lives in a reusable sourceable library `~/.copilot/scripts/push-retry-queue.sh` (also usable as a CLI: `push-retry-queue.sh drain | list | enqueue …`). A backup lives at `scripts/push-retry-queue.sh` in this repo. To sync:
+```bash
+cp scripts/push-retry-queue.sh ~/.copilot/scripts/push-retry-queue.sh   # restore into Copilot CLI
+cp ~/.copilot/scripts/push-retry-queue.sh scripts/push-retry-queue.sh   # back up edits
+```
+Inspect or manually drain the queue:
+```bash
+~/.copilot/scripts/push-retry-queue.sh list    # show pending pushes
+~/.copilot/scripts/push-retry-queue.sh drain   # attempt delivery now
 ```
 
 ### Syncing the /insights command backup

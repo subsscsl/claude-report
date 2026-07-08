@@ -30,6 +30,13 @@ CURRENT_WEEK=$(date +%G-W%V)
 mkdir -p "$LOG_DIR"
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOG_FILE"; }
 
+# Push-retry queue — deliver any push that a prior headless run couldn't send
+# (VPN dropped / network blip after the report was committed locally).
+if [ -f "$HOME/.copilot/scripts/push-retry-queue.sh" ]; then
+  # shellcheck source=/dev/null
+  . "$HOME/.copilot/scripts/push-retry-queue.sh"
+fi
+
 # Log rotation — keep last 2000 lines when over 5000
 if [ -f "$LOG_FILE" ] && [ "$(wc -l < "$LOG_FILE")" -gt 5000 ]; then
   tail -2000 "$LOG_FILE" > "$LOG_FILE.tmp" && mv "$LOG_FILE.tmp" "$LOG_FILE"
@@ -37,6 +44,15 @@ if [ -f "$LOG_FILE" ] && [ "$(wc -l < "$LOG_FILE")" -gt 5000 ]; then
 fi
 
 log "--- Starting weekly insights report ---"
+
+# Drain any queued pushes from prior failed runs FIRST — before the once-per-week
+# guard and the VPN check — so a report committed on an earlier day still reaches
+# GitHub even when this week is already stamped or the LinkedIn VPN is down.
+# (The push target is public github.com, reachable without VPN.) Best-effort.
+if command -v push_retry_drain &>/dev/null; then
+  log "Draining push-retry queue (if any)…"
+  push_retry_drain 2>>"$LOG_FILE" || true
+fi
 
 # Once-per-week guard — this LaunchAgent fires DAILY at 10:30 local so it can retry
 # until the LinkedIn VPN is reachable, but it must produce only ONE report per ISO week.
@@ -198,13 +214,19 @@ git diff --staged --quiet && { log "No changes to commit (report unchanged)"; ec
 git -c user.name="subsscsl" -c user.email="subsscsl@users.noreply.github.com" \
   commit -m "Weekly insights report $DATE"
 
-# Push using gh CLI credential helper (no token in URL)
-GH_TOKEN=$(gh auth token --user subsscsl 2>/dev/null)
-if [ -n "$GH_TOKEN" ]; then
-  GIT_AUTH="Authorization: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64)"
-  git -c "http.https://github.com/.extraheader=$GIT_AUTH" push origin main
+# Push using the push-retry queue: try now, enqueue on failure so the next
+# successful run delivers it. Returns 0 even on failure (safe under set -e).
+if command -v push_retry_push_or_enqueue &>/dev/null; then
+  push_retry_push_or_enqueue "$REPO_DIR" main origin claude-report "gh:subsscsl" 2>>"$LOG_FILE"
 else
-  git push origin main
+  # Fallback: original inline push if the library is missing.
+  GH_TOKEN=$(gh auth token --user subsscsl 2>/dev/null)
+  if [ -n "$GH_TOKEN" ]; then
+    GIT_AUTH="Authorization: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64)"
+    git -c "http.https://github.com/.extraheader=$GIT_AUTH" push origin main
+  else
+    git push origin main
+  fi
 fi
 
 # Mark this ISO week done so daily retries stop until next week
