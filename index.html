@@ -1,120 +1,252 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Copilot CLI Insights — Week of June 24, 2026</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copilot CLI Weekly Insights · Jul 24–31, 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f8fafc; color: #334155; line-height: 1.65; padding: 48px 24px; }
-.container { max-width: 800px; margin: 0 auto; }
-h1 { font-size: 32px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-h2 { font-size: 20px; font-weight: 600; color: #0f172a; margin-top: 48px; margin-bottom: 16px; }
-h3 { font-size: 14px; font-weight: 600; color: #1e40af; margin: 0 0 12px 0; }
-.subtitle { color: #64748b; font-size: 15px; margin-bottom: 24px; }
-.nav-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 32px 0; padding: 16px; background: white; border-radius: 8px; border: 1px solid #e2e8f0; }
-.nav-toc a { font-size: 12px; color: #64748b; text-decoration: none; padding: 6px 12px; border-radius: 6px; background: #f1f5f9; transition: all 0.15s; }
-.nav-toc a:hover { background: #e2e8f0; color: #334155; }
-.stats-row { display: flex; gap: 24px; margin-bottom: 32px; padding: 20px 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; flex-wrap: wrap; }
-.stat { text-align: center; }
-.stat-value { font-size: 24px; font-weight: 700; color: #0f172a; }
-.stat-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: .04em; }
-.at-a-glance { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 1px solid #f59e0b; border-radius: 12px; padding: 20px 24px; margin-bottom: 8px; }
-.glance-title { font-size: 16px; font-weight: 700; color: #92400e; margin-bottom: 12px; }
-.glance-section { font-size: 14px; color: #78350f; line-height: 1.6; }
-.glance-section strong { color: #92400e; }
-.project-area { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
-.area-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.area-name { font-weight: 600; font-size: 15px; color: #0f172a; }
-.area-count { font-size: 12px; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 4px; }
-.area-desc { font-size: 14px; color: #475569; line-height: 1.5; }
-.histo { display: flex; align-items: flex-end; gap: 4px; height: 130px; margin: 16px 0 8px; }
-.bar { flex: 1; background: linear-gradient(180deg,#60a5fa,#2563eb); border-radius: 3px 3px 0 0; min-height: 2px; position: relative; }
-.bar span { position: absolute; bottom: -18px; left: 0; right: 0; text-align: center; font-size: 9px; color: #94a3b8; }
-.callout { font-size: 13px; color: #64748b; margin-top: 24px; }
-.big-win { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
-.big-win-title { font-weight: 600; font-size: 15px; color: #166534; margin-bottom: 6px; }
-.big-win-desc { font-size: 14px; color: #15803d; line-height: 1.5; }
-.friction-category { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
-.friction-title { font-weight: 600; font-size: 15px; color: #991b1b; margin-bottom: 6px; }
-.friction-desc { font-size: 13px; color: #7f1d1d; margin-bottom: 10px; }
-.friction-examples { margin: 0 0 0 20px; font-size: 13px; color: #334155; }
-.friction-examples li { margin-bottom: 4px; }
-.cmd-section { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px; margin-bottom: 20px; }
-.cmd-actions { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #dbeafe; }
-.copy-all-btn { background: #2563eb; color: white; border: none; border-radius: 4px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-weight: 500; transition: all 0.2s; }
-.copy-all-btn:hover { background: #1d4ed8; }
-.copy-all-btn.copied { background: #16a34a; }
-.cmd-item { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px; padding: 12px 0; border-bottom: 1px solid #dbeafe; }
-.cmd-item:last-child { border-bottom: none; }
-.cmd-checkbox { margin-top: 4px; }
-.cmd-code { background: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; color: #1e40af; border: 1px solid #bfdbfe; font-family: ui-monospace, monospace; white-space: pre-wrap; word-break: break-word; flex: 1; }
-.cmd-why { font-size: 12px; color: #64748b; width: 100%; padding-left: 24px; margin-top: 2px; }
-.feature-card { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
-.pattern-card { background: #f0f9ff; border: 1px solid #7dd3fc; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
-.feature-title, .pattern-title { font-weight: 600; font-size: 15px; color: #0f172a; margin-bottom: 6px; }
-.feature-oneliner, .pattern-summary { font-size: 14px; color: #475569; margin-bottom: 8px; }
-.feature-why, .pattern-detail { font-size: 13px; color: #334155; line-height: 1.5; }
-.prompt-row { display: flex; align-items: flex-start; gap: 8px; margin-top: 12px; }
-.prompt-code { flex: 1; background: #f1f5f9; padding: 8px 12px; border-radius: 4px; font-size: 12px; color: #0f172a; border: 1px solid #e2e8f0; font-family: ui-monospace, monospace; white-space: pre-wrap; word-break: break-word; }
-.copy-btn { background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 10px; font-size: 11px; cursor: pointer; color: #475569; white-space: nowrap; }
-.copy-btn.copied { background: #16a34a; color: #fff; border-color: #16a34a; }
-.horizon { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; }
-.horizon li { margin: 0 0 10px 22px; font-size: 14px; color: #475569; }
-.horizon li strong { color: #0f172a; }
-.section-intro { font-size: 14px; color: #64748b; margin-bottom: 16px; }
-footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #94a3b8; }
-</style></head>
+  :root{--bg:#f8fafc;--tx:#334155;--hd:#0f172a;--bd:#e2e8f0;--mut:#64748b;}
+  *{box-sizing:border-box;}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--tx);margin:0;line-height:1.6;}
+  .wrap{max-width:800px;margin:0 auto;padding:48px 24px;}
+  h1{font-size:32px;font-weight:700;color:var(--hd);margin:0 0 4px;}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:28px;}
+  h2{font-size:20px;font-weight:600;color:var(--hd);margin-top:48px;scroll-margin-top:70px;}
+  h3{font-size:15px;font-weight:600;margin:0 0 10px;}
+  p{margin:8px 0;}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;}
+  /* nav */
+  .nav-toc{position:sticky;top:0;z-index:10;background:#fff;border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  .nav-toc a{background:#f1f5f9;color:#475569;font-size:12px;font-weight:500;text-decoration:none;padding:5px 10px;border-radius:6px;transition:background .15s;}
+  .nav-toc a:hover{background:#e2e8f0;}
+  /* stats */
+  .stats{display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:18px 0;margin:16px 0;}
+  .stat{flex:1;min-width:90px;}
+  .stat .v{font-size:24px;font-weight:700;color:var(--hd);}
+  .stat .l{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);}
+  /* at a glance */
+  .glance{background:linear-gradient(135deg,#fef3c7,#fde68a);border:1px solid #f59e0b;border-radius:12px;padding:20px 22px;margin-top:16px;}
+  .glance h3{color:#92400e;font-size:16px;}
+  .glance p{color:#78350f;margin:6px 0 0;}
+  /* cards */
+  .card{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:16px 18px;margin:12px 0;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:600px){.grid{grid-template-columns:1fr;}}
+  .card .meta{font-size:12px;color:var(--mut);font-weight:600;}
+  .win{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px 18px;margin:12px 0;}
+  .win h3{color:#166534;}.win p{color:#15803d;margin:4px 0 0;}
+  .fric{background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:16px 18px;margin:12px 0;}
+  .fric h3{color:#991b1b;}.fric .d{color:#7f1d1d;font-size:14px;}
+  .fric .cnt{display:inline-block;background:#fee2e2;color:#991b1b;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px;}
+  .fric ul{margin:8px 0 0;padding-left:18px;color:#7f1d1d;font-size:13px;}
+  .fric li{margin:3px 0;}
+  /* instr suggestion */
+  .instr{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:18px;margin:12px 0;}
+  .instr h3{color:#1e40af;}
+  .cmd-item{margin:14px 0;padding-top:12px;border-top:1px dashed #bfdbfe;}
+  .cmd-item:first-of-type{border-top:none;}
+  .cmd-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+  .cmd-head input{width:15px;height:15px;}
+  .cmd-head label{font-weight:600;font-size:13px;color:#1e3a8a;}
+  .cmd-code{background:#fff;border:1px solid #bfdbfe;border-radius:6px;padding:10px 12px;font-family:ui-monospace,Menlo,monospace;font-size:12px;white-space:pre-wrap;color:#1e293b;position:relative;}
+  .cmd-why{font-size:12px;color:#475569;margin-top:6px;}
+  .mini-copy{position:absolute;top:6px;right:6px;background:#dbeafe;border:none;color:#1e40af;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;}
+  .copy-all-btn{background:#2563eb;color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;margin-top:8px;}
+  .copy-all-btn.done{background:#16a34a;}
+  /* feature + pattern */
+  .feat{background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:16px 18px;margin:12px 0;}
+  .feat h3{color:#166534;}
+  .pat{background:#f0f9ff;border:1px solid #7dd3fc;border-radius:8px;padding:16px 18px;margin:12px 0;}
+  .pat h3{color:#075985;}
+  .why-you{font-size:12px;color:#475569;font-style:italic;margin-top:4px;}
+  .prompt-box{background:#0f172a;color:#e2e8f0;border-radius:6px;padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:12px;white-space:pre-wrap;margin-top:10px;position:relative;}
+  .prompt-box .mini-copy{background:#334155;color:#e2e8f0;}
+  /* histogram */
+  .hist{display:flex;align-items:flex-end;gap:3px;height:120px;margin:14px 0 4px;}
+  .hist .bar{flex:1;background:linear-gradient(180deg,#60a5fa,#2563eb);border-radius:3px 3px 0 0;min-height:2px;position:relative;}
+  .hist .bar span{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:9px;color:var(--mut);}
+  .peak{font-size:13px;color:var(--mut);margin-top:22px;}
+  .horizon{background:#faf5ff;border:1px solid #e9d5ff;border-radius:8px;padding:16px 18px;margin:12px 0;}
+  .horizon h3{color:#6b21a8;}.horizon li{margin:5px 0;}
+</style>
+</head>
 <body><div style="position:fixed;top:20px;right:24px;z-index:9999;">
   <a href="archive.html" style="display:inline-flex;align-items:center;gap:6px;background:white;color:#334155;font-family:'Inter',-apple-system,sans-serif;font-size:13px;font-weight:500;text-decoration:none;padding:8px 14px;border-radius:20px;border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:box-shadow 0.15s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
     All Reports &rarr;
   </a>
-</div><div class="container">
-<h1>📊 Copilot CLI Insights</h1>
-<div class="subtitle">Week ending June 24, 2026 · 2026-06-17 → 2026-06-24 · makeup run for the VPN-skipped Monday cycle</div>
-<nav class="nav-toc">
-<a href="#glance">At a Glance</a><a href="#work">What You Worked On</a><a href="#usage">How You Use It</a>
-<a href="#wins">Impressive Things</a><a href="#friction">Where Things Went Wrong</a>
-<a href="#features">Features to Try</a><a href="#newways">New Ways to Use</a><a href="#horizon">On the Horizon</a></nav>
-
-<div class="at-a-glance" id="glance">
-<div class="glance-title">🔍 At a Glance</div>
-<div class="glance-section">A heavy <strong>automation</strong> week: 128 sessions across all 7 days and 9 repos, but nearly half — <strong>58 sessions</strong> — were the headless meeting-notes pipeline running with no user present. You sustained skill/config hygiene in schew-copilot (19 sessions), kept the lighthouse-web migration PR #23278 alive under headless maintenance, and shipped the AI-news-digest and daily-highlights automations. Friction was low and mostly mechanical: a personal-doc voice that needed re-steering, and a missing VPN that silently skipped Monday's scheduled report — which is why this one is a manual makeup.</div></div>
-
-<h2 id="work">🗂 What You Worked On</h2>
-<div class="project-area"><div class="area-header"><span class="area-name">Automated / headless pipelines</span><span class="area-count">55 sessions</span></div><div class="area-desc">Meeting-notes KB filing + project routing, daily highlights, AI news digest, skill-fix, and PR-autofix — runs with no user present.</div></div><div class="project-area"><div class="area-header"><span class="area-name">schew-copilot (configs + skills)</span><span class="area-count">19 sessions</span></div><div class="area-desc">Skill fixes, PR reviews, reflect runs, and Copilot CLI config maintenance.</div></div><div class="project-area"><div class="area-header"><span class="area-name">FY26 Q4 Play MVP</span><span class="area-count">11 sessions</span></div><div class="area-desc">Buying-committee project — requirements, meeting-notes filing, deployment checks.</div></div><div class="project-area"><div class="area-header"><span class="area-name">FY27 Q1 PA MVP outreach agent</span><span class="area-count">11 sessions</span></div><div class="area-desc">Outreach-agent prototype — code progress reviews, localhost previews.</div></div><div class="project-area"><div class="area-header"><span class="area-name">ai-news-digest</span><span class="area-count">6 sessions</span></div><div class="area-desc">Daily AI/Claude tips digest generation for a UX-designer audience.</div></div><div class="project-area"><div class="area-header"><span class="area-name">lighthouse-web</span><span class="area-count">5 sessions</span></div><div class="area-desc">Production PR reviews + headless maintenance of the CC→Copilot migration PR #23278.</div></div><div class="project-area"><div class="area-header"><span class="area-name">Personal projects</span><span class="area-count">12 sessions</span></div><div class="area-desc">granola-memory, investment-tool, claude-report, resume updates.</div></div>
-
-<h2 id="usage">📈 How You Use Copilot CLI</h2>
-<div class="stats-row"><div class="stat"><div class="stat-value">128</div><div class="stat-label">Sessions</div></div><div class="stat"><div class="stat-value">387</div><div class="stat-label">Turns</div></div><div class="stat"><div class="stat-value">7</div><div class="stat-label">Active days</div></div><div class="stat"><div class="stat-value">9</div><div class="stat-label">Repos</div></div><div class="stat"><div class="stat-value">58</div><div class="stat-label">Meeting-note runs</div></div></div>
-<div class="histo"><div class="bar" style="height:5%" title="5 turns at 02:00 UTC"><span>2</span></div><div class="bar" style="height:38%" title="32 turns at 03:00 UTC"><span>3</span></div><div class="bar" style="height:46%" title="39 turns at 04:00 UTC"><span>4</span></div><div class="bar" style="height:23%" title="20 turns at 05:00 UTC"><span>5</span></div><div class="bar" style="height:71%" title="60 turns at 06:00 UTC"><span>6</span></div><div class="bar" style="height:30%" title="26 turns at 07:00 UTC"><span>7</span></div><div class="bar" style="height:28%" title="24 turns at 08:00 UTC"><span>8</span></div><div class="bar" style="height:100%" title="84 turns at 09:00 UTC"><span>9</span></div><div class="bar" style="height:69%" title="58 turns at 10:00 UTC"><span>10</span></div><div class="bar" style="height:17%" title="15 turns at 11:00 UTC"><span>11</span></div><div class="bar" style="height:5%" title="5 turns at 12:00 UTC"><span>12</span></div><div class="bar" style="height:2%" title="2 turns at 13:00 UTC"><span>13</span></div><div class="bar" style="height:14%" title="12 turns at 14:00 UTC"><span>14</span></div><div class="bar" style="height:3%" title="3 turns at 15:00 UTC"><span>15</span></div><div class="bar" style="height:2%" title="2 turns at 16:00 UTC"><span>16</span></div></div>
-<div class="callout">Activity by hour (UTC). Peak at <strong>09:00 UTC</strong> (5 PM HKT) with 84 turns, with strong blocks at 06:00 and 10:00 UTC — your work clusters in the afternoon/evening HKT.</div>
-
-<h2 id="wins">🏆 Impressive Things You Did</h2>
-<div class="big-win"><div class="big-win-title">58 meeting-note sessions ran fully headless</div><div class="big-win-desc">The meeting-notes pipeline (project routing 23 + KB metadata 14 + full pipeline 21) executed end-to-end with no user present — your single most-automated workflow, running unattended across the week.</div></div><div class="big-win"><div class="big-win-title">Migrated production PR #23278 under headless maintenance</div><div class="big-win-desc">Four unattended sessions kept the lighthouse-web CC→Copilot migration PR current, plus interactive production PR reviews on lighthouse-web.</div></div><div class="big-win"><div class="big-win-title">Sustained skill + config hygiene</div><div class="big-win-desc">19 sessions in schew-copilot drove skill-fix runs, reflect passes, and PR reviews — keeping the skills ecosystem healthy through the Copilot CLI transition.</div></div><div class="big-win"><div class="big-win-title">Real range across the week</div><div class="big-win-desc">128 sessions over all 7 days spanning 9 repos — Sales Navigator project work, personal tools (investment-tool, granola-memory), and the automated digest/highlights pipelines.</div></div>
-
-<h2 id="friction">⚠️ Where Things Went Wrong</h2>
-<div class="section-intro">Friction was light this week — most volume was successful automation. The signals worth acting on:</div>
-<div class="friction-category"><div class="friction-title">Personal-doc voice required repeated correction</div><div class="friction-desc">One long strategy-doc session needed 3+ corrections to stay in first-person and drop advisory stage-directions.</div><ul class="friction-examples"><li>&quot;don&#x27;t write it in your voice, write it as my own personal notes&quot;</li><li>&quot;remove these notes like &#x27;He may not hold mcp&#x27; / &#x27;say the uncomfortable part&#x27;&quot;</li><li>&quot;don&#x27;t use ABC, use value prop&quot;</li></ul></div><div class="friction-category"><div class="friction-title">VPN gated an entire automated run</div><div class="friction-desc">The scheduled 2026-06-22 insights report was skipped because the LinkedIn VPN wasn&#x27;t connected — Copilot CLI needs it for the GitHub enterprise allow-list. This week&#x27;s report is a manual makeup.</div><ul class="friction-examples"><li>launchagent-report.log: &quot;VPN not connected … skipping this run. Will retry next Monday.&quot;</li></ul></div><div class="friction-category"><div class="friction-title">8 sessions ended with no summary</div><div class="friction-desc">Eight sessions in the window produced no summary, and 82 were single-turn — mostly expected for headless sub-steps, but worth confirming none are silent failures.</div><ul class="friction-examples"><li>8 of 128 sessions had NULL summary</li><li>82 of 128 sessions were ≤1 turn (largely automated single-shot runs)</li></ul></div>
-
-<h2 id="features">🛠 Copilot CLI Features to Try</h2>
-<div class="cmd-section">
-<h3>Suggested copilot-instructions.md additions</h3>
-<div class="cmd-actions"><button class="copy-all-btn" onclick="copyAll(this)">Copy All Checked</button></div>
-<div class="cmd-item"><input type="checkbox" class="cmd-checkbox" id="ci0" checked><code class="cmd-code">When drafting any personal thinking/strategy/notes doc for me, write strictly in my first-person voice and remove all advisory stage-directions (e.g. &quot;say the uncomfortable part&quot;, &quot;he may not know X&quot;). Use my domain terms verbatim (e.g. &quot;value prop&quot;, not invented labels) and fold side-notes into the narrative.</code><div class="cmd-why">A strategy-doc session this week needed 3+ corrections on exactly this — voice, stage-directions, and terminology.</div></div><div class="cmd-item"><input type="checkbox" class="cmd-checkbox" id="ci1" checked><code class="cmd-code">Before any scheduled/headless run that pushes to GitHub enterprise (LinkedIn) repos, verify VPN/LinkedIn nameserver first. If absent, queue the work for retry instead of silently skipping the whole run.</code><div class="cmd-why">The 2026-06-22 weekly report was skipped entirely for a missing VPN — a retry queue would prevent lost runs.</div></div><div class="cmd-item"><input type="checkbox" class="cmd-checkbox" id="ci2" checked><code class="cmd-code">For any headless/unattended session, always write a session summary even on early exit, and emit a one-line status (success / no-op / blocked) so single-turn automated runs are auditable.</code><div class="cmd-why">82 single-turn and 8 no-summary sessions this week make it hard to tell successful no-ops from silent failures.</div></div>
 </div>
-<div class="section-intro">Hooks worth wiring (live at <code>~/.copilot/hooks/</code>):</div>
-<div class="feature-card"><div class="feature-title">Pre-push VPN guard hook</div><div class="feature-oneliner">A pre-push hook that checks for the LinkedIn nameserver and, if missing, defers the push to a retry log instead of failing.</div><div class="feature-why">Directly fixes the VPN-skip that cost you the 06-22 report. Lives at ~/.copilot/hooks/.</div></div><div class="feature-card"><div class="feature-title">Post-run summary-completeness hook</div><div class="feature-oneliner">A session-end hook that flags any headless session exiting with no summary, appending it to a daily audit file.</div><div class="feature-why">Turns the 8 no-summary / 82 single-turn sessions into a reviewable list instead of an unknown.</div></div>
+<div class="wrap">
+  <h1>Your Copilot CLI Week</h1>
+  <div class="sub">Jul 24 – Jul 31, 2026 · generated from your local session store</div>
 
-<h2 id="newways">💡 New Ways to Use Copilot CLI</h2>
-<div class="section-intro">Concrete automation upgrades grounded in this week's usage — paste any prompt straight into Copilot CLI:</div>
-<div class="pattern-card"><div class="pattern-title">Add a retry queue to your headless push pipeline</div><div class="pattern-summary">Your meeting-notes + report automations run unattended — but a missing VPN silently drops the whole run.</div><div class="pattern-detail">58 meeting-note sessions and the weekly report all depend on a successful push. One VPN gap this week already cost the 06-22 report. A push-retry queue makes every automated run resilient to transient network/VPN gaps.</div><div class="prompt-row"><code class="prompt-code" id="pp0">Set up a push-retry queue for my headless pipelines: when a scheduled run can&#x27;t reach GitHub enterprise (VPN down), write the pending commit + target repo to ~/.copilot/state/push-retry.jsonl and drain that queue at the start of the next successful session. Add it to the meeting-notes and claude-report flows.</code><button class="copy-btn" onclick="copyOne('pp0',this)">Copy</button></div></div><div class="pattern-card"><div class="pattern-title">Consolidate the meeting-notes sub-steps into one orchestrated run</div><div class="pattern-summary">Meeting-notes currently spawns separate KB-metadata (14), project-routing (23), and pipeline (21) sessions.</div><div class="pattern-detail">These 58 sessions are three stages of one workflow. Orchestrating them as sub-agents inside a single parent run would cut session sprawl, give one consolidated summary per meeting, and make failures easier to trace.</div><div class="prompt-row"><code class="prompt-code" id="pp1">Refactor the meeting-notes pipeline so KB-metadata extraction and project-routing run as parallel sub-agents within a single orchestrating session per meeting, emitting one combined summary — instead of three separate headless sessions.</code><button class="copy-btn" onclick="copyOne('pp1',this)">Copy</button></div></div>
+  <nav class="nav-toc">
+    <a href="#glance">At a Glance</a>
+    <a href="#worked">What You Worked On</a>
+    <a href="#howuse">How You Use It</a>
+    <a href="#wins">Impressive Things</a>
+    <a href="#wrong">Where Things Went Wrong</a>
+    <a href="#features">Features to Try</a>
+    <a href="#newways">New Ways to Use</a>
+    <a href="#horizon">On the Horizon</a>
+  </nav>
 
-<h2 id="horizon">🔭 On the Horizon</h2>
-<ul class="horizon"><li><strong>Background &amp; sub-agents</strong> — Your meeting-notes sprawl (58 sessions) is a textbook fit for sub-agents — your own instructions already prioritize parallel sub-agents, but most runs are still single-shot.</li><li><strong>Lean on the connected MCPs</strong> — Captain, Glean, Figma, Jira, and Trino are all connected — the agent-platform code-search tools and Glean could replace ad-hoc lookups in your interactive Sales Navigator sessions.</li><li><strong>Headless retry + observability</strong> — Once a push-retry queue and summary-completeness hook are in, your weekly insights pipeline becomes fully self-healing — no more manual makeup runs like this one.</li></ul>
+  <h2 id="glance">At a Glance</h2>
+  <div class="glance">
+    <h3>A week of heavy automation and one deep prototype push</h3>
+    <p>You ran <strong>385 sessions across 14 repos</strong> in 8 days — but the shape is bimodal. The bulk (199 sessions) was a <strong>headless batch equity-analysis pipeline</strong> in <code>investment-tool</code>, running near-identical prompts across S&amp;P names. In parallel, you poured genuine interactive craft into the <strong>fy27 prospecting-agent workspace prototype</strong> — a single 245-turn session, plus 194-, 127-, and 91-turn follow-ups — landing 19 commits. You also kept the skills flywheel turning (25 commits in <code>schew-copilot</code>) and delegated aggressively: <strong>2,533 subagent calls</strong> across 30 sessions. The friction that remains is almost entirely in visual iteration — "try again" loops and prototype state that doesn't persist across tab navigation.</p>
+  </div>
 
-<footer>Generated from <code>~/.copilot/session-store.db</code> · window 2026-06-17 → 2026-06-24 · 128 sessions / 387 turns analyzed.</footer>
+  <h2 id="worked">What You Worked On</h2>
+  <div class="grid">
+    <div class="card"><div class="meta">199 sessions · subsscsl/investment-tool</div><p><strong>Batch equity analysis</strong> — automated per-company valuations (BX, GOOG, LLY, AVGO, …) against a fixed investor mandate. Mostly 0–1 turn headless runs.</p></div>
+    <div class="card"><div class="meta">33 sessions · lighthouse-web</div><p><strong>Sales Navigator production</strong> — PR autofix worktrees on the buying-group FTUE / home-new components, a11y nav bar fixes.</p></div>
+    <div class="card"><div class="meta">24 sessions · schew-copilot</div><p><strong>Skill &amp; config maintenance</strong> — daily <code>/skill-fix</code>, insights triage, rules edits. 25 commits, the most of any repo.</p></div>
+    <div class="card"><div class="meta">14 sessions · fy27-prospecting-agent</div><p><strong>Workspace fidelity prototype</strong> — the deep interactive work of the week (245-turn lead session). Chat-first workspace, dynamic tabs, close affordances.</p></div>
+    <div class="card"><div class="meta">13 · granola-memory / 12 · ai-news-digest</div><p><strong>Automated digests</strong> — daily Granola meeting filing and AI-news generation, both unattended orchestrator runs.</p></div>
+    <div class="card"><div class="meta">10 sessions · pa-mvp-outreach-agent</div><p><strong>Outreach agent MVP</strong> — PR #2 merge work and local-host preview iteration.</p></div>
+  </div>
+
+  <h2 id="howuse">How You Use Copilot CLI</h2>
+  <div class="stats">
+    <div class="stat"><div class="v">385</div><div class="l">Sessions</div></div>
+    <div class="stat"><div class="v">1,262</div><div class="l">Turns</div></div>
+    <div class="stat"><div class="v">8</div><div class="l">Active days</div></div>
+    <div class="stat"><div class="v">14</div><div class="l">Repos</div></div>
+    <div class="stat"><div class="v">57</div><div class="l">Commits</div></div>
+    <div class="stat"><div class="v">14</div><div class="l">PRs</div></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="v">1.34B</div><div class="l">Input tokens</div></div>
+    <div class="stat"><div class="v">7.5M</div><div class="l">Output tokens</div></div>
+    <div class="stat"><div class="v">1.23B</div><div class="l">Cache-read tokens</div></div>
+    <div class="stat"><div class="v">2,533</div><div class="l">Subagent calls</div></div>
+  </div>
+  <p style="font-size:13px;color:var(--mut);">Model mix: <strong>gpt-5.6-sol</strong> (4,969 calls) and <strong>gpt-5.6-terra</strong> (2,415) lead, with <strong>claude-sonnet-4.6</strong> (1,519), <strong>claude-opus-4.8</strong> (1,187) and <strong>claude-opus-5</strong> (291) behind them — a genuinely multi-model week.</p>
+  <div class="hist" id="hist"></div>
+  <div class="peak">Peak activity clusters in a tight <strong>3–9 (hour)</strong> window — hours 4 and 5 alone carry ~180 turns each, consistent with early-morning automated batch fires plus your own deep-work block.</div>
+
+  <h2 id="wins">Impressive Things You Did</h2>
+  <div class="win"><h3>Ran a 199-company valuation pipeline headless</h3><p>You drove near-identical brutal-honesty equity analyses across ~130+ distinct tickers as fire-and-forget sessions — a real portfolio-scale batch job, not one-off chats.</p></div>
+  <div class="win"><h3>A 245-turn prototype marathon that actually shipped</h3><p>The prospecting-agent workspace went from "fidelity prototype" to chat-first workspace with dynamic tabs and close affordances across four deep sessions and 19 commits — sustained design iteration, not throwaway.</p></div>
+  <div class="win"><h3>Kept the skills flywheel self-maintaining</h3><p>25 commits in schew-copilot: daily skill-fix, insights triage, rule edits. Your tooling maintains itself while you build.</p></div>
+  <div class="win"><h3>Delegated 2,533 subagent calls</h3><p>Across 30 sessions you leaned hard on parallel subagents — the single biggest lever you're already pulling well.</p></div>
+
+  <h2 id="wrong">Where Things Went Wrong</h2>
+  <div class="fric">
+    <h3>Directional "try again" loops in visual iteration<span class="cnt">1 session, 6+ reprompts</span></h3>
+    <div class="d">The 245-turn prospecting-agent session is punctuated by bare "try again" and reversal corrections — the model applied a change in the wrong direction and you had to bounce it back.</div>
+    <ul>
+      <li>"no you did the opposite"</li>
+      <li>"try again" (×4 in one session)</li>
+      <li>"no, text within the cadence tag should be same size as time stamp"</li>
+      <li>"no i want group entity with the company logos"</li>
+    </ul>
+  </div>
+  <div class="fric">
+    <h3>Prototype state not persisting across navigation<span class="cnt">2+ corrections</span></h3>
+    <div class="d">UI state (intro animation, chat position) reset when you left and returned to a tab — a recurring class of prototype bug that cost round-trips.</div>
+    <ul>
+      <li>"once it's loaded, i shouldn't see the animation again if i leave and come back to the tab"</li>
+      <li>"when i come back again, the chat is at the corner left, no longer at the middle"</li>
+    </ul>
+  </div>
+  <div class="fric">
+    <h3>Wrong IA reused from production<span class="cnt">1 session</span></h3>
+    <div class="d">When mocking the new workspace, the current SN nav/tabs were carried over instead of the new information architecture.</div>
+    <ul>
+      <li>"the nav bar that you've added is wrong. why are you still using today's SN nav bar with the exact tabs? they don't match the new workspace"</li>
+    </ul>
+  </div>
+  <div class="fric">
+    <h3>Headless batch runs finishing without output<span class="cnt">94 sessions ≤2 turns, no summary</span></h3>
+    <div class="d">A large share of automated runs (investment / granola / skill-fix fires) ended with no summary and ≤2 turns. Some are legitimately terse; but with 101 zero-turn sessions, it's worth confirming each batch item actually produced a durable artifact rather than silently no-op'ing.</div>
+    <ul>
+      <li>101 sessions recorded 0 turns; 251 recorded exactly 1.</li>
+      <li>Hard to tell success from silent-skip without a per-run output check.</li>
+    </ul>
+  </div>
+
+  <h2 id="features">Copilot CLI Features to Try</h2>
+  <div class="instr">
+    <h3>Suggested copilot-instructions.md additions</h3>
+    <p style="font-size:13px;color:#475569;margin-top:0;">Each snippet is derived from a friction pattern above. Check the ones you want and hit Copy All Checked.</p>
+
+    <div class="cmd-item">
+      <div class="cmd-head"><input type="checkbox" id="c1" checked><label for="c1">Persist prototype UI state</label></div>
+      <div class="cmd-code">When building interactive prototypes, persist UI state (active tab, panel/chat position, "intro-animation-seen" flag) to localStorage keyed by view. Restore it on mount so leaving and returning to a tab or reloading never replays intro animations or resets element positions.<button class="mini-copy" onclick="mc(this)">Copy</button></div>
+      <div class="cmd-why">Why: 2+ corrections in fy27-prospecting-agent — the intro animation replayed and the chat jumped back to the corner after tab navigation.</div>
+    </div>
+
+    <div class="cmd-item">
+      <div class="cmd-head"><input type="checkbox" id="c2" checked><label for="c2">Restate end-state before reversing a change</label></div>
+      <div class="cmd-code">Before applying any toggle/reversal/directional edit (move X left→right, swap A/B, increase→decrease), first restate the intended END state in one sentence, then make the edit. If a previous attempt went the wrong way, describe what the wrong result looked like vs. the target before retrying.<button class="mini-copy" onclick="mc(this)">Copy</button></div>
+      <div class="cmd-why">Why: "no you did the opposite" plus four bare "try again" reprompts in a single session — directional ambiguity drove the loop.</div>
+    </div>
+
+    <div class="cmd-item">
+      <div class="cmd-head"><input type="checkbox" id="c3" checked><label for="c3">Don't reuse production IA for new-surface mocks</label></div>
+      <div class="cmd-code">When mocking a NEW SN surface or workspace, do not carry over the current production nav bar, tabs, or IA by default. Confirm the target information architecture (which tabs/sections exist in the new design) before building chrome. If unspecified, ask or infer from the mock — never default to today's shipping nav.<button class="mini-copy" onclick="mc(this)">Copy</button></div>
+      <div class="cmd-why">Why: "why are you still using today's SN nav bar… they don't match the new workspace."</div>
+    </div>
+
+    <div class="cmd-item">
+      <div class="cmd-head"><input type="checkbox" id="c4" checked><label for="c4">Batch runs must emit a durable artifact</label></div>
+      <div class="cmd-code">For any headless/batch/orchestrator run (investment analysis, granola filing, digests), the final step must write a durable output artifact (file or committed summary) AND print a one-line PASS/SKIP/FAIL status naming the item processed. Never end a batch item silently — a run with no artifact is a failure, not a success.<button class="mini-copy" onclick="mc(this)">Copy</button></div>
+      <div class="cmd-why">Why: 94 automated sessions ended ≤2 turns with no summary; 101 logged zero turns — silent no-ops are indistinguishable from success.</div>
+    </div>
+
+    <div class="cmd-item">
+      <div class="cmd-head"><input type="checkbox" id="c5"><label for="c5">Screenshot-verify visual changes before reporting done</label></div>
+      <div class="cmd-code">After any visual/layout change to a running prototype, capture a screenshot of the actual rendered result and compare against the request before saying it's done. If a spatial property (position, size, alignment) was requested, assert it from the DOM/computed style rather than assuming the edit worked.<button class="mini-copy" onclick="mc(this)">Copy</button></div>
+      <div class="cmd-why">Why: repeated directional/visual corrections would be caught pre-emptively by a render check, collapsing the "try again" cycle.</div>
+    </div>
+
+    <button class="copy-all-btn" id="copyAll" onclick="copyAll()">Copy All Checked</button>
+  </div>
+
+  <h3 style="margin-top:24px;">Hooks worth adding at <code>~/.copilot/hooks/</code></h3>
+  <div class="feat"><h3>postToolUse: prototype state-persistence lint</h3><p>A post-edit hook that greps changed prototype JS/TS for <code>localStorage</code> usage when the diff touches tab/panel/animation state, warning if a stateful component ships without persistence.</p><div class="why-you">Why for you: your only recurring prototype-bug class this week was non-persisted state.</div></div>
+  <div class="feat"><h3>preToolUse: batch-artifact guard</h3><p>On session end for orchestrator repos (investment-tool, granola-memory), verify the expected output file exists; block/warn if a "completed" run left no artifact.</p><div class="why-you">Why for you: 94 batch sessions ended with no summary — this closes the silent-skip gap directly.</div></div>
+  <div class="feat"><h3>preCommit: lint/type-check on lighthouse-web</h3><p>You already run PR autofix worktrees; a pre-commit hook that runs the Ember lint/type-check on only the changed files stops autofix commits from bouncing in CI.</p><div class="why-you">Why for you: 33 lighthouse-web sessions, several in <code>pr-autofix</code> worktrees — catch failures locally.</div></div>
+
+  <h2 id="newways">New Ways to Use Copilot CLI</h2>
+  <div class="pat">
+    <h3>Turn the 199-run investment pipeline into one manifest-driven driver</h3>
+    <p>You executed ~130+ near-identical ticker analyses as separate sessions. Collapse that into a single driver that reads a ticker manifest, fans out subagents (you already average 84 subagent calls/session in these), and writes one report per name — one command instead of 199 launches.</p>
+    <div class="prompt-box">Build a headless driver script in investment-tool that reads tickers.txt (one symbol per line), and for each ticker runs my standard brutal-honesty equity analysis prompt as a background subagent with the fixed investor mandate (Singapore tax resident, 2% cap, 30yr horizon, MARR 15%). Write each result to reports/&lt;TICKER&gt;.md, skip tickers whose report already exists and is <7 days old, and print a PASS/SKIP/FAIL line per ticker at the end.<button class="mini-copy" onclick="mc(this)">Copy</button></div>
+  </div>
+  <div class="pat">
+    <h3>A screenshot-diff loop for prototype iteration</h3>
+    <p>Your longest, highest-friction sessions were visual. Wire a tight capture-compare loop so the model self-checks layout changes with Playwright before handing back — this is where your "try again" tokens are going.</p>
+    <div class="prompt-box">In fy27-prospecting-agent, set up a Playwright-based visual check I can invoke after any layout change: navigate to the prototype route, dismiss overlays, screenshot the target component, and assert the requested spatial property (position/size/alignment) from computed style. Report pass/fail with the actual values before telling me it's done, and always browser_close at the end.<button class="mini-copy" onclick="mc(this)">Copy</button></div>
+  </div>
+  <div class="pat">
+    <h3>Consolidate the daily digest orchestrators</h3>
+    <p>granola-memory, ai-news-digest, and skill-fix each fire as separate unattended runs. A single morning "digest" driver that sequences them and posts one combined status would cut launches and give you one place to see failures.</p>
+    <div class="prompt-box">Create a single scheduled "morning digest" workflow that runs, in order: granola-sync + file today's meetings, generate the AI-news digest, and run the daily skill-fix pass — each as its own subagent. Collect a one-line status from each and write a combined docs/morning-YYYY-MM-DD.md summary. If any step produces no artifact, mark it FAILED in the summary rather than skipping silently.<button class="mini-copy" onclick="mc(this)">Copy</button></div>
+  </div>
+
+  <h2 id="horizon">On the Horizon</h2>
+  <div class="horizon">
+    <h3>Capabilities that fit your patterns</h3>
+    <ul>
+      <li><strong>Background agents for long prototype builds</strong> — your 245- and 194-turn sessions are exactly what background agents are for: kick off the scaffold, keep iterating in the foreground, and let the heavy build run detached.</li>
+      <li><strong>Cloud session store (currently blocked for you)</strong> — this week's richer token/tool analytics couldn't load: the cloud store returned an auth error, almost certainly because the run happened off-VPN. Running <code>/insights</code> on the LinkedIn network unlocks per-tool execution counts and model cost breakdowns you're not seeing yet.</li>
+      <li><strong>Scheduled workflows for the batch pipelines</strong> — the investment and digest runs are prime candidates for the Copilot app's scheduled-workflow system, provided their fire time lands on an allowlisted IP (per your automation-placement rule).</li>
+    </ul>
+  </div>
 </div>
+
 <script>
-function flash(btn,label){const o=btn.textContent;btn.textContent=label;btn.classList.add('copied');setTimeout(()=>{btn.textContent=o;btn.classList.remove('copied');},1500);}
-function copyOne(id,btn){navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>flash(btn,'Copied!'));}
-function copyAll(btn){const items=document.querySelectorAll('.cmd-item');let out=[];items.forEach((it,i)=>{const cb=it.querySelector('.cmd-checkbox');if(cb&&cb.checked){out.push(it.querySelector('.cmd-code').textContent);}});navigator.clipboard.writeText(out.join('\n\n')).then(()=>flash(btn,'Copied!'));}
+  // histogram
+  var hours = {1:1,2:18,3:125,4:178,5:177,6:124,7:154,8:142,9:131,10:55,11:1,12:15,13:22,14:64,15:30,16:7,17:17,23:1};
+  var max=0; for(var k in hours){if(hours[k]>max)max=hours[k];}
+  var h=document.getElementById('hist');
+  for(var i=0;i<24;i++){var v=hours[i]||0;var b=document.createElement('div');b.className='bar';b.style.height=(v/max*100)+'%';b.title=i+':00 — '+v+' turns';if(i%3===0){var s=document.createElement('span');s.textContent=i;b.appendChild(s);}h.appendChild(b);}
+  // copy helpers
+  function mc(btn){var box=btn.parentElement;var t=box.childNodes[0].nodeValue||box.textContent;navigator.clipboard.writeText(t.trim());var o=btn.textContent;btn.textContent='Copied!';setTimeout(function(){btn.textContent=o;},1200);}
+  function copyAll(){var out=[];document.querySelectorAll('.cmd-item').forEach(function(it){var cb=it.querySelector('input[type=checkbox]');if(cb&&cb.checked){var code=it.querySelector('.cmd-code');out.push(code.childNodes[0].nodeValue.trim());}});navigator.clipboard.writeText(out.join('\n\n'));var b=document.getElementById('copyAll');b.textContent='Copied!';b.classList.add('done');setTimeout(function(){b.textContent='Copy All Checked';b.classList.remove('done');},1400);}
 </script>
-</body></html>
+</body>
+</html>
